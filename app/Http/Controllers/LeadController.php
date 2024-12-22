@@ -13,12 +13,12 @@ class LeadController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:255',
-            'products' => 'required|array',
+            'events' => 'required|array',
             'summary' => 'required|string|max:255',
         ]);
 
         // Получаем продукты из запроса и фильтруем их
-        $selectedProducts = array_filter($validated['products'], function ($product) {
+        $selectedProducts = array_filter($validated['events'], function ($product) {
             return $product['selected'] && $product['count'] > 0;
         });
 

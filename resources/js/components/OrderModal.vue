@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import {products} from "@/products.js";
+
 import { EventBus } from '@/eventBus';
 
 export default {
@@ -67,7 +67,7 @@ export default {
             address: '',
             summary: 0,
             isVisible: false,
-            products: products,
+            products: events,
             loading: false
         };
     },

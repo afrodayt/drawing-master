@@ -13,6 +13,8 @@ import HeaderComponent from "@/components/HeaderComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import OrderModal from "@/components/OrderModal.vue";
 
+
+
 new Vue({
     el: '#app',
     components: {
