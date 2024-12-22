@@ -1,16 +1,33 @@
 <template>
     <footer class="footer">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between footer-container">
-                <img class="footer-logo" src="assets/img/logo-ersag.svg" alt="logo">
-                <a href="#about" class="footer-link">Про продукт</a>
-                <a href="#advantages" class="footer-link">Наші переваги</a>
-                <a href="#catalog" class="footer-link">Каталог товару</a>
-                <a href="#manufacturer" class="footer-link">Виробник</a>
-                <a href="#feedback" class="footer-link">Відгуки</a>
+        <div class="row h-100">
+            <div class="col-6">
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-end">
+                <div class="footer-title">
+                    Contacts
+                </div>
+                <div class="footer-contact">
+                    <img src="assets/img/icon-email.svg" alt="icon-email">
+                    a.art.shuhai@gmail.com
+                </div>
+                <div class="footer-contact mb-0">
+                    <img src="assets/img/icon-location.svg" alt="icon-location-footer">
+                    1324 11 Ave, SW, #202, Calgary
+                </div>
+                <div class="footer-description">
+                    Follow us on social media
+                </div>
+                <div>
+                    <a href="https://www.instagram.com/art_shuhai/" target="_blank">
+                        <img src="assets/img/icon-instagram.svg" alt="logo-instagram">
+                    </a>
+                    <a href="https://www.facebook.com/people/ART-Shuhai/61562003400987/" target="_blank">
+                        <img src="assets/img/icon-facebook.svg" alt="logo-facebook">
+                    </a>
+                </div>
             </div>
         </div>
-
     </footer>
 
 </template>
@@ -23,37 +40,38 @@ export default {
 
 <style scoped lang="less">
     .footer {
-        padding: 70px 0;
-        font-size: 16px;
-        font-weight: 600;
-        background: rgb(208, 216, 231);
+        background: url("assets/img/footer-bg.png") center no-repeat;
+        background-size: cover;
+        height: 432px;
 
-        @media (max-width: 991px) {
-            padding: 25px 0;
+        &-title {
+            font-family: Bodoni Moda, serif;
+            font-size: 50px;
+            font-weight: 400;
+            line-height: 115%;
+            margin-bottom: 36px;
+        }
+        &-contact {
+            font-family: Montserrat, serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 140%;
+            margin-bottom: 13px;
 
-            &-logo {
-                height: 40px;
-                object-fit: contain;
-
-                @media(max-width: 991px) {
-                    margin-bottom: 35px;
-                }
+            img {
+                margin-right: 8px;
             }
         }
-
-        &-link {
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-
-            @media(max-width: 991px) {
-                margin-bottom: 25px;
-            }
+        &-description {
+            font-family: Bodoni Moda, serif;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 140%;
+            margin-top: 22px;
+            margin-bottom: 18px;
         }
-        &-container {
-
-            @media(max-width: 991px) {
-                flex-direction: column;
-            }
+        a {
+            margin-right: 20px;
         }
     }
 </style>
