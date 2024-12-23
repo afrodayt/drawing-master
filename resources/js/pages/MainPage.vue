@@ -76,26 +76,30 @@
             </div>
             <div class="events mb-200">
                 <div class="main-title">Upcoming events</div>
-                <div class="row">
-                    <div class="col-6" v-for="event in events" v-if="expiredEvent(event.date)">
-                        <div class="events-block">
-                            <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img">
-                            <div class="events-block-container d-flex flex-column">
-                                <div class="events-block-title">{{event.eventName}}</div>
-                                <div class="events-block-information">
-                                    <img src="assets/img/icon-date.png" alt="date">
-                                    {{ getFormatedDate(event.date) }},  {{event.time}}
+                <div class="f-carousel" id="myCarousel">
+                    <div class="f-carousel__viewport">
+                        <div class="f-carousel__track">
+                            <div class="f-carousel__slide" v-for="event in events" v-if="expiredEvent(event.date)">
+                                <div class="events-block">
+                                    <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img">
+                                    <div class="events-block-container d-flex flex-column">
+                                        <div class="events-block-title">{{event.eventName}}</div>
+                                        <div class="events-block-information">
+                                            <img src="assets/img/icon-date.png" alt="date">
+                                            {{ getFormatedDate(event.date) }},  {{event.time}}
+                                        </div>
+                                        <div class="events-block-information">
+                                            <img src="assets/img/icon-price.png" alt="price">
+                                            ${{event.price}}
+                                        </div>
+                                        <div class="events-block-information mb-0">
+                                            <img src="assets/img/icon-location.png" alt="location">
+                                            {{event.location}}
+                                        </div>
+                                        <div class="events-block-description">{{event.description}}</div>
+                                        <button class="main-button">Sign up</button>
+                                    </div>
                                 </div>
-                                <div class="events-block-information">
-                                    <img src="assets/img/icon-price.png" alt="price">
-                                    ${{event.price}}
-                                </div>
-                                <div class="events-block-information mb-0">
-                                    <img src="assets/img/icon-location.png" alt="location">
-                                    {{event.location}}
-                                </div>
-                                <div class="events-block-description">{{event.description}}</div>
-                                <button class="main-button">Sign up</button>
                             </div>
                         </div>
                     </div>
@@ -256,6 +260,8 @@
 import moment from "moment";
 import { events } from "@/events.js";
 import HeaderComponent from "@/components/HeaderComponent.vue";
+import { Carousel } from "@fancyapps/ui/dist/carousel/carousel.esm.js";
+import { Autoplay } from "@fancyapps/ui/dist/carousel/carousel.autoplay.esm.js";
 
 export default {
     name: "MainPage",
@@ -298,10 +304,47 @@ export default {
             this.studentworks = isStudentWorks;
         },
     },
+    mounted() {
+        const container = document.getElementById("myCarousel");
+        const options = {
+
+            slidesPerPage: 2,
+            center: false,
+            Autoplay: {
+                timeout: 3000,
+            },
+        };
+
+        new Carousel(container, options);
+        // new Carousel(container, options, { Autoplay });
+    }
 };
 </script>
 
 <style scoped lang="less">
+    @import "@fancyapps/ui/dist/carousel/carousel.autoplay.css";
+
+    .f-carousel {
+        --f-carousel-slide-width: calc((100% - 40px) / 2);
+        --f-carousel-spacing: 40px;
+
+
+        @media (max-width: 991px) {
+            --f-carousel-slide-width: 100%;
+            --f-carousel-spacing: 10px;
+        }
+
+        &__viewport {
+            padding: 20px;
+        }
+
+        &-slide {
+            margin: -20px;
+        }
+    }
+
+
+
     .main-title {
         font-family: "Bodoni Moda", serif;
         font-size: 70px;
@@ -385,6 +428,7 @@ export default {
             border-radius: 50px;
             box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
             background: rgb(255, 255, 255);
+
 
             &-img {
                 object-fit: cover;
