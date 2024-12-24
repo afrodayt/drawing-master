@@ -1,10 +1,10 @@
 <template>
     <footer class="footer">
         <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-6">
+            <div class="row h-100 flex-column flex-md-row">
+                <div class="col-12 col-md-6">
                 </div>
-                <div class="col-6 d-flex flex-column justify-content-end">
+                <div class="col-12 col-md-6 d-flex flex-column  justify-content-end">
                     <div class="footer-title">
                         Contacts
                     </div>
@@ -46,6 +46,12 @@ export default {
         background-size: cover;
         height: 432px;
         padding-bottom: 42px;
+
+        @media (max-width: 768px) {
+            background: url("assets/img/footer-bg-mobile.png") center top no-repeat;
+            background-size: cover;
+            height: 660px;
+        }
 
         &-title {
             font-family: Bodoni Moda, serif;

@@ -20,7 +20,7 @@
                     Let’s get creative!<br>
                     Art classes for all
                 </div>
-                <div class="d-flex">
+                <div class="d-flex flex-column flex-lg-row">
                     <div class="why-block">
                         <div class="why-block-title">
                             Visual arts & creative classes
@@ -83,21 +83,20 @@
                                 <div class="events-block">
                                     <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img">
                                     <div class="events-block-container d-flex flex-column">
-                                        <div class="events-block-title">{{ event.eventName }}</div>
+                                        <div class="events-block-title">{{event.eventName}}</div>
                                         <div class="events-block-information">
                                             <img src="assets/img/icon-date.png" alt="date">
-                                            {{ event.day }} {{ event.startDate }} {{ getFormatedDate(event.date) }},
-                                            {{ event.time }}
+                                            {{event.day}} {{event.startDate}} {{ getFormatedDate(event.date) }},  {{event.time}}
                                         </div>
                                         <div class="events-block-information">
                                             <img src="assets/img/icon-price.png" alt="price">
-                                            ${{ event.price }}
+                                            ${{event.price}}
                                         </div>
                                         <div class="events-block-information mb-0">
                                             <img src="assets/img/icon-location.png" alt="location">
-                                            {{ event.location }}
+                                            {{event.location}}
                                         </div>
-                                        <div class="events-block-description">{{ event.description }}</div>
+                                        <div class="events-block-description">{{event.description}}</div>
                                         <button class="main-button" @click="openEventModal(event.id)">Sign up</button>
                                     </div>
                                 </div>
@@ -108,7 +107,7 @@
             </div>
             <div class="gallery d-flex align-items-center flex-column mb-200">
                 <div class="main-title">GALLERY</div>
-                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <div class="btn-group flex-column flex-lg-row" role="group" aria-label="Basic checkbox toggle button group">
                     <button
                         class="gallery-btn btn btn-outline-primary"
                         :class="{ active: studentWorks }"
@@ -164,9 +163,9 @@
                 </div>
             </div>
             <div class="about mb-200">
-                <div class="row">
-                    <div class="col-6 mb-">
-                        <div class="main-title">About me</div>
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
+                        <div class="main-title text-center text-lg-start">About me</div>
                         <div class="about-description">
                             Good to see you here! My name is Alevtyna, I am a professional fine arts teacher
                             based in Calgary. I am continuously inspired by world we live in and can never resist
@@ -191,8 +190,7 @@
                             Let’s get creative!
                         </div>
                     </div>
-                    <div class="col-1"></div>
-                    <div class="col-5">
+                    <div class="col-12 col-lg-6">
                         <img src="assets/img/photo-about-the-author.png" alt="photo-about-the-author"
                              class="adaptive-img">
                     </div>
@@ -202,31 +200,23 @@
         <div class="subscribe mb-200 d-flex align-items-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-5">
-                        <div class="subscribe-title">Subscribe Our Newsletter</div>
+                    <div class="col-12 col-lg-6 d-flex justify-content-center mb-3 mb-lg-0">
+                        <div class="subscribe-title">Our Events</div>
                     </div>
-                    <div class="col-1"></div>
-                    <div class="col-6 d-flex align-items-end">
-                        <div class="input-group">
-                            <input type="text" class="subscribe-input form-control" placeholder="enter your email"
-                                   aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="subscribe-button btn btn-outline-secondary" type="button" id="button-addon2">
-                                Subscribe
-                            </button>
-                        </div>
+                    <div class="col-12 col-lg-6 d-flex justify-content-center">
+                        <a href="#events" class="main-button">Events</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="message mb-200" id="contact">
-                <div class="row">
-                    <div class="col-5">
+                <div class="row flex-column-reverse flex-lg-row">
+                    <div class="col-12 col-lg-6">
                         <img src="assets/img/paint-photo.png" alt="paint-photo" class="adaptive-img">
                     </div>
-                    <div class="col-2"></div>
-                    <div class="col-5">
-                        <div class="main-title">Let’s get in touch</div>
+                    <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+                        <div class="main-title text-center text-lg-start">Let’s get in touch</div>
                         <form class="d-flex flex-column">
                             <label for="name" class="message-label">
                                 Name<span class="required">*</span>
@@ -241,17 +231,19 @@
                             </label>
                             <textarea id="message" v-model="form.message" class="message-input message-input-text"
                                       required></textarea>
-                            <button type="submit" :disabled="!isFormValid" class="message-button">Send</button>
+                            <div class="d-flex justify-content-center justify-content-lg-start">
+                                <button type="submit" :disabled="!isFormValid" class="message-button">Send</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="faq mb-200">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="main-title">Frequently asked questions</div>
+                    <div class="col-12 col-lg-6">
+                        <div class="main-title text-center mb-4 mb-lg-0 text-lg-start">Frequently asked questions</div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
@@ -346,16 +338,16 @@ export default {
             },
             images: {
                 student: [
-                    "assets/img/gallery/student_artwork/IMG_0552.JPG",
-                    "assets/img/gallery/student_artwork/IMG_1014.jpg",
                     "assets/img/gallery/student_artwork/IMG_1819.jpg",
+                    "assets/img/gallery/student_artwork/IMG_1014.jpg",
+                    "assets/img/gallery/student_artwork/IMG_0552.JPG",
                     "assets/img/gallery/student_artwork/IMG_3963.jpg",
                 ],
                 my : [
-                    "assets/img/gallery/my_artwork/IMG_3931.jpg",
-                    "assets/img/gallery/my_artwork/IMG_5363.jpg",
                     "assets/img/gallery/my_artwork/IMG_1469.JPG",
                     "assets/img/gallery/my_artwork/IMG_7640.jpg",
+                    "assets/img/gallery/my_artwork/IMG_5363.jpg",
+                    "assets/img/gallery/my_artwork/IMG_3931.jpg",
                 ]
             }
         };
@@ -397,401 +389,490 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import "@fancyapps/ui/dist/carousel/carousel.autoplay.css";
+    @import "@fancyapps/ui/dist/carousel/carousel.autoplay.css";
+    .f-carousel {
+        --f-carousel-slide-width: calc((100% - 40px) / 2);
+        --f-carousel-spacing: 40px;
+        --f-carousel-dot-color: rgb(255, 141, 60) !important;
+        --f-carousel-dot-height: 12px;
+        --f-carousel-dot-width: 12px;
+        --f-button-prev-pos: -40px;
+        --f-button-next-pos: -40px;
+        --f-button-width: 45px;
+        --f-button-height: 45px;
+        --f-button-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+        --f-button-border-radius: 50%;
 
-.f-carousel {
-    --f-carousel-slide-width: calc((100% - 40px) / 2);
-    --f-carousel-spacing: 40px;
-    --f-carousel-dot-color: rgb(255, 141, 60) !important;
-    --f-carousel-dot-height: 12px;
-    --f-carousel-dot-width: 12px;
-    --f-button-prev-pos: -40px;
-    --f-button-next-pos: -40px;
-    --f-button-width: 45px;
-    --f-button-height: 45px;
-    --f-button-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
-    --f-button-border-radius: 50%;
 
 
-    @media (max-width: 991px) {
-        --f-carousel-slide-width: 100%;
-        --f-carousel-spacing: 10px;
+        @media (max-width: 991px) {
+            --f-carousel-slide-width: 100%;
+            --f-carousel-spacing: 30px;
+        }
+
+        &__viewport {
+            padding: 15px;
+        }
+
+        &-slide {
+            margin: -20px;
+        }
+        ::v-deep .f-progress {
+            display: none!important;
+        }
+    }
+    ::v-deep .f-button {
+        @media (max-width: 991px) {
+            display: none;
+        }
+
     }
 
-    &__viewport {
-        padding: 20px;
-    }
-
-    &-slide {
-        margin: -20px;
-    }
-
-    ::v-deep .f-progress {
-        display: none!important;
-    }
-}
-
-.main-title {
-    font-family: "Bodoni Moda", serif;
-    font-size: 70px;
-    font-weight: 400;
-    line-height: 105%;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.main-button {
-    width: 280px;
-    height: 60px;
-    border-radius: 80px;
-    background: rgb(255, 183, 133);
-    color: rgb(0, 0, 0);
-    font-family: Montserrat, serif;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 120%;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-}
-
-
-.banner {
-    background: url("assets/img/bg-main-banner.png") center bottom no-repeat;
-    background-size: cover;
-    height: 700px;
-
-    &-title {
-        color: rgb(255, 255, 255);
-        margin-top: 77px;
-        margin-bottom: 21px;
+    .main-title {
         font-family: "Bodoni Moda", serif;
-        font-size: 69px;
-        font-weight: 700;
-        line-height: 100%;
+        font-size: 70px;
+        font-weight: 400;
+        line-height: 105%;
         text-align: center;
         text-transform: uppercase;
-        font-style: italic;
-    }
-
-    &-description {
-        color: rgb(255, 255, 255);
-        font-family: Montserrat, serif;
-        font-size: 30px;
-        font-weight: 400;
-        line-height: 120%;
-        margin-bottom: 60px;
-    }
-}
-
-.why {
-    &-block {
-        margin-top: 50px;
-        margin-right: 40px;
-        border-radius: 50px;
-        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
-        background: rgb(255, 255, 255);
-        padding: 40px 30px;
-        margin-bottom: 30px;
-
-        &-title {
-            font-family: Montserrat, serif;
-            font-size: 20px;
-            font-weight: 600;
-            line-height: 145%;
-            margin-bottom: 25px;
-        }
-
-        &-description {
-            font-family: Montserrat, serif;
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 150%;
-            display: flex;
-            gap: 10px;
-            align-items: start;
-            margin-bottom: 15px;
+        @media (max-width: 991px) {
+            font-size: 45px;
         }
     }
-}
-
-.events {
-    &-block {
-        border-radius: 50px;
-        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
-        background: rgb(255, 255, 255);
-
-
-        &-img {
-            object-fit: cover;
-            height: 400px;
-            width: 100%;
-            border-radius: 50px 50px 0 0;
-        }
-
-        &-container {
-            padding: 30px 30px 40px 30px;
-
-            .main-button {
-                width: unset;
-            }
-        }
-
-        &-title {
-            font-family: Bodoni Moda, serif;
-            font-size: 36px;
-            font-weight: 400;
-            line-height: 115%;
-            margin-bottom: 20px;
-        }
-
-        &-description, &-information {
-            font-family: Montserrat, serif;
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 150%;
-            margin-bottom: 7px;
-        }
-
-        &-description {
-            margin-bottom: 30px;
-            margin-top: 15px;
-        }
-    }
-}
-
-.gallery {
-    &-wrapper {
-        display: grid;
-        grid-template-areas:
-        "photo1 photo2 photo3"
-        "photo4 photo4 photo3";
-        gap: 25px;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    &-item {
-        border-radius: 50px;
-        overflow: hidden;
-    }
-
-    &-item:nth-child(1) {
-        grid-area: photo1;
-
-        img {
-            height: 292px;
-            object-fit: cover;
-        }
-    }
-
-    &-item:nth-child(2) {
-        grid-area: photo2;
-
-        img {
-            height: 292px;
-            object-fit: cover;
-        }
-    }
-
-    &-item:nth-child(3) {
-        grid-area: photo3;
-
-        img {
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-
-    &-item:nth-child(4) {
-        grid-area: photo4;
-
-        img {
-            height: 292px;
-            object-fit: cover;
-        }
-
-    }
-
-    &-btn {
-        margin-top: 50px;
-        margin-bottom: 30px;
-        background: transparent;
-        color: rgb(0, 0, 0) !important;
+    .main-button {
+        width: 280px;
+        height: 60px;
+        border-radius: 80px;
+        background: rgb(255, 183, 133);
+        color: rgb(0, 0, 0);
         font-family: Montserrat, serif;
         font-size: 22px;
-        font-weight: 400;
-        line-height: 110%;
-        padding: unset;
-        width: 239px;
-        height: 45px;
+        font-weight: 500;
+        line-height: 120%;
+        border: none;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid rgb(255, 201, 139);
-        transition: background-color 0.3s ease, color 0.3s ease;
-
-        &.active {
-            background: rgb(255, 201, 139) !important;
-            border: none;
-        }
-
-        &:first-of-type {
-            border-radius: 90px 0 0 90px;
-        }
-
-        &:last-of-type {
-            border-radius: 0 90px 90px 0;
-        }
-    }
-}
-
-.about {
-    .main-title {
-        margin-bottom: 30px;
-        text-align: left;
-    }
-
-    &-description {
-        font-family: Montserrat, serif;
-        font-size: 17px;
-        font-weight: 400;
-        line-height: 150%;
-        margin-bottom: 15px;
-    }
-}
-
-.subscribe {
-    background: url("assets/img/subscribe-to-the-newsletter.png") center no-repeat;
-    background-size: cover;
-    height: 227px;
-
-    &-title {
-        font-family: Bodoni Moda, serif;
-        font-size: 54px;
-        font-weight: 400;
-        line-height: 90%;
-    }
-
-    &-input {
-        border: 1px solid rgb(255, 183, 133);
-        border-radius: 50px;
-        background: rgb(255, 255, 255);
-        color: rgb(89, 89, 89);
-        font-family: Montserrat, serif;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 20px;
-        padding: 16px 26px 16px 16px;
-
-        &:focus {
-            box-shadow: none;
-            z-index: 1;
+        text-decoration: none;
+        @media (max-width: 991px) {
+            width: 220px;
+            height: 45px;
+            font-size: 18px;
         }
     }
 
-    &-button {
-        color: black;
-        border: none;
-        right: 25px;
-        border-radius: 50px !important;
-        background: rgb(255, 183, 133);
-        font-family: Montserrat, serif;
-        font-size: 22px;
-        font-weight: 500;
-        line-height: 120%;
-        padding: 15px 68px;
-    }
-}
 
-.message {
-    &-label {
-        font-family: Montserrat, serif;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 17px;
-        margin-bottom: 10px;
-    }
 
-    &-input {
-        font-family: Montserrat, serif;
-        border: 1px solid rgb(185, 185, 185);
-        border-radius: 50px;
-        height: 50px;
-        margin-bottom: 20px;
-        padding: 0 20px;
+    .banner {
+        background: url("assets/img/bg-main-banner.png") center bottom no-repeat;
+        background-size: cover;
+        height: 700px;
+        @media (max-width: 991px) {
+            background: url("assets/img/bg-mobile-banner.png") center bottom no-repeat;
+            background-size: cover;
+            height: 520px;
+        }
 
-        &-text {
+        &-title {
+            color: rgb(255, 255, 255);
+            margin-top: 77px;
+            margin-bottom: 21px;
+            font-family: "Bodoni Moda", serif;
+            font-size: 69px;
+            font-weight: 700;
+            line-height: 100%;
+            text-align: center;
+            text-transform: uppercase;
+            font-style: italic;
+            @media (max-width: 991px) {
+                font-size: 38px;
+                margin-top: 28px;
+                margin-bottom: 15px;
+            }
+        }
+        &-description {
+            color: rgb(255, 255, 255);
             font-family: Montserrat, serif;
-            padding: 3px 20px;
-            height: 100px;
-            border-radius: 35px;
-            resize: none;
+            font-size: 30px;
+            font-weight: 400;
+            line-height: 120%;
+            margin-bottom: 60px;
+            @media (max-width: 991px) {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .why {
+        &-block {
+            margin-top: 50px;
+            margin-right: 40px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+            background: rgb(255, 255, 255);
+            padding: 40px 30px;
             margin-bottom: 30px;
+
+            @media (max-width: 991px) {
+                padding: 35px 20px;
+                margin-top: 30px;
+                margin-right: 0;
+                margin-bottom: 25px;
+                border-radius: 40px;
+            }
+
+            &:last-child {
+                @media (max-width: 991px) {
+                    margin-top: 0;
+                }
+            }
+
+            &-title {
+                font-family: Montserrat, serif;
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 145%;
+                margin-bottom: 25px;
+                @media (max-width: 991px) {
+                    font-size: 18px;
+                    margin-bottom: 20px;
+                }
+            }
+            &-description {
+                font-family: Montserrat, serif;
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 150%;
+                display: flex;
+                gap: 10px;
+                align-items: start;
+                margin-bottom: 15px;
+
+                @media (max-width: 991px) {
+                    gap: 6px;
+                    font-size: 16px;
+                    margin-bottom: 12px;
+                }
+
+                img {
+                    @media (max-width: 991px) {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
         }
     }
+    .events {
+        &-block {
+            border-radius: 50px;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+            background: rgb(255, 255, 255);
 
-    &-button {
-        font-family: Montserrat, serif;
-        border-radius: 80px;
-        border: unset;
-        width: 280px;
-        height: 60px;
-        background: rgb(255, 183, 133);
-        font-size: 22px;
-        font-weight: 500;
-        line-height: 120%;
+            @media (max-width: 991px) {
+                border-radius: 40px;
+            }
 
-        &:disabled {
-            opacity: 50%;
+
+            &-img {
+                object-fit: cover;
+                height: 400px;
+                width: 100%;
+                border-radius: 50px 50px 0 0;
+            }
+
+            &-container {
+                padding: 30px 30px 40px 30px;
+
+                @media (max-width: 991px) {
+                    padding: 20px 15px 35px 15px;
+                }
+
+                .main-button {
+                    width: unset;
+                }
+            }
+            &-title {
+                font-family: Bodoni Moda, serif;
+                font-size: 36px;
+                font-weight: 400;
+                line-height: 115%;
+                margin-bottom: 20px;
+                @media (max-width: 991px) {
+                    font-size: 26px;
+                }
+            }
+            &-description, &-information {
+                font-family: Montserrat, serif;
+                font-size: 15px;
+                font-weight: 400;
+                line-height: 150%;
+                margin-bottom: 7px;
+            }
+            &-description {
+                margin-bottom: 30px;
+                margin-top: 15px;
+            }
         }
     }
+    .gallery {
+        &-wrapper {
+            display: grid;
+            grid-template-areas:
+            "photo1 photo2 photo3"
+            "photo4 photo4 photo3";
+            gap: 25px;
+            grid-template-columns: 1fr 1fr 1fr;
 
-    .main-title {
-        text-align: left;
+            @media (max-width: 991px) {
+                grid-template-areas:
+                "photo1"
+                "photo2"
+                "photo4"
+                "photo3"
+                "photo3";
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &-item {
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        &-item:nth-child(1) {
+            grid-area: photo1;
+
+            img {
+                height: 292px;
+                object-fit: cover;
+            }
+        }
+
+        &-item:nth-child(2) {
+            grid-area: photo2;
+
+            img {
+                height: 292px;
+                object-fit: cover;
+            }
+        }
+
+        &-item:nth-child(3) {
+            grid-area: photo3;
+
+            img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &-item:nth-child(4) {
+            grid-area: photo4;
+
+            img {
+                height: 292px;
+                object-fit: cover;
+            }
+
+        }
+        &-btn {
+            margin-top: 50px;
+            margin-bottom: 30px;
+            background: transparent;
+            color: rgb(0, 0, 0) !important;
+            font-family: Montserrat, serif;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 110%;
+            padding: unset;
+            width: 239px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(255, 201, 139);
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            @media (max-width: 991px) {
+                width: 290px;
+                height: 45px;
+                margin-top: 30px;
+                margin-bottom: 12px;
+            }
+
+            &.active {
+                background: rgb(255, 201, 139) !important;
+                border: none;
+            }
+
+            &:first-of-type {
+                border-radius: 90px 0 0 90px;
+                @media (max-width: 991px) {
+                    border-radius: 90px !important;
+                }
+            }
+
+            &:last-of-type {
+                border-radius: 0 90px 90px 0;
+                @media (max-width: 991px) {
+                    border-radius: 90px;
+                    margin-top: 0;
+                    margin-bottom: 30px;
+                }
+            }
+        }
     }
-}
+    .about {
+        .main-title {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        &-description {
+            font-family: Montserrat, serif;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 150%;
+            margin-bottom: 15px;
 
-.faq {
-    .main-title {
-        text-align: left;
+            @media (max-width: 991px) {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+        }
     }
+    .subscribe {
+        background: url("assets/img/subscribe-to-the-newsletter.png") center no-repeat;
+        background-size: cover;
+        height: 227px;
 
-    .accordion-item, .accordion-header, .accordion-button {
-        background: rgb(255, 183, 133);
-        border-radius: 40px !important;
-        border: none !important;
-        box-shadow: none;
+        &-title {
+            font-family: Bodoni Moda, serif;
+            font-size: 54px;
+            font-weight: 400;
+            line-height: 90%;
+        }
+        &-input {
+            border: 1px solid rgb(255, 183, 133);
+            border-radius: 50px;
+            background: rgb(255, 255, 255);
+            color: rgb(89, 89, 89);
+            font-family: Montserrat, serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            padding: 16px 26px 16px 16px;
+            &:focus {
+                box-shadow: none;
+                z-index: 1;
+            }
+        }
+        &-button {
+            color: black;
+            border: none;
+            right: 25px;
+            border-radius: 50px !important;
+            background: rgb(255, 183, 133);
+            font-family: Montserrat, serif;
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 120%;
+            padding: 15px 68px;
+        }
     }
+    .message {
+        &-label {
+            font-family: Montserrat, serif;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 17px;
+            margin-bottom: 10px;
 
-    .collapsed {
-        border-radius: 40px !important;
-        border: none !important;
-        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
-        background: rgb(255, 255, 255);
-        padding: 40px 35px !important;
+            &:first-child {
+                margin-top: 30px;
+            }
+        }
 
+        &-input {
+            font-family: Montserrat, serif;
+            border: 1px solid rgb(185, 185, 185);
+            border-radius: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            padding: 0 20px;
+
+            &-text {
+                font-family: Montserrat, serif;
+                padding: 3px 20px;
+                height: 100px;
+                border-radius: 35px;
+                resize: none;
+                margin-bottom: 30px;
+            }
+        }
+
+        &-button {
+            font-family: Montserrat, serif;
+            border-radius: 80px;
+            border: unset;
+            width: 280px;
+            height: 60px;
+            background: rgb(255, 183, 133);
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 120%;
+
+            &:disabled {
+                opacity: 50%;
+            }
+        }
     }
+    .faq {
+        .main-title {
+            text-align: left;
+        }
+        .accordion-item, .accordion-header, .accordion-button {
+            background: rgb(255, 183, 133);
+            border-radius: 40px !important;
+            border: none !important;
+            box-shadow: none;
+        }
+        .collapsed {
+            border-radius: 40px !important;
+            border: none !important;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+            background: rgb(255, 255, 255);
+            padding: 40px 35px !important;
 
-    .accordion-button {
-        font-family: Bodoni Moda, serif;
-        font-size: 34px !important;
-        font-weight: 400 !important;
-        line-height: 100% !important;
-        padding: 40px 35px 0 35px;
-    }
+        }
+        .accordion-button {
+            font-family: Bodoni Moda, serif;
+            font-size: 34px !important;
+            font-weight: 400 !important;
+            line-height: 100% !important;
+            padding: 40px 35px 0 35px;
 
-    .accordion-body {
-        font-family: Montserrat, serif;
-        font-size: 17px;
-        font-weight: 400;
-        line-height: 140%;
-        padding: 40px 35px;
-    }
+            @media (max-width: 991px) {
+                font-size: 30px;
+            }
+        }
+        .accordion-body {
+            font-family: Montserrat, serif;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 140%;
+            padding: 40px 35px;
 
-    .accordion-item {
-        margin-bottom: 30px;
+            @media (max-width: 991px) {
+                font-size: 16px;
+            }
+        }
+        .accordion-item {
+            margin-bottom: 30px;
+
+            @media (max-width: 991px) {
+                margin-bottom: 25px;
+            }
+        }
     }
-}
 </style>
