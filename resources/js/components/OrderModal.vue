@@ -4,7 +4,7 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div class="modal-title fs-5" id="staticBackdropLabel">Sign up for the master class</div>
+                        <div class="modal-title fs-5 text-center text-lg-start" id="staticBackdropLabel">Sign up for the master class</div>
                         <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -36,13 +36,13 @@
                         </div>
                         <form class="d-flex flex-column">
                             <div class="row">
-                                <div class="col-6 d-flex flex-column">
+                                <div class="col-12 col-lg-6 d-flex flex-column">
                                     <label for="name" class="modal-body-label">
                                         Name<span class="required">*</span>
                                     </label>
                                     <input type="text" id="name" v-model="name" class="modal-body-input" required />
                                 </div>
-                                <div class="col-6 d-flex flex-column">
+                                <div class="col-12 col-lg-6 d-flex flex-column">
                                     <label for="phone" class="modal-body-label">
                                         Phone Number<span class="required">*</span>
                                     </label>
@@ -182,6 +182,10 @@ export default {
         display: flex;
         justify-content: center;
         padding: 50px 0 0 0;
+
+        @media (max-width: 991px) {
+            padding: 60px 0 0 0;
+        }
     }
     .btn-close {
         position: absolute;
@@ -194,9 +198,18 @@ export default {
         font-weight: 400;
         line-height: 115%;
         margin-bottom: 25px;
+
+        @media (max-width: 991px) {
+            font-size: 36px !important;
+            margin-bottom: 20px;
+        }
     }
     &-body {
         padding: 0 40px 50px 40px;
+
+        @media (max-width: 991px) {
+            padding: 0 15px 60px 15px;
+        }
 
         &-title {
             font-size: 20px;
@@ -204,6 +217,11 @@ export default {
             line-height: 150%;
             margin-top: 20px;
             margin-bottom: 10px;
+
+            @media (max-width: 991px) {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
         }
         &-description, &-information {
             font-family: Montserrat, serif;
@@ -211,9 +229,18 @@ export default {
             font-weight: 400;
             line-height: 150%;
             margin-bottom: 7px;
+
+            @media (max-width: 991px) {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
         }
         &-description {
             margin-bottom: 10px;
+
+            @media (max-width: 991px) {
+                margin-bottom: 20px;
+            }
         }
         &-label {
             font-family: Montserrat, serif;

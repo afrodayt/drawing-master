@@ -4,11 +4,11 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div class="modal-title fs-5" id="staticBackdropLabel">Your application has been accepted!</div>
+                        <div class="modal-title fs-5 text-center text-lg-start" id="staticBackdropLabel">Your application has been accepted!</div>
                         <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
-                        <img src="assets/img/img-success.png" alt="success">
+                        <img src="assets/img/img-success.png" alt="success" class="adaptive-img">
                     </div>
                 </div>
             </div>
@@ -84,6 +84,10 @@ export default {
         font-weight: 400;
         line-height: 115%;
         margin-bottom: 25px;
+
+        @media (max-width: 991px) {
+            font-size: 36px !important;
+        }
     }
     &-body {
         padding: 0 40px 50px 40px;
