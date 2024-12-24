@@ -1,17 +1,40 @@
 @import "@fancyapps/ui/dist/carousel/carousel.css";
 
+html {
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #FF8D3C;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b30000;
+    }
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 400;
     line-height: 120%;
-
     @media (max-width: 991px) {
         font-size: 16px;
     }
 }
 
-
+.required {
+    color: rgb(255, 31, 31);
+}
 .mb-80 {
     margin-bottom: 80px;
 

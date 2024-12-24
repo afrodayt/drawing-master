@@ -1,50 +1,65 @@
 <template>
     <div>
         <div v-show="isVisible" class="modal fade show" tabindex="-1" role="dialog" style="display: block;">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-
+                        <div class="modal-title fs-5" id="staticBackdropLabel">Sign up for the master class</div>
                         <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
-
-                        <h5 class="modal-title" id="exampleModalLabel">Ваше замовлення</h5>
                     </div>
-                    <div class="modal-body p-0">
-                        <form @submit.prevent="submitOrder">
-                            <div>
-                                <label for="name-input" class="modal-label">Ім'я</label>
-                                <input type="text" placeholder="Наприклад: Ірина" v-model="name" class="modal-input" required>
-                            </div>
-                            <div>
-                                <label for="phone-input" class="modal-label">Телефон</label>
-                                <input type="tel" v-model="phone" placeholder="+38 (___) ___-__-__" class="modal-input" required>
-                            </div>
-                            <div>
-                                <label for="address-input" class="modal-label">Адреса доставки</label>
-                                <input type="text" v-model="address" placeholder="Наприклад: місто Київ, відділення нової пошти 52" class="modal-input mb-50" required>
-                            </div>
-                            <div class="modal-form-title">Вибір продукту</div>
-                            <div class="d-flex flex-column gap-4 mb-50">
-                                <div class="d-flex justify-content-between" v-for="product in products" :key="'order-modal-product-' + product.id">
-                                    <div class="d-flex align-items-center">
-                                        <input :id="'product-checkbox' + product.id" type="checkbox" v-model="product.selected" @change="updateProductSelection(product)" class="modal-form-checkbox">
-                                        <label :for="'product-checkbox' + product.id" class="modal-form-label"></label>
-                                        <div class="modal-form-text">{{ product.productShortName }}</div>
-                                    </div>
-                                    <div class="d-flex align-items-center modal-form-calculate">
-                                        <div class="modal-form-calculate-text">Кількість</div>
-                                        <div class="d-flex align-items-center">
-                                            <button class="modal-form-calculate-button" @click.prevent="minus(product.id)" :disabled="!product.selected || product.count <= 0">-</button>
-                                            <input type="number" readonly v-model="product.count" :disabled="!product.selected" min="0" class="modal-form-calculate-input">
-                                            <button class="modal-form-calculate-button" @click.prevent="plus(product.id)" :disabled="!product.selected">+</button>
-                                        </div>
-                                    </div>
+                    <div class="modal-body">
+                        <div class="modal-body-description" v-html="selectedEvent.modalDescription">
+                        </div>
+                        <div class="modal-body-information">
+                            <img src="assets/img/icon-date.png" alt="date">
+                            Date: {{selectedEvent.day}}{{ getFormatedDate(selectedEvent.date) }}
+                        </div>
+                        <div class="modal-body-information">
+                            <img src="assets/img/icon_time.png" alt="time">
+                            Time: {{ selectedEvent.time }}
+                        </div>
+                        <div class="modal-body-information mb-0">
+                            <img src="assets/img/icon-location.png" alt="location">
+                            Location: {{ selectedEvent.location }}
+                        </div>
+                        <div class="modal-body-title">What's Included:</div>
+                        <div class="modal-body-description">
+                            All painting supplies provided + snacks and drinks for absolute relaxation and immersion in
+                            the friendly atmosphere of creativity
+                        </div>
+                        <div class="modal-body-description">
+                            <img src="assets/img/icon-price.png" alt="price">
+                            Price: $75  per person
+                        </div>
+                        <div class="modal-body-description mb-0">
+                            {{ selectedEvent.modalIncludes }}
+                        </div>
+                        <form class="d-flex flex-column">
+                            <div class="row">
+                                <div class="col-6 d-flex flex-column">
+                                    <label for="name" class="modal-body-label">
+                                        Name<span class="required">*</span>
+                                    </label>
+                                    <input type="text" id="name" v-model="name" class="modal-body-input" required />
+                                </div>
+                                <div class="col-6 d-flex flex-column">
+                                    <label for="phone" class="modal-body-label">
+                                        Phone Number<span class="required">*</span>
+                                    </label>
+                                    <input type="text" id="phone" v-model="phone" class="modal-body-input" required />
                                 </div>
                             </div>
-
-                            <div class="modal-info mb-50">🚚 Доставка за тарифами нової пошти або укрпочти</div>
-                            <div class="modal-summary mb-50">Сума до сплати: {{ summary }} <span class="modal-summary-small">грн</span></div>
-                            <button type="submit" :disabled="loading || summary === 0" class="modal-btn">Оформити замовлення</button>
+                            <label for="email" class="modal-body-label">
+                                Email<span class="required">*</span>
+                            </label>
+                            <input type="email" id="email" v-model="email" class="modal-body-input" required />
+                            <label for="message" class="modal-body-label">
+                                Add Your Message<span class="required">*</span>
+                            </label>
+                            <textarea id="message" v-model="message" class="modal-body-input modal-body-input-text" required></textarea>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" @click="submitOrder" :disabled="!isFormValid" class="modal-body-button">Send</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -57,6 +72,8 @@
 <script>
 
 import { EventBus } from '@/eventBus';
+import {events} from "@/events.js";
+import moment from "moment/moment.js";
 
 export default {
     name: 'OrderModal',
@@ -64,26 +81,26 @@ export default {
         return {
             name: '',
             phone: '',
-            address: '',
-            summary: 0,
+            email: '',
+            message: '',
             isVisible: false,
-            products: events,
-            loading: false
-        };
+            events: events,
+            loading: false,
+            selectedEvent: {},
+        }
     },
 
-
-
     methods: {
+        getFormatedDate(date) {
+            return moment(date).format("MMMM D");
+        },
+        isFormValid() {
+            return this.form.name.trim() !== "" &&
+                this.form.email.trim() !== "" &&
+                this.form.message.trim() !== "";
+        },
         openModal(id) {
-            if (id) {
-                const product = this.products.find((product) => product.id === id);
-                if (product) {
-                    product.count += 1;
-                    product.selected = true;
-                    this.countSum();
-                }
-            }
+            this.selectedEvent = this.events.find((event) => event.id === id);
             document.body.style.overflow = 'hidden';
             this.isVisible = true;
         },
@@ -95,71 +112,42 @@ export default {
         resetForm() {
             this.name = '';
             this.phone = '';
-            this.address = '';
-            this.products.forEach(product => {
-                product.count = 0;
-                product.selected = false;
-            });
-            this.summary = 0;
+            this.email = '';
+            this.message = '';
         },
-        plus(id) {
-            const product = this.products.find(product => product.id === id);
-            if (product) {
-                product.count += 1;
-            }
-            this.countSum();
-        },
-        minus(id) {
-            const product = this.products.find(product => product.id === id);
-            if (product && product.count > 0) {
-                product.count -= 1;
-            }
-            this.countSum();
-        },
-        countSum() {
-            this.summary = this.products.reduce((total, product) => {
-                if (product.selected && product.count > 0) {
-                    return total + product.price * product.count;
-                }
-                return total;
-            }, 0);
-        },
-        updateProductSelection(product) {
-            if (!product.selected) {
-                product.count = 0;
-            }
-            this.countSum();
-        },
+
         async submitOrder() {
             this.loading = true;
-
-            const leadData = {
-                name: this.name,
-                phone: this.phone,
-                address: this.address,
-                products: this.products,
-                summary: this.summary.toString()
-            };
-
-            await fetch('/api/leads', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(leadData),
-            })
-                .then(response => {
-                    if (response.ok) {
-                        window.location.href = '/thank-you';
-                    } else {
-                        console.error('Ошибка при отправке данных:', response.statusText);
-                    }
-                })
-                .catch(error => {
-                    console.error('Ошибка:', error);
-                });
-
-            this.loading = false;
+            this.closeModal()
+            EventBus.$emit('openThankYouModal')
+            // const leadData = {
+            //     name: this.name,
+            //     phone: this.phone,
+            //     address: this.address,
+            //     products: this.products,
+            //     summary: this.summary.toString()
+            // };
+            //
+            // await fetch('/api/leads', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(leadData),
+            // })
+            //     .then(response => {
+            //         if (response.ok) {
+            //             this.closeModal()
+            //             EventBus.$emit('openThankYouModal')
+            //         } else {
+            //             console.error('Ошибка при отправке данных:', response.statusText);
+            //         }
+            //     })
+            //     .catch(error => {
+            //         console.error('Ошибка:', error);
+            //     });
+            //
+            // this.loading = false;
         }
     },
     mounted() {
@@ -174,227 +162,101 @@ export default {
 </script>
 
 <style scoped lang="less">
-.mb-50 {
-    margin-bottom: 50px !important;
-    @media (max-width: 991px) {
-        margin-bottom: 40px !important;
-    }
+::v-deep .modal-body-description-bold {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 145%;
+    margin-bottom: 10px;
+    margin-top: 12px;
 }
 
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.btn-close {
-    position: absolute;
-    right: 25px;
-    top: 25px;
-}
 
 .modal {
     &-dialog {
-        max-width: 580px;
+        max-width: 800px;
     }
-
-    &-content {
-        padding: 55px 40px;
-        border-radius: 20px;
-        border: unset;
-        @media (max-width: 991px) {
-            padding: 55px 15px;
-        }
-    }
-
     &-header {
-        border: unset;
-        flex-direction: column;
-        padding: 0;
+        border: none;
     }
-
+    &-header {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 50px 0 0 0;
+    }
+    .btn-close {
+        position: absolute;
+        right: 27px;
+        top: 27px;
+    }
     &-title {
-        font-size: 32px;
-        font-weight: 700;
-        line-height: 125%;
-        margin-bottom: 50px;
-
-        @media (max-width: 991px) {
-            font-size: 28px;
-            margin-bottom: 35px;
-        }
+        font-family: Bodoni Moda, serif;
+        font-size: 42px !important;
+        font-weight: 400;
+        line-height: 115%;
+        margin-bottom: 25px;
     }
+    &-body {
+        padding: 0 40px 50px 40px;
 
-    &-label {
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 22px;
-        margin-bottom: 10px;
-        @media (max-width: 991px) {
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-    }
-
-    &-input {
-        border: 1px solid rgb(194, 194, 194);;
-        border-radius: 10px;
-        background: rgb(255, 255, 255);
-        padding: 14px;
-        margin-bottom: 20px;
-        width: 100%;
-    }
-
-    &-form {
         &-title {
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 25px;
-            margin-bottom: 20px;
-            @media (max-width: 991px) {
-                font-size: 17px;
-            }
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 150%;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
-        &-checkbox {
-            display: none;
-            &:checked + .modal-form-label {
-                background: rgb(55, 146, 219);
-                border-color: rgb(55, 146, 219);
-            }
-            &:checked + .modal-form-label::after {
-                content: '';
-                position: absolute;
-                top: 4px;
-                left: 8px;
-                width: 6px;
-                height: 12px;
-                border: solid white;
-                border-width: 0 2px 2px 0;
-                transform: rotate(45deg);
-                @media (max-width: 991px) {
-                    top: 1px;
-                    left: 6px;
-                }
-            }
-
+        &-description, &-information {
+            font-family: Montserrat, serif;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 150%;
+            margin-bottom: 7px;
+        }
+        &-description {
+            margin-bottom: 10px;
         }
         &-label {
-            width: 24px;
-            height: 24px;
-            border: 2px solid rgb(194, 194, 194);;
-            border-radius: 4px;
-            display: inline-block;
-            position: relative;
-            cursor: pointer;
-            margin-right: 12px;
-            @media (max-width: 991px) {
-                width: 20px;
-                height: 20px;
-            }
+            font-family: Montserrat, serif;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 17px;
+            margin-bottom: 10px;
         }
-        &-text {
-            font-size: 17px;
-            font-weight: 400;
-            line-height: 22px;
-            width: 180px;
-            @media (max-width: 991px) {
-                font-size: 16px;
-                width: 140px;
-            }
-        }
-        &-calculate {
-            &-input {
-                width: 46px;
-                height: 34px;
-                border: 1px solid rgb(185, 185, 185);
-                border-radius: 5px;
-                @media (max-width: 991px) {
-                    width: 38px;
-                    height: 28px;
-                }
-            }
+        &-input {
+            font-family: Montserrat, serif;
+            border: 1px solid rgb(185, 185, 185);
+            border-radius: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            padding: 0 20px;
             &-text {
-                font-size: 17px;
-                font-weight: 400;
-                line-height: 22px;
-                margin-right: 22px;
-                @media (max-width: 991px) {
-                    display: none;
-                }
-            }
-            &-button {
-                border: unset;
-                background: unset;
-                font-size: 35px;
-                font-weight: 400;
-                color: rgb(55, 146, 219);
-                padding: 0;
-                margin-right: 14px;
-                @media (max-width: 991px) {
-                    margin-right: 3.5px;
-                    width: 16px;
-                    height: 19px;
-                }
-
-                &:disabled {
-                    color: rgb(185, 185, 185);
-                }
-
-                &:last-child {
-                    margin-right: 0;
-                    margin-left: 14px;
-                    @media (max-width: 991px) {
-                        margin-left: 3.5px;
-                    }
-                }
+                font-family: Montserrat, serif;
+                padding: 3px 20px;
+                height: 100px;
+                border-radius: 35px;
+                resize: none;
+                margin-bottom: 30px;
             }
         }
-    }
-    &-info {
-        border-radius: 15px;
-        padding: 20px;
-        background: rgb(213, 236, 255);
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 25px;
-        @media (max-width: 991px) {
-            font-size: 16px;
-        }
-    }
-    &-summary {
-        font-size: 26px;
-        font-weight: 600;
-        line-height: 35px;
-        @media (max-width: 991px) {
+        &-button {
+            font-family: Montserrat, serif;
+            border-radius: 80px;
+            border: unset;
+            width: 280px;
+            height: 60px;
+            background: rgb(255, 183, 133);
             font-size: 22px;
-        }
-
-        &-small {
-            font-size: 20px;
-            line-height: 27px;
-            @media (max-width: 991px) {
-                font-size: 16px;
+            font-weight: 500;
+            line-height: 120%;
+            &:disabled {
+                opacity: 50%;
             }
         }
-    }
-    &-btn {
-        border-radius: 80px;
-        background: rgb(255, 217, 0);
-        border: none;
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 120%;
-        height: 55px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        @media (max-width: 991px) {
-            font-size: 16px;
+        form {
+            margin-top: 40px;
         }
     }
 }
+
 </style>

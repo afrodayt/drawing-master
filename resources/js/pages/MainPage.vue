@@ -9,9 +9,9 @@
                 <div class="banner-description">
                     Pablo Picasso
                 </div>
-                <button class="main-button">
+                <a href="#events" class="main-button">
                     View events
-                </button>
+                </a>
             </div>
         </div>
         <div class="container">
@@ -37,7 +37,7 @@
                             <img src="assets/img/icon-checkmark.png" alt="checkmark">
                             corporate events
                         </div>
-                        <div class="why-block-description">
+                        <div class="why-block-description mb-0">
                             <img src="assets/img/icon-checkmark.png" alt="checkmark">
                             courses in the visual arts for all levels of training and much more
                         </div>
@@ -66,15 +66,15 @@
                             <img src="assets/img/icon-checkmark.png" alt="checkmark">
                             flexible schedule
                         </div>
-                        <div class="why-block-description">
+                        <div class="why-block-description mb-0">
                             <img src="assets/img/icon-checkmark.png" alt="checkmark">
                             convenient location
                         </div>
                     </div>
                 </div>
-                <button class="main-button">Contact us</button>
+                <a href="#contact" class="main-button">Contact us</a>
             </div>
-            <div class="events mb-200">
+            <div class="events mb-200" id="events">
                 <div class="main-title">Upcoming events</div>
                 <div class="f-carousel" id="myCarousel">
                     <div class="f-carousel__viewport">
@@ -86,7 +86,7 @@
                                         <div class="events-block-title">{{event.eventName}}</div>
                                         <div class="events-block-information">
                                             <img src="assets/img/icon-date.png" alt="date">
-                                            {{ getFormatedDate(event.date) }},  {{event.time}}
+                                            {{event.day}} {{event.startDate}} {{ getFormatedDate(event.date) }},  {{event.time}}
                                         </div>
                                         <div class="events-block-information">
                                             <img src="assets/img/icon-price.png" alt="price">
@@ -97,7 +97,7 @@
                                             {{event.location}}
                                         </div>
                                         <div class="events-block-description">{{event.description}}</div>
-                                        <button class="main-button">Sign up</button>
+                                        <button class="main-button" @click="openEventModal(event.id)">Sign up</button>
                                     </div>
                                 </div>
                             </div>
@@ -111,14 +111,14 @@
                     <button
                         class="gallery-btn btn btn-outline-primary"
                         :class="{ active: studentworks }"
-                        @click="toggleGallery(true)"
+                        @click="studentworks = !studentworks"
                     >
                         student artwork
                     </button>
                     <button
                         class="gallery-btn btn btn-outline-primary"
                         :class="{ active: !studentworks }"
-                        @click="toggleGallery(false)"
+                        @click="studentworks = !studentworks"
                     >
                         my artwork
                     </button>
@@ -131,7 +131,7 @@
             </div>
             <div class="about mb-200">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 mb-">
                         <div class="main-title">About me</div>
                         <div class="about-description">
                             Good to see you here! My name is Alevtyna, I am a professional fine arts teacher
@@ -176,12 +176,12 @@
             </div>
         </div>
         <div class="container">
-            <div class="message mb-200">
+            <div class="message mb-200" id="contact">
                 <div class="row">
                     <div class="col-5">
                         <img src="assets/img/paint-photo.png" alt="paint-photo" class="adaptive-img">
                     </div>
-                    <div class="col-1"></div>
+                    <div class="col-2"></div>
                     <div class="col-5">
                         <div class="main-title">Let’s get in touch</div>
                         <form class="d-flex flex-column">
@@ -253,6 +253,8 @@
                 </div>
             </div>
         </div>
+        <OrderModal ref="productModal"/>
+        <thank-you-modal></thank-you-modal>
     </main>
 </template>
 
@@ -262,11 +264,16 @@ import { events } from "@/events.js";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import { Carousel } from "@fancyapps/ui/dist/carousel/carousel.esm.js";
 import { Autoplay } from "@fancyapps/ui/dist/carousel/carousel.autoplay.esm.js";
+import {EventBus} from "@/eventBus.js";
+import OrderModal from "@/components/OrderModal.vue";
+import ThankYouModal from "@/components/ThankYouModal.vue";
 
 export default {
     name: "MainPage",
     components: {
+        ThankYouModal,
         HeaderComponent,
+        OrderModal
     },
     data() {
         return {
@@ -300,8 +307,8 @@ export default {
             const tomorrow = moment().add(1, "days");
             return !tomorrow.isAfter(eventDate);
         },
-        toggleGallery(isStudentWorks) {
-            this.studentworks = isStudentWorks;
+        openEventModal(id) {
+            this.$refs.productModal.openModal(id);
         },
     },
     mounted() {
@@ -323,10 +330,19 @@ export default {
 
 <style scoped lang="less">
     @import "@fancyapps/ui/dist/carousel/carousel.autoplay.css";
-
     .f-carousel {
         --f-carousel-slide-width: calc((100% - 40px) / 2);
         --f-carousel-spacing: 40px;
+        --f-carousel-dot-color: rgb(255, 141, 60) !important;
+        --f-carousel-dot-height: 12px;
+        --f-carousel-dot-width: 12px;
+        --f-button-prev-pos: -40px;
+        --f-button-next-pos: -40px;
+        --f-button-width: 45px;
+        --f-button-height: 45px;
+        --f-button-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+        --f-button-border-radius: 50%;
+
 
 
         @media (max-width: 991px) {
@@ -364,10 +380,12 @@ export default {
         font-weight: 500;
         line-height: 120%;
         border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
     }
-    .required {
-        color: rgb(255, 31, 31);
-    }
+
 
 
     .banner {
@@ -411,6 +429,7 @@ export default {
                 font-size: 20px;
                 font-weight: 600;
                 line-height: 145%;
+                margin-bottom: 25px;
             }
             &-description {
                 font-family: Montserrat, serif;
@@ -420,6 +439,7 @@ export default {
                 display: flex;
                 gap: 10px;
                 align-items: start;
+                margin-bottom: 15px;
             }
         }
     }
@@ -453,7 +473,7 @@ export default {
             }
             &-description, &-information {
                 font-family: Montserrat, serif;
-                font-size: 17px;
+                font-size: 15px;
                 font-weight: 400;
                 line-height: 150%;
                 margin-bottom: 7px;

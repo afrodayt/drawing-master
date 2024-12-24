@@ -1,30 +1,32 @@
 <template>
     <footer class="footer">
-        <div class="row h-100">
-            <div class="col-6">
-            </div>
-            <div class="col-6 d-flex flex-column justify-content-end">
-                <div class="footer-title">
-                    Contacts
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-6">
                 </div>
-                <div class="footer-contact">
-                    <img src="assets/img/icon-email.svg" alt="icon-email">
-                    a.art.shuhai@gmail.com
-                </div>
-                <div class="footer-contact mb-0">
-                    <img src="assets/img/icon-location.svg" alt="icon-location-footer">
-                    1324 11 Ave, SW, #202, Calgary
-                </div>
-                <div class="footer-description">
-                    Follow us on social media
-                </div>
-                <div>
-                    <a href="https://www.instagram.com/art_shuhai/" target="_blank">
-                        <img src="assets/img/icon-instagram.svg" alt="logo-instagram">
-                    </a>
-                    <a href="https://www.facebook.com/people/ART-Shuhai/61562003400987/" target="_blank">
-                        <img src="assets/img/icon-facebook.svg" alt="logo-facebook">
-                    </a>
+                <div class="col-6 d-flex flex-column justify-content-end">
+                    <div class="footer-title">
+                        Contacts
+                    </div>
+                    <div class="footer-contact">
+                        <img src="assets/img/icon-email.svg" alt="icon-email">
+                        a.art.shuhai@gmail.com
+                    </div>
+                    <div class="footer-contact mb-0">
+                        <img src="assets/img/icon-location.svg" alt="icon-location-footer">
+                        1324 11 Ave, SW, #202, Calgary
+                    </div>
+                    <div class="footer-description">
+                        Follow us on social media
+                    </div>
+                    <div>
+                        <a href="https://www.instagram.com/art_shuhai/" target="_blank">
+                            <img src="assets/img/icon-instagram.svg" alt="logo-instagram">
+                        </a>
+                        <a href="https://www.facebook.com/people/ART-Shuhai/61562003400987/" target="_blank">
+                            <img src="assets/img/icon-facebook.svg" alt="logo-facebook">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,6 +45,7 @@ export default {
         background: url("assets/img/footer-bg.png") center no-repeat;
         background-size: cover;
         height: 432px;
+        padding-bottom: 42px;
 
         &-title {
             font-family: Bodoni Moda, serif;
