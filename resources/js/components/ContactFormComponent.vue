@@ -1,5 +1,5 @@
 <template>
-    <form class="d-flex flex-column message" @submit="sendContactForm">
+    <form class="d-flex flex-column message" @submit.prevent="sendContactForm">
         <label for="name" class="message-label">
             Name<span class="required">*</span>
         </label>

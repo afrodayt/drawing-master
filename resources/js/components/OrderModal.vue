@@ -34,7 +34,7 @@
                         <div class="modal-body-description mb-0">
                             {{ selectedEvent.modalIncludes }}
                         </div>
-                        <form class="d-flex flex-column">
+                        <form class="d-flex flex-column" @submit.prevent="submitOrder">
                             <div class="row">
                                 <div class="col-12 col-lg-6 d-flex flex-column">
                                     <label for="name" class="modal-body-label">
@@ -58,7 +58,7 @@
                             </label>
                             <textarea id="message" v-model="message" class="modal-body-input modal-body-input-text" required></textarea>
                             <div class="d-flex justify-content-center">
-                                <button type="submit" @click="submitOrder" :disabled="!isFormValid" class="modal-body-button">Send</button>
+                                <button type="submit" :disabled="!isFormValid" class="modal-body-button">Send</button>
                             </div>
                         </form>
                     </div>
