@@ -217,24 +217,7 @@
                     </div>
                     <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                         <div class="main-title text-center text-lg-start">Let’s get in touch</div>
-                        <form class="d-flex flex-column">
-                            <label for="name" class="message-label">
-                                Name<span class="required">*</span>
-                            </label>
-                            <input type="text" id="name" v-model="form.name" class="message-input" required/>
-                            <label for="email" class="message-label">
-                                Email<span class="required">*</span>
-                            </label>
-                            <input type="email" id="email" v-model="form.email" class="message-input" required/>
-                            <label for="message" class="message-label">
-                                Add Your Message<span class="required">*</span>
-                            </label>
-                            <textarea id="message" v-model="form.message" class="message-input message-input-text"
-                                      required></textarea>
-                            <div class="d-flex justify-content-center justify-content-lg-start">
-                                <button type="submit" :disabled="!isFormValid" class="message-button">Send</button>
-                            </div>
-                        </form>
+                        <ContactFormComponent/>
                     </div>
                 </div>
             </div>
@@ -318,10 +301,12 @@ import OrderModal from "@/components/OrderModal.vue";
 import ThankYouModal from "@/components/ThankYouModal.vue";
 
 import Fancybox from "@/components/FancyBox.vue";
+import ContactFormComponent from "@/components/ContactFormComponent.vue";
 
 export default {
     name: "MainPage",
     components: {
+        ContactFormComponent,
         Fancybox,
         ThankYouModal,
         HeaderComponent,
@@ -371,6 +356,9 @@ export default {
         openEventModal(id) {
             this.$refs.productModal.openModal(id);
         },
+        sendContactForm() {
+
+        }
     },
     mounted() {
         const container = document.getElementById("myCarousel");
@@ -778,53 +766,6 @@ export default {
             font-weight: 500;
             line-height: 120%;
             padding: 15px 68px;
-        }
-    }
-    .message {
-        &-label {
-            font-family: Montserrat, serif;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 17px;
-            margin-bottom: 10px;
-
-            &:first-child {
-                margin-top: 30px;
-            }
-        }
-
-        &-input {
-            font-family: Montserrat, serif;
-            border: 1px solid rgb(185, 185, 185);
-            border-radius: 50px;
-            height: 50px;
-            margin-bottom: 20px;
-            padding: 0 20px;
-
-            &-text {
-                font-family: Montserrat, serif;
-                padding: 3px 20px;
-                height: 100px;
-                border-radius: 35px;
-                resize: none;
-                margin-bottom: 30px;
-            }
-        }
-
-        &-button {
-            font-family: Montserrat, serif;
-            border-radius: 80px;
-            border: unset;
-            width: 280px;
-            height: 60px;
-            background: rgb(255, 183, 133);
-            font-size: 22px;
-            font-weight: 500;
-            line-height: 120%;
-
-            &:disabled {
-                opacity: 50%;
-            }
         }
     }
     .faq {

@@ -118,36 +118,35 @@ export default {
 
         async submitOrder() {
             this.loading = true;
-            this.closeModal()
-            EventBus.$emit('openThankYouModal')
-            // const leadData = {
-            //     name: this.name,
-            //     phone: this.phone,
-            //     address: this.address,
-            //     products: this.products,
-            //     summary: this.summary.toString()
-            // };
-            //
-            // await fetch('/api/leads', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(leadData),
-            // })
-            //     .then(response => {
-            //         if (response.ok) {
-            //             this.closeModal()
-            //             EventBus.$emit('openThankYouModal')
-            //         } else {
-            //             console.error('Ошибка при отправке данных:', response.statusText);
-            //         }
-            //     })
-            //     .catch(error => {
-            //         console.error('Ошибка:', error);
-            //     });
-            //
-            // this.loading = false;
+
+            const leadData = {
+                name: this.name,
+                phone: this.phone,
+                email: this.email,
+                message: this.message,
+                selectedEvent: this.selectedEvent,
+            };
+
+            await fetch('/api/leads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(leadData),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        this.closeModal()
+                        EventBus.$emit('openThankYouModal')
+                    } else {
+                        console.error('Ошибка при отправке данных:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                });
+
+            this.loading = false;
         }
     },
     mounted() {
