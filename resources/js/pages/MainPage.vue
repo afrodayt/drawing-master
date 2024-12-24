@@ -343,8 +343,6 @@ export default {
         }
     }
 
-
-
     .main-title {
         font-family: "Bodoni Moda", serif;
         font-size: 70px;
