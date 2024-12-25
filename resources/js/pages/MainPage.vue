@@ -83,7 +83,7 @@
                                 <div class="events-block ">
                                     <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img">
                                     <div class="events-block-container d-flex flex-column justify-content-between">
-                                        <div class="">
+                                        <div class="events-block-container-content">
                                             <div class="events-block-title">{{event.eventName}}</div>
                                             <div class="events-block-information d-flex align-items-center">
                                                 <img src="assets/img/icon-date.svg" alt="date">
@@ -214,7 +214,7 @@
         <div class="container">
             <div class="message mb-200" id="contact">
                 <div class="row flex-column-reverse flex-lg-row justify-content-between">
-                    <div class="col-12 col-lg-5">
+                    <div class="col-12 col-lg-6">
                         <img src="assets/img/paint-photo.png" alt="paint-photo" class="adaptive-img">
                     </div>
                     <div class="col-12 col-lg-5 mb-5 mb-lg-0">
@@ -421,7 +421,7 @@ export default {
     .main-title {
         font-family: "Cormorant Garamond", serif;
         font-size: 70px;
-        font-weight: 400;
+        font-weight: 700;
         line-height: 105%;
         text-align: center;
         text-transform: uppercase;
@@ -473,7 +473,7 @@ export default {
             margin-top: 77px;
             margin-bottom: 21px;
             font-family: "Cormorant Garamond", serif;
-            font-size: 69px;
+            font-size: 72px;
             font-weight: 700;
             line-height: 100%;
             text-align: center;
@@ -584,6 +584,16 @@ export default {
 
                 @media (max-width: 991px) {
                     padding: 20px 15px 35px 15px;
+                }
+
+                &-content {
+                    @media (max-width: 767px) {
+                        min-height: 330px;
+                    }
+
+                    @media (max-width: 370px) {
+                        min-height: 360px;
+                    }
                 }
 
                 .main-button {
