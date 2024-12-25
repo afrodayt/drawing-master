@@ -11,7 +11,7 @@
                         <div class="modal-body-description" v-html="selectedEvent.modalDescription">
                         </div>
                         <div class="modal-body-information">
-                            <img src="assets/img/icon-date.png" alt="date">
+                            <img src="assets/img/icon-date.svg" alt="date">
                             Date: {{selectedEvent.day}}{{ getFormatedDate(selectedEvent.date) }}
                         </div>
                         <div class="modal-body-information">
@@ -19,7 +19,7 @@
                             Time: {{ selectedEvent.time }}
                         </div>
                         <div class="modal-body-information mb-0">
-                            <img src="assets/img/icon-location.png" alt="location">
+                            <img src="assets/img/icon-location.svg" alt="location">
                             Location: {{ selectedEvent.location }}
                         </div>
                         <div class="modal-body-title">What's Included:</div>
@@ -28,7 +28,7 @@
                             the friendly atmosphere of creativity
                         </div>
                         <div class="modal-body-description">
-                            <img src="assets/img/icon-price.png" alt="price">
+                            <img src="assets/img/icon-price.svg" alt="price">
                             Price: $75  per person
                         </div>
                         <div class="modal-body-description mb-0">
