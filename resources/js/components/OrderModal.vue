@@ -8,17 +8,17 @@
                         <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="modal-body-description" v-html="selectedEvent.modalDescription">
+                        <div class="modal-body-description mb-4" v-html="selectedEvent.modalDescription">
                         </div>
-                        <div class="modal-body-information">
+                        <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon-date.svg" alt="date">
                             Date: {{selectedEvent.day}}{{ getFormatedDate(selectedEvent.date) }}
                         </div>
-                        <div class="modal-body-information">
+                        <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon_time.png" alt="time">
                             Time: {{ selectedEvent.time }}
                         </div>
-                        <div class="modal-body-information mb-0">
+                        <div class="modal-body-information  d-flex align-items-center gap-2 mb-0">
                             <img src="assets/img/icon-location.svg" alt="location">
                             Location: {{ selectedEvent.location }}
                         </div>
@@ -27,9 +27,9 @@
                             All painting supplies provided + snacks and drinks for absolute relaxation and immersion in
                             the friendly atmosphere of creativity
                         </div>
-                        <div class="modal-body-description">
+                        <div class="modal-body-description gap-2 d-flex align-items-center">
                             <img src="assets/img/icon-price.svg" alt="price">
-                            Price: $75  per person
+                            Price: {{ selectedEvent.price }}  per person
                         </div>
                         <div class="modal-body-description mb-0">
                             {{ selectedEvent.modalIncludes }}
