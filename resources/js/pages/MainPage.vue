@@ -83,7 +83,7 @@
                                 <div class="events-block ">
                                     <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img">
                                     <div class="events-block-container d-flex flex-column justify-content-between">
-                                        <div class="">
+                                        <div class="events-block-container-content">
                                             <div class="events-block-title">{{event.eventName}}</div>
                                             <div class="events-block-information d-flex align-items-center">
                                                 <img src="assets/img/icon-date.svg" alt="date">
@@ -584,6 +584,16 @@ export default {
 
                 @media (max-width: 991px) {
                     padding: 20px 15px 35px 15px;
+                }
+
+                &-content {
+                    @media (max-width: 767px) {
+                        min-height: 330px;
+                    }
+
+                    @media (max-width: 370px) {
+                        min-height: 360px;
+                    }
                 }
 
                 .main-button {
