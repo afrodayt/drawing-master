@@ -2,13 +2,13 @@
     <header class="header">
         <div class="container">
             <div class="justify-content-between d-flex align-items-center">
-                <img src="assets/img/logo-art.png" alt="logo" class="logo">
+                <img src="assets/img/logo-art.svg" alt="logo" class="logo">
                 <div class="d-flex align-items-center gap-3">
                     <a href="https://www.instagram.com/art_shuhai/" target="_blank">
-                        <img src="assets/img/icon-instagram.png" alt="logo-instagram">
+                        <img src="assets/img/icon-instagram-white.svg" alt="logo-instagram">
                     </a>
                     <a href="https://www.facebook.com/people/ART-Shuhai/61562003400987/" target="_blank">
-                        <img src="assets/img/icon-facebook.png" alt="logo-facebook">
+                        <img src="assets/img/icon-facebook-white.svg" alt="logo-facebook">
                     </a>
                     <div class="text-white">follow us on social media</div>
                 </div>

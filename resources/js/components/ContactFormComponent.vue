@@ -14,7 +14,7 @@
         <textarea id="message" v-model="message" class="message-input message-input-text"
                   required></textarea>
         <div class="d-flex justify-content-center justify-content-lg-start">
-            <button type="submit" :disabled="!isFormValid" class="message-button">Send</button>
+            <button type="submit" :disabled="isButtonDisabled" class="message-button">Send</button>
         </div>
     </form>
 </template>
@@ -32,6 +32,12 @@ export default {
             message: '',
             loading: false,
         }
+    },
+
+    computed: {
+        isButtonDisabled() {
+            return this.name.trim() === '' || this.email.trim() === '' || this.message.trim() === '';
+        },
     },
 
     methods: {

@@ -50,6 +50,7 @@ export default {
         z-index: 1;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        color: black;
 
         @media (max-width: 768px) {
            display: flex;
@@ -93,7 +94,7 @@ export default {
         }
 
         &-title {
-            font-family: Bodoni Moda, serif;
+            font-family: Cormorant Garamond, serif;
             font-size: 50px;
             font-weight: 400;
             line-height: 115%;
@@ -111,7 +112,7 @@ export default {
             }
         }
         &-description {
-            font-family: Bodoni Moda, serif;
+            font-family: Cormorant Garamond, serif;
             font-size: 22px;
             font-weight: 400;
             line-height: 140%;

@@ -80,23 +80,25 @@
                     <div class="f-carousel__viewport">
                         <div class="f-carousel__track">
                             <div class="f-carousel__slide" v-for="event in events" v-if="expiredEvent(event.date)">
-                                <div class="events-block">
+                                <div class="events-block ">
                                     <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img">
-                                    <div class="events-block-container d-flex flex-column">
-                                        <div class="events-block-title">{{event.eventName}}</div>
-                                        <div class="events-block-information">
-                                            <img src="assets/img/icon-date.png" alt="date">
-                                            {{event.day}} {{event.startDate}} {{ getFormatedDate(event.date) }},  {{event.time}}
+                                    <div class="events-block-container d-flex flex-column justify-content-between">
+                                        <div class="">
+                                            <div class="events-block-title">{{event.eventName}}</div>
+                                            <div class="events-block-information d-flex align-items-center">
+                                                <img src="assets/img/icon-date.svg" alt="date">
+                                                {{event.day}} {{event.startDate}} {{ getFormatedDate(event.date) }},  {{event.time}}
+                                            </div>
+                                            <div class="events-block-information d-flex align-items-center">
+                                                <img src="assets/img/icon-price.svg" alt="price">
+                                                ${{event.price}}
+                                            </div>
+                                            <div class="events-block-information d-flex align-items-center mb-0">
+                                                <img src="assets/img/icon-location.svg" alt="location">
+                                                {{event.location}}
+                                            </div>
+                                            <div class="events-block-description">{{event.description}}</div>
                                         </div>
-                                        <div class="events-block-information">
-                                            <img src="assets/img/icon-price.png" alt="price">
-                                            ${{event.price}}
-                                        </div>
-                                        <div class="events-block-information mb-0">
-                                            <img src="assets/img/icon-location.png" alt="location">
-                                            {{event.location}}
-                                        </div>
-                                        <div class="events-block-description">{{event.description}}</div>
                                         <button class="main-button" @click="openEventModal(event.id)">Sign up</button>
                                     </div>
                                 </div>
@@ -211,11 +213,11 @@
         </div>
         <div class="container">
             <div class="message mb-200" id="contact">
-                <div class="row flex-column-reverse flex-lg-row">
-                    <div class="col-12 col-lg-6">
+                <div class="row flex-column-reverse flex-lg-row justify-content-between">
+                    <div class="col-12 col-lg-5">
                         <img src="assets/img/paint-photo.png" alt="paint-photo" class="adaptive-img">
                     </div>
-                    <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+                    <div class="col-12 col-lg-5 mb-5 mb-lg-0">
                         <div class="main-title text-center text-lg-start">Let’s get in touch</div>
                         <ContactFormComponent/>
                     </div>
@@ -384,8 +386,8 @@ export default {
         --f-carousel-dot-color: rgb(255, 141, 60) !important;
         --f-carousel-dot-height: 12px;
         --f-carousel-dot-width: 12px;
-        --f-button-prev-pos: -40px;
-        --f-button-next-pos: -40px;
+        --f-button-prev-pos: -85px;
+        --f-button-next-pos: -85px;
         --f-button-width: 45px;
         --f-button-height: 45px;
         --f-button-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
@@ -410,14 +412,14 @@ export default {
         }
     }
     ::v-deep .f-button {
-        @media (max-width: 991px) {
+        @media (max-width: 1110px) {
             display: none;
         }
 
     }
 
     .main-title {
-        font-family: "Bodoni Moda", serif;
+        font-family: "Cormorant Garamond", serif;
         font-size: 70px;
         font-weight: 400;
         line-height: 105%;
@@ -442,10 +444,15 @@ export default {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+
         @media (max-width: 991px) {
             width: 220px;
             height: 45px;
             font-size: 18px;
+        }
+
+        &:hover {
+            background: #FFA769;
         }
     }
 
@@ -465,7 +472,7 @@ export default {
             color: rgb(255, 255, 255);
             margin-top: 77px;
             margin-bottom: 21px;
-            font-family: "Bodoni Moda", serif;
+            font-family: "Cormorant Garamond", serif;
             font-size: 69px;
             font-weight: 700;
             line-height: 100%;
@@ -484,7 +491,7 @@ export default {
             font-size: 30px;
             font-weight: 400;
             line-height: 120%;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             @media (max-width: 991px) {
                 font-size: 18px;
                 margin-bottom: 30px;
@@ -552,6 +559,9 @@ export default {
         }
     }
     .events {
+        .main-title {
+            margin-bottom: 50px;
+        }
         &-block {
             border-radius: 50px;
             box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
@@ -581,7 +591,7 @@ export default {
                 }
             }
             &-title {
-                font-family: Bodoni Moda, serif;
+                font-family: Cormorant Garamond, serif;
                 font-size: 36px;
                 font-weight: 400;
                 line-height: 115%;
@@ -596,6 +606,10 @@ export default {
                 font-weight: 400;
                 line-height: 150%;
                 margin-bottom: 7px;
+
+                img {
+                    margin-right: 8px;
+                }
             }
             &-description {
                 margin-bottom: 30px;
@@ -689,6 +703,11 @@ export default {
                 margin-bottom: 12px;
             }
 
+            &:active {
+                background: #FFA769;
+                border: none;
+            }
+
             &.active {
                 background: rgb(255, 201, 139) !important;
                 border: none;
@@ -735,7 +754,7 @@ export default {
         height: 227px;
 
         &-title {
-            font-family: Bodoni Moda, serif;
+            font-family: Cormorant Garamond, serif;
             font-size: 54px;
             font-weight: 400;
             line-height: 90%;
@@ -787,11 +806,12 @@ export default {
 
         }
         .accordion-button {
-            font-family: Bodoni Moda, serif;
+            font-family: Cormorant Garamond, serif;
             font-size: 34px !important;
             font-weight: 400 !important;
             line-height: 100% !important;
             padding: 40px 35px 0 35px;
+            color: black;
 
             @media (max-width: 991px) {
                 font-size: 30px;
@@ -803,6 +823,7 @@ export default {
             font-weight: 400;
             line-height: 140%;
             padding: 40px 35px;
+            color: black;
 
             @media (max-width: 991px) {
                 font-size: 16px;

@@ -79,7 +79,7 @@ export default {
         top: 27px;
     }
     &-title {
-        font-family: Bodoni Moda, serif;
+        font-family: Cormorant Garamond, serif;
         font-size: 42px !important;
         font-weight: 400;
         line-height: 115%;
