@@ -18,7 +18,7 @@
                     a.art.shuhai@gmail.com
                 </div>
                 <div class="footer-contact mb-0">
-                    <img src="assets/img/icon-location.svg" alt="icon-location-footer">
+                    <img src="assets/img/icon-location-black.svg" alt="icon-location-footer">
                     1324 11 Ave, SW, #202, Calgary
                 </div>
                 <div class="footer-description">
