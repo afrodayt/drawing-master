@@ -202,10 +202,10 @@
         <div class="subscribe mb-200 d-flex align-items-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-lg-6 d-flex justify-content-center mb-3 mb-lg-0">
-                        <div class="subscribe-title">Our Events</div>
+                    <div class="col-12 col-lg-8 d-flex justify-content-center mb-3 mb-lg-0">
+                        <div class="subscribe-title">“Escape the Ordinary – Paint Your Dreams!”</div>
                     </div>
-                    <div class="col-12 col-lg-6 d-flex justify-content-center">
+                    <div class="col-12 col-lg-4 d-flex justify-content-center">
                         <a href="#events" class="main-button">Events</a>
                     </div>
                 </div>
@@ -767,11 +767,21 @@ export default {
         background-size: cover;
         height: 227px;
 
+        .main-button {
+            width: 250px;
+            height: 50px;
+        }
+
         &-title {
             font-family: Cormorant Garamond, serif;
-            font-size: 54px;
-            font-weight: 400;
+            font-size: 47px;
+            font-weight: 700;
             line-height: 90%;
+
+            @media (max-width: 991px) {
+                font-size: 38px;
+                text-align: center;
+            }
         }
         &-input {
             border: 1px solid rgb(255, 183, 133);
