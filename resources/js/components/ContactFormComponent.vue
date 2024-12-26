@@ -41,18 +41,6 @@ export default {
     },
 
     methods: {
-        isFormValid() {
-            return this.name.trim() !== "" &&
-                this.email.trim() !== "" &&
-                this.message.trim() !== "";
-        },
-
-        resetForm() {
-            this.name = '';
-            this.email = '';
-            this.message = '';
-        },
-
         async sendContactForm() {
             this.loading = true;
 

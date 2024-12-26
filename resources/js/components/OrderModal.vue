@@ -46,7 +46,7 @@
                                     <label for="phone" class="modal-body-label">
                                         Phone Number<span class="required">*</span>
                                     </label>
-                                    <input type="text" id="phone" v-model="phone" class="modal-body-input" required />
+                                    <input type="number" id="phone" v-model="phone" class="modal-body-input" required />
                                 </div>
                             </div>
                             <label for="email" class="modal-body-label">
@@ -58,7 +58,7 @@
                             </label>
                             <textarea id="message" v-model="message" class="modal-body-input modal-body-input-text" required></textarea>
                             <div class="d-flex justify-content-center">
-                                <button type="submit" :disabled="!isFormValid" class="modal-body-button">Send</button>
+                                <button type="submit" :disabled="isButtonDisabled" class="modal-body-button">Send</button>
                             </div>
                         </form>
                     </div>
@@ -90,14 +90,15 @@ export default {
         }
     },
 
+    computed: {
+        isButtonDisabled() {
+            return this.name.trim() === '' || this.email.trim() === '' || this.message.trim() === '';
+        },
+    },
+
     methods: {
         getFormatedDate(date) {
             return moment(date).format("MMMM D");
-        },
-        isFormValid() {
-            return this.form.name.trim() !== "" &&
-                this.form.email.trim() !== "" &&
-                this.form.message.trim() !== "";
         },
         openModal(id) {
             this.selectedEvent = this.events.find((event) => event.id === id);

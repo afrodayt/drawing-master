@@ -401,7 +401,7 @@ export default {
         }
 
         &__viewport {
-            padding: 15px;
+            padding: 0 15px 15px 15px;
         }
 
         &-slide {
@@ -481,7 +481,7 @@ export default {
             font-style: italic;
             @media (max-width: 991px) {
                 font-size: 38px;
-                margin-top: 28px;
+                margin-top: 40px;
                 margin-bottom: 15px;
             }
         }
@@ -561,6 +561,10 @@ export default {
     .events {
         .main-title {
             margin-bottom: 50px;
+
+            @media (max-width: 991px) {
+                margin-bottom: 30px;
+            }
         }
         &-block {
             border-radius: 50px;
