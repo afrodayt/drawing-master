@@ -202,10 +202,10 @@
         <div class="subscribe mb-200 d-flex align-items-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-lg-8 d-flex justify-content-center mb-3 mb-lg-0">
+                    <div class="col-12 col-lg-9 d-flex justify-content-center mb-3 mb-lg-0">
                         <div class="subscribe-title">“Escape the Ordinary – Paint Your Dreams!”</div>
                     </div>
-                    <div class="col-12 col-lg-4 d-flex justify-content-center">
+                    <div class="col-12 col-lg-3 d-flex justify-content-center">
                         <a href="#events" class="main-button">Events</a>
                     </div>
                 </div>
