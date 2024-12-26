@@ -15,7 +15,7 @@
                             Date: {{selectedEvent.day}}{{ getFormatedDate(selectedEvent.date) }}
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
-                            <img src="assets/img/icon_time.png" alt="time">
+                            <img src="assets/img/icon_time.svg" alt="time">
                             Time: {{ selectedEvent.time }}
                         </div>
                         <div class="modal-body-information  d-flex align-items-center gap-2 mb-0">
