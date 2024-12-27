@@ -119,4 +119,19 @@ export const events = [
             '                            - Multidimensional landscape <br>',
         modalIncludes: null
     },
+    {
+        id: 8,
+        eventName: 'LIGHT HOUSE ACRYLIC WORKSHOP',
+        startDate: null,
+        date: '2025-02-07',
+        time: '06:00 pm - 09:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'photo_2024-12-03_09-25-15.jpg',
+        modalDescription: ' ',
+        modalIncludes: null
+    },
 ];
