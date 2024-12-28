@@ -19,7 +19,7 @@ export const events = [
         eventName: 'THE BRIGHT COLORS OF WINTER ACRYLIC CLASS',
         startDate: null,
         date: '2025-01-12',
-        time: '9:00 pm - 1:00 pm',
+        time: '10:00 pm - 1:00 pm',
         day: null,
         price: 75,
         selected: false,
@@ -49,7 +49,7 @@ export const events = [
         eventName: 'ACRYLIC WORKSHOP EMERALD LAKE CABIN',
         startDate: null,
         date: '2025-01-19',
-        time: '9:00 am - 1:00 pm',
+        time: '10:00 am - 1:00 pm',
         day: null,
         price: 75,
         selected: false,
@@ -99,10 +99,10 @@ export const events = [
     {
         id: 7,
         eventName: 'BASIC ACRYLIC COURSE FOR BEGINNERS',
-        startDate: 'February 12 -',
-        date: '2025-03-12',
-        time: '6:30 pm - 9:30 pm',
-        day: "Wednesdays, ",
+        startDate: 'February 08 -',
+        date: '2025-03-08',
+        time: '10:00 am - 01:00 pm',
+        day: "Saturdays, ",
         price: 300,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
@@ -117,6 +117,21 @@ export const events = [
             '                            - Painting with stains <br>\n' +
             '                            - Transmitting the materiality of objects <br>\n' +
             '                            - Multidimensional landscape <br>',
+        modalIncludes: null
+    },
+    {
+        id: 8,
+        eventName: 'LIGHT HOUSE ACRYLIC WORKSHOP',
+        startDate: null,
+        date: '2025-02-07',
+        time: '06:00 pm - 09:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'photo_2024-12-03_09-25-15.jpg',
+        modalDescription: ' ',
         modalIncludes: null
     },
 ];
