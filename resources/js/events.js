@@ -130,8 +130,23 @@ export const events = [
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
-        img: 'photo_2024-12-03_09-25-15.jpg',
-        modalDescription: ' ',
+        img: 'light house.jpg',
+        modalDescription: 'Feel the full expression of a sea storm. Create the mood of raging waves crashing against a lonely lighthouse on canvas with texture paste and acrylic paints. ',
+        modalIncludes: null
+    },
+    {
+        id: 9,
+        eventName: 'LIGHT HOUSE ACRYLIC WORKSHOP',
+        startDate: null,
+        date: '2025-02-09',
+        time: '10:00 am - 01:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'light house.jpg',
+        modalDescription: 'Feel the full expression of a sea storm. Create the mood of raging waves crashing against a lonely lighthouse on canvas with texture paste and acrylic paints. ',
         modalIncludes: null
     },
 ];
