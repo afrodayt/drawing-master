@@ -149,4 +149,34 @@ export const events = [
         modalDescription: 'Feel the full expression of a sea storm. Create the mood of raging waves crashing against a lonely lighthouse on canvas with texture paste and acrylic paints. ',
         modalIncludes: null
     },
+    {
+        id: 10,
+        eventName: 'WINTER TENDERNESS ACRYLIC CLASS',
+        startDate: null,
+        date: '2025-01-03',
+        time: '06:00 pm - 09:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'winter.jpg',
+        modalDescription: 'Create a gorgeous winter landscape in beautiful gentle colors. Fill yourself with inspiration for the entire year. ',
+        modalIncludes: null
+    },
+    {
+        id: 11,
+        eventName: 'WINTER TENDERNESS ACRYLIC CLASS',
+        startDate: null,
+        date: '2025-01-05',
+        time: '10:00 am - 01:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'winter.jpg',
+        modalDescription: 'Create a gorgeous winter landscape in beautiful gentle colors. Fill yourself with inspiration for the entire year. ',
+        modalIncludes: null
+    },
 ];
