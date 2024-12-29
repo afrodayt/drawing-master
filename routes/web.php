@@ -20,9 +20,3 @@ Route::get('/', function () {
 Route::get('/thank-you', function () {
     return view('thank-you-page');
 });
-
-Route::get('/loaderio-dd85fd07e570c32cbeccc54cf5173389.txt', function () {
-    return response('loaderio-dd85fd07e570c32cbeccc54cf5173389', 200, [
-        'Content-Type' => 'text/plain',
-    ]);
-});
