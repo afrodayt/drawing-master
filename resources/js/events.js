@@ -190,9 +190,8 @@ export const events = [
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
-        img: ' ',
-        modalDescription: 'Enjoy a creative date night with a texture paste master class. 
-You'll create two paintings that will complement each other. And the drawings in the sand will stay forever - just like your love! ',
+        img: 'love.jpg',
+        modalDescription: 'Enjoy a creative date night with a texture paste master class. You'll create two paintings that will complement each other. And the drawings in the sand will stay forever - just like your love! ',
         modalIncludes: null
     },
 ];
