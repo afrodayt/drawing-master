@@ -179,4 +179,19 @@ export const events = [
         modalDescription: 'Create a gorgeous winter landscape in beautiful gentle colors. Fill yourself with inspiration for the entire year. ',
         modalIncludes: null
     },
+    {
+        id: 12,
+        eventName: 'ON THE SHORES OF LOVE PAINTING TOGETHER',
+        startDate: null,
+        date: '2025-02-14',
+        time: '6:00 pm - 9:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'love.jpg',
+        modalDescription: 'Have a creative date night with a texture paste workshop. You'll create two paintings that will complement each other. And the sand drawings will stay forever just like your love!',
+        modalIncludes: null
+    },
 ];
