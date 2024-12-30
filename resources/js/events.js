@@ -181,7 +181,7 @@ export const events = [
     },
     {
         id: 12,
-        eventName: 'ON THE SHORES OF LOVE PAINTING WITH YOUR SOULMATE',
+        eventName: 'ON THE SHORES OF LOVE TWO-PERSON PAINTING',
         startDate: null,
         date: '2025-02-14',
         time: '06:00 pm - 09:00 pm',
