@@ -179,19 +179,4 @@ export const events = [
         modalDescription: 'Create a gorgeous winter landscape in beautiful gentle colors. Fill yourself with inspiration for the entire year. ',
         modalIncludes: null
     },
-    {
-        id: 12,
-        eventName: 'ON THE SHORES OF LOVE TEXTURE PASTE CLASS',
-        startDate: null,
-        date: '2025-02-14',
-        time: '06:00 pm - 09:00 pm',
-        day: null,
-        price: 100,
-        selected: false,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'All painting supplies provided + snacks and drinks',
-        img: 'love.jpg',
-        modalDescription: 'Enjoy a creative date night with a texture paste master class. You'll create two paintings that will complement each other. And the drawings in the sand will stay forever - just like your love! ',
-        modalIncludes: null
-    },
 ];
