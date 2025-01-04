@@ -288,7 +288,6 @@
             </div>
         </div>
         <OrderModal ref="productModal"/>
-        <thank-you-modal></thank-you-modal>
     </main>
 </template>
 
@@ -300,7 +299,6 @@ import {Carousel} from "@fancyapps/ui/dist/carousel/carousel.esm.js";
 import {Autoplay} from "@fancyapps/ui/dist/carousel/carousel.autoplay.esm.js";
 import {EventBus} from "@/eventBus.js";
 import OrderModal from "@/components/OrderModal.vue";
-import ThankYouModal from "@/components/ThankYouModal.vue";
 
 import Fancybox from "@/components/FancyBox.vue";
 import ContactFormComponent from "@/components/ContactFormComponent.vue";
@@ -310,7 +308,6 @@ export default {
     components: {
         ContactFormComponent,
         Fancybox,
-        ThankYouModal,
         HeaderComponent,
         OrderModal,
     },

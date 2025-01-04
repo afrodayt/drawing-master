@@ -14,7 +14,7 @@
         <textarea id="message" v-model="message" class="message-input message-input-text"
                   required></textarea>
         <div class="d-flex justify-content-center justify-content-lg-start">
-            <button type="submit" :disabled="isButtonDisabled" class="message-button">Send</button>
+            <button type="submit" :disabled="isButtonDisabled && loading" class="message-button">Send</button>
         </div>
     </form>
 </template>
@@ -59,7 +59,7 @@ export default {
             })
                 .then(response => {
                     if (response.ok) {
-                        EventBus.$emit('openThankYouModal');
+                        window.location.href = '/thank-you';
                     } else {
                         console.error('Ошибка при отправке данных:', response.statusText);
                     }
