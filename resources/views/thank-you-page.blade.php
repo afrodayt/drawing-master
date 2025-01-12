@@ -6,15 +6,6 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
         <title>Art Master Сlasses with Alevtyna</title>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8C33QM7EF7"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-8C33QM7EF7');
-        </script>
         <meta name="description" content="Unlock creativity with inspiring art workshops for all skill levels.">
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -38,6 +29,16 @@
                 'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '551397814563158');
             fbq('track', 'PageView');
+        </script>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8C33QM7EF7"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-8C33QM7EF7');
         </script>
 
         <style>
