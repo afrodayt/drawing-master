@@ -141,12 +141,12 @@ export const events = [
         date: '2025-02-09',
         time: '10:00 am - 01:00 pm',
         day: null,
-        price: 75,
+        price: 60,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
         img: 'love warms.jpg',
-        modalDescription: 'Let's remember that tender feeling of falling in love and paint a romantic scene on canvas. ',
+        modalDescription: 'Let's remember that tender feeling of love and paint a romantic scene on canvas. ',
         modalIncludes: null
     },
     {
