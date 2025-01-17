@@ -209,4 +209,27 @@ export const events = [
         modalDescription: ' The velvet petals of these marvelous flowers have never left artists indifferent. Get a glimpse of the majesty of the queen of flowers depicting a bouquet of scarlet roses on the canvas. ',
         modalIncludes: null
     },
+    {
+        id: 14,
+        eventName: 'ACRYLIC PAINTING COURSE TEXTURES AROUND US',
+        startDate: 'February 23 -',
+        date: '2025-03-23',
+        time: '10:00 am - 01:00 pm',
+        day: "Sundays, ",
+        price: 300,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: '2025.jpg',
+        modalDescription: ' Do you remember when we were little, we were incredibly curious to touch everything? The artist is like a baby eager to explore the character of each surface he depicts.' +
+            '<div class="modal-body-description-bold">\n' +
+            '                                In the course of acrylic painting “Textures around us” during five sessions we will study the peculiarities of surfaces of different materials and substances and methods of their conveyance:\n' +
+            '                            </div>\n' +
+            '                            - fabric <br>\n' +
+            '                            - metal <br>\n' +
+            '                            - glass <br>\n' +
+            '                            - clouds <br>\n' +
+            '                            - water <br>',
+        modalIncludes: null
+    },
 ];
