@@ -136,7 +136,7 @@ export const events = [
     },
     {
         id: 9,
-        eventName: 'LIGHT HOUSE ACRYLIC WORKSHOP',
+        eventName: 'LOVE WARMS ACRYLIC CLASS',
         startDate: null,
         date: '2025-02-09',
         time: '10:00 am - 01:00 pm',
@@ -145,8 +145,8 @@ export const events = [
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
-        img: 'light house.jpg',
-        modalDescription: 'Feel the full expression of a sea storm. Create the mood of raging waves crashing against a lonely lighthouse on canvas with texture paste and acrylic paints. ',
+        img: 'love warms.jpg',
+        modalDescription: 'Let's remember that tender feeling of falling in love and paint a romantic scene on canvas. ',
         modalIncludes: null
     },
     {
