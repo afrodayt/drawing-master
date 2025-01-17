@@ -194,4 +194,19 @@ export const events = [
         modalDescription: 'Have a creative date night with a texture paste workshop. You will create two paintings that will complement each other. And the sand drawings will stay forever just like your love! ',
         modalIncludes: null
     },
+    {
+        id: 13,
+        eventName: 'ACRYLIC ROSES ART CLASS',
+        startDate: null,
+        date: '2025-02-16',
+        time: '10:00 am - 1:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'rose.jpg',
+        modalDescription: ' The velvet petals of these marvelous flowers have never left artists indifferent. Get a glimpse of the majesty of the queen of flowers depicting a bouquet of scarlet roses on the canvas. ',
+        modalIncludes: null
+    },
 ];
