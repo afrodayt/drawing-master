@@ -146,7 +146,7 @@ export const events = [
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
         img: 'love warms.jpg',
-        modalDescription: 'Let's remember that tender feeling of love and paint a romantic scene on canvas. ',
+        modalDescription: 'Remember that tender feeling of love and paint a romantic scene on canvas. ',
         modalIncludes: null
     },
     {
