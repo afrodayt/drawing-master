@@ -12,7 +12,7 @@
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon-date.svg" alt="date">
-                            Date: {{selectedEvent.day}}{{ getFormatedDate(selectedEvent.date) }}
+                            Date: {{ getFormatedDate(selectedEvent.date) }} {{selectedEvent.day}}
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon_time.svg" alt="time">
@@ -72,7 +72,7 @@
 <script>
 
 import { EventBus } from '@/eventBus';
-import {events} from "@/events.js";
+import {events, infinityEvent} from "@/events.js";
 import moment from "moment/moment.js";
 
 export default {
@@ -85,6 +85,7 @@ export default {
             message: '',
             isVisible: false,
             events: events,
+            infinityEvent: infinityEvent,
             loading: false,
             selectedEvent: {},
         }
@@ -98,10 +99,17 @@ export default {
 
     methods: {
         getFormatedDate(date) {
+            if (date === "%") {
+                return "Every"
+            }
             return moment(date).format("MMMM D");
         },
-        openModal(id) {
-            this.selectedEvent = this.events.find((event) => event.id === id);
+        openModal(id, type) {
+            if (type === "event") {
+                this.selectedEvent = this.events.find((event) => event.id === id);
+            } else {
+                this.selectedEvent = this.infinityEvent.find((event) => event.id === id);
+            }
             document.body.style.overflow = 'hidden';
             this.isVisible = true;
         },

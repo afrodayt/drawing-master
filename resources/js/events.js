@@ -36,7 +36,7 @@ export const events = [
         date: '2025-01-17',
         time: '6:00 pm - 9:00 pm',
         day: null,
-        price: 60,
+        price: 75,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
@@ -51,7 +51,7 @@ export const events = [
         date: '2025-01-19',
         time: '10:00 am - 1:00 pm',
         day: null,
-        price: 60,
+        price: 75,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
@@ -63,10 +63,10 @@ export const events = [
         id: 5,
         eventName: 'ACRYLIC WORKSHOP COTTON FLOWER',
         startDate: null,
-        date: '2025-01-25',
-        time: '3:00 pm - 6:00 pm',
+        date: '2025-01-24',
+        time: '6:00 pm - 9:00 pm',
         day: null,
-        price: 60,
+        price: 75,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
@@ -80,7 +80,7 @@ export const events = [
         startDate: 'February 10 -',
         date: '2025-03-10',
         time: '6:00 pm - 9:00 pm',
-        day: "Mondays, ",
+        day: "Mondays",
         price: 300,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
@@ -102,7 +102,7 @@ export const events = [
         startDate: 'February 08 -',
         date: '2025-03-08',
         time: '10:00 am - 01:00 pm',
-        day: "Saturdays, ",
+        day: "Saturdays",
         price: 300,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
@@ -136,17 +136,17 @@ export const events = [
     },
     {
         id: 9,
-        eventName: 'LOVE WARMS ACRYLIC CLASS',
+        eventName: 'LIGHT HOUSE ACRYLIC WORKSHOP',
         startDate: null,
         date: '2025-02-09',
         time: '10:00 am - 01:00 pm',
         day: null,
-        price: 60,
+        price: 75,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
-        img: 'love warms.JPG',
-        modalDescription: 'Remember that tender feeling of love and paint a romantic scene on canvas. ',
+        img: 'light house.jpg',
+        modalDescription: 'Feel the full expression of a sea storm. Create the mood of raging waves crashing against a lonely lighthouse on canvas with texture paste and acrylic paints. ',
         modalIncludes: null
     },
     {
@@ -194,42 +194,21 @@ export const events = [
         modalDescription: 'Have a creative date night with a texture paste workshop. You will create two paintings that will complement each other. And the sand drawings will stay forever just like your love! ',
         modalIncludes: null
     },
-    {
-        id: 13,
-        eventName: 'ACRYLIC ROSES ART CLASS',
-        startDate: null,
-        date: '2025-02-16',
-        time: '10:00 am - 1:00 pm',
-        day: null,
-        price: 75,
-        selected: false,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'All painting supplies provided + snacks and drinks',
-        img: 'rose.jpg',
-        modalDescription: ' The velvet petals of these marvelous flowers have never left artists indifferent. Get a glimpse of the majesty of the queen of flowers depicting a bouquet of scarlet roses on the canvas. ',
-        modalIncludes: null
-    },
-    {
-        id: 14,
-        eventName: 'ACRYLIC PAINTING COURSE TEXTURES AROUND US',
-        startDate: 'February 23 -',
-        date: '2025-03-23',
-        time: '10:00 am - 01:00 pm',
-        day: "Sundays, ",
-        price: 300,
-        selected: false,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'All painting supplies provided + snacks and drinks',
-        img: '2025.jpg',
-        modalDescription: ' Do you remember when we were little, we were incredibly curious to touch everything? The artist is like a baby eager to explore the character of each surface he depicts.' +
-            '<div class="modal-body-description-bold">\n' +
-            '                                In the course of acrylic painting “Textures around us” during five sessions we will study the peculiarities of surfaces of different materials and substances and methods of their conveyance:\n' +
-            '                            </div>\n' +
-            '                            - fabric <br>\n' +
-            '                            - metal <br>\n' +
-            '                            - glass <br>\n' +
-            '                            - clouds <br>\n' +
-            '                            - water <br>',
-        modalIncludes: null
-    },
 ];
+
+export const infinityEvent = [
+    {
+        id: 1,
+        eventName: 'REGULAR ART CLASSES FOR ADULTS',
+        time: '3:00 pm - 6:00 pm',
+        date: '%',
+        day: 'Saturday',
+        price: 45,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All supplies provided',
+        img: 'events-bird.png',
+        modalDescription: null,
+        modalIncludes: null
+    },
+]

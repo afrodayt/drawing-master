@@ -76,7 +76,7 @@
             </div>
             <div class="events mb-200" id="events">
                 <div class="main-title">Upcoming events</div>
-                <div class="f-carousel" id="myCarousel">
+                <div class="f-carousel mb-5" id="eventsContainer">
                     <div class="f-carousel__viewport">
                         <div class="f-carousel__track">
                             <div class="f-carousel__slide" v-for="event in events" v-if="expiredEvent(event.date)">
@@ -99,7 +99,40 @@
                                             </div>
                                             <div class="events-block-description">{{event.description}}</div>
                                         </div>
-                                        <button class="main-button" @click="openEventModal(event.id)">Sign up</button>
+                                        <button class="main-button" @click="openEventModal(event.id, 'event')">Sign up</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="events mb-200" id="infinity-events">
+                <div class="main-title">Infinity events</div>
+                <div class="f-carousel" id="infinityEvents">
+                    <div class="f-carousel__viewport">
+                        <div class="f-carousel__track">
+                            <div class="f-carousel__slide" v-for="infinityEvent in infinityEvent">
+                                <div class="events-block ">
+                                    <img :src="'assets/img/'+ infinityEvent.img" alt="event.img" class="events-block-img">
+                                    <div class="events-block-container d-flex flex-column justify-content-between">
+                                        <div class="events-block-container-content">
+                                            <div class="events-block-title">{{infinityEvent.eventName}}</div>
+                                            <div class="events-block-information d-flex align-items-center">
+                                                <img src="assets/img/icon-date.svg" alt="date">
+                                                {{ getFormatedDate(infinityEvent.date) }} {{infinityEvent.day}},  {{infinityEvent.time}}
+                                            </div>
+                                            <div class="events-block-information d-flex align-items-center">
+                                                <img src="assets/img/icon-price.svg" alt="price">
+                                                ${{infinityEvent.price }}
+                                            </div>
+                                            <div class="events-block-information d-flex align-items-center mb-0">
+                                                <img src="assets/img/icon-location.svg" alt="location">
+                                                {{infinityEvent.location}}
+                                            </div>
+                                            <div class="events-block-description">{{infinityEvent.description}}</div>
+                                        </div>
+                                        <button class="main-button" @click="openEventModal(infinityEvent.id, 'infinityEvent')">Sign up</button>
                                     </div>
                                 </div>
                             </div>
@@ -293,7 +326,7 @@
 
 <script>
 import moment from "moment";
-import {events} from "@/events.js";
+import {events, infinityEvent} from "@/events.js";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import {Carousel} from "@fancyapps/ui/dist/carousel/carousel.esm.js";
 import {Autoplay} from "@fancyapps/ui/dist/carousel/carousel.autoplay.esm.js";
@@ -314,6 +347,7 @@ export default {
     data() {
         return {
             events: events,
+            infinityEvent: infinityEvent,
             studentWorks: true,
             form: {
                 name: "",
@@ -345,6 +379,9 @@ export default {
     },
     methods: {
         getFormatedDate(date) {
+            if (date === "%") {
+                return "Every"
+            }
             return moment(date).format("MMMM D");
         },
         expiredEvent(date) {
@@ -352,15 +389,16 @@ export default {
             const tomorrow = moment().add(1, "days");
             return !tomorrow.isAfter(eventDate);
         },
-        openEventModal(id) {
-            this.$refs.productModal.openModal(id);
+        openEventModal(id, type) {
+            this.$refs.productModal.openModal(id, type);
         },
         sendContactForm() {
 
         }
     },
     mounted() {
-        const container = document.getElementById("myCarousel");
+        const eventsContainer = document.getElementById("events");
+        const infinityEventsContainer = document.getElementById("infinityEvents");
         const options = {
 
             slidesPerPage: 2,
@@ -370,7 +408,8 @@ export default {
             },
         };
 
-        new Carousel(container, options, {Autoplay});
+        new Carousel(eventsContainer, options, {Autoplay});
+        new Carousel(infinityEventsContainer, options, {Autoplay});
     }
 };
 </script>
