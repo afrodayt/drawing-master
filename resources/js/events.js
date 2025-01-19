@@ -262,4 +262,19 @@ export const infinityEvent = [
         modalIncludes: null,
         modalDiscount: "for one class ( there is a discount if you book 4 classes )"
     },
+    {
+        id: 2,
+        eventName: 'REGULAR ART CLASSES FOR KIDS 4-6 YEARS OLD',
+        time: '3:00 pm - 4:00 pm',
+        date: '%',
+        day: 'Friday',
+        price: 30,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All supplies provided',
+        img: '4-6.jpg',
+        modalDescription: "Creativity, dreams, inspiration - the world of art awaits your child! We practice a variety of techniques, materials and subjects in our regular kids classes. ",
+        modalIncludes: null,
+        modalDiscount: "for one class ( there is a discount if you book 4 classes )"
+    },
 ]
