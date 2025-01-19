@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="events mb-200" id="infinity-events">
-                <div class="main-title">Infinity events</div>
+                <div class="main-title">REGULAR ART CLASSES</div>
                 <div class="f-carousel" id="infinityEvents">
                     <div class="f-carousel__viewport">
                         <div class="f-carousel__track">

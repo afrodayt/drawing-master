@@ -4,7 +4,10 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div class="modal-title fs-5 text-center text-lg-start" id="staticBackdropLabel">Sign up for the master class</div>
+                        <div class="modal-title fs-5 text-center text-lg-start" id="staticBackdropLabel">
+                            <span v-if="type==='event'">Sign up for the master class</span>
+                            <span v-else>Sign up for the regular classes</span>
+                        </div>
                         <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -24,12 +27,12 @@
                         </div>
                         <div class="modal-body-title">What's Included:</div>
                         <div class="modal-body-description">
-                            All painting supplies provided + snacks and drinks for absolute relaxation and immersion in
+                            All painting supplies provided <span v-if="type==='event'">+ snacks and drinks</span><span v-else></span> for absolute relaxation and immersion in
                             the friendly atmosphere of creativity
                         </div>
                         <div class="modal-body-description gap-2 d-flex align-items-center">
                             <img src="assets/img/icon-price.svg" alt="price">
-                            Price: {{ selectedEvent.price }}  per person
+                            Price: {{ selectedEvent.price }} $ per person {{ selectedEvent.modalDiscount }}
                         </div>
                         <div class="modal-body-description mb-0">
                             {{ selectedEvent.modalIncludes }}
@@ -88,6 +91,7 @@ export default {
             infinityEvent: infinityEvent,
             loading: false,
             selectedEvent: {},
+            type: "",
         }
     },
 
@@ -105,6 +109,7 @@ export default {
             return moment(date).format("MMMM D");
         },
         openModal(id, type) {
+            this.type = type;
             if (type === "event") {
                 this.selectedEvent = this.events.find((event) => event.id === id);
             } else {

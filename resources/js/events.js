@@ -12,7 +12,8 @@ export const events = [
         description: 'All painting supplies provided + snacks and drinks',
         img: 'events-bird.png',
         modalDescription: 'Become the author of a stunning work of art depicting the amazing natural world in winter. Learn how to realistically depict beautiful birds, conveying incredible color combinations and volumes.',
-        modalIncludes: 'Be part of an amazing celebration of creativity in the company of like-minded people and painting enthusiasts. And the professional assistance of an instructor will help you achieve the results you desire!'
+        modalIncludes: 'Be part of an amazing celebration of creativity in the company of like-minded people and painting enthusiasts. And the professional assistance of an instructor will help you achieve the results you desire!',
+        modalDiscount: null,
     },
     {
         id: 2,
@@ -27,7 +28,8 @@ export const events = [
         description: 'All painting supplies provided + snacks and drinks',
         img: 'events-bird.png',
         modalDescription: 'Become the author of a stunning work of art depicting the amazing natural world in winter. Learn how to realistically depict beautiful birds, conveying incredible color combinations and volumes.',
-        modalIncludes: 'Be part of an amazing celebration of creativity in the company of like-minded people and painting enthusiasts. And the professional assistance of an instructor will help you achieve the results you desire!'
+        modalIncludes: 'Be part of an amazing celebration of creativity in the company of like-minded people and painting enthusiasts. And the professional assistance of an instructor will help you achieve the results you desire!',
+        modalDiscount: null,
     },
     {
         id: 3,
@@ -36,13 +38,14 @@ export const events = [
         date: '2025-01-17',
         time: '6:00 pm - 9:00 pm',
         day: null,
-        price: 75,
+        price: 60,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
         img: 'events-mountains.png',
         modalDescription: 'Immerse yourself in the atmosphere of frosty silence on the shore of a beautiful lake. Having mastered the basic techniques and methods of painting with acrylic, convey all the amazing beauty of the local nature in a cozy studio under the guidance of a competent instructor',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 4,
@@ -51,28 +54,30 @@ export const events = [
         date: '2025-01-19',
         time: '10:00 am - 1:00 pm',
         day: null,
-        price: 75,
+        price: 60,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
         img: 'events-mountains.png',
         modalDescription: 'Immerse yourself in the atmosphere of frosty silence on the shore of a beautiful lake. Having mastered the basic techniques and methods of painting with acrylic, convey all the amazing beauty of the local nature in a cozy studio under the guidance of a competent instructor',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 5,
         eventName: 'ACRYLIC WORKSHOP COTTON FLOWER',
         startDate: null,
-        date: '2025-01-24',
-        time: '6:00 pm - 9:00 pm',
+        date: '2025-01-25',
+        time: '3:00 pm - 6:00 pm',
         day: null,
-        price: 75,
+        price: 60,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
         img: 'events-flower.png',
         modalDescription: 'There is no better way to end the working week than with a painting workshop in a cozy art studio. Drawing delicate cotton flowers will allow you to relax, and the teacher\'s simple instructions will provide you with an excellent result',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 6,
@@ -94,7 +99,8 @@ export const events = [
             '                            - Painting with stains <br>\n' +
             '                            - Transmitting the materiality of objects <br>\n' +
             '                            - Multidimensional landscape <br>',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 7,
@@ -117,7 +123,8 @@ export const events = [
             '                            - Painting with stains <br>\n' +
             '                            - Transmitting the materiality of objects <br>\n' +
             '                            - Multidimensional landscape <br>',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 8,
@@ -132,22 +139,24 @@ export const events = [
         description: 'All painting supplies provided + snacks and drinks',
         img: 'light house.jpg',
         modalDescription: 'Feel the full expression of a sea storm. Create the mood of raging waves crashing against a lonely lighthouse on canvas with texture paste and acrylic paints. ',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 9,
-        eventName: 'LIGHT HOUSE ACRYLIC WORKSHOP',
+        eventName: 'LOVE WARMS ACRYLIC CLASS',
         startDate: null,
         date: '2025-02-09',
         time: '10:00 am - 01:00 pm',
         day: null,
-        price: 75,
+        price: 60,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
-        img: 'light house.jpg',
-        modalDescription: 'Feel the full expression of a sea storm. Create the mood of raging waves crashing against a lonely lighthouse on canvas with texture paste and acrylic paints. ',
-        modalIncludes: null
+        img: 'love warms.JPG',
+        modalDescription: 'Remember that tender feeling of love and paint a romantic scene on canvas. ',
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 10,
@@ -162,7 +171,8 @@ export const events = [
         description: 'All painting supplies provided + snacks and drinks',
         img: 'winter.jpg',
         modalDescription: 'Create a gorgeous winter landscape in beautiful gentle colors. Fill yourself with inspiration for the entire year. ',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 11,
@@ -177,7 +187,8 @@ export const events = [
         description: 'All painting supplies provided + snacks and drinks',
         img: 'winter.jpg',
         modalDescription: 'Create a gorgeous winter landscape in beautiful gentle colors. Fill yourself with inspiration for the entire year. ',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
     },
     {
         id: 12,
@@ -192,23 +203,63 @@ export const events = [
         description: 'All painting supplies provided + snacks and drinks',
         img: 'love.jpg',
         modalDescription: 'Have a creative date night with a texture paste workshop. You will create two paintings that will complement each other. And the sand drawings will stay forever just like your love! ',
-        modalIncludes: null
+        modalIncludes: null,
+        modalDiscount: null,
+    },
+    {
+        id: 13,
+        eventName: 'ACRYLIC ROSES ART CLASS',
+        startDate: null,
+        date: '2025-02-16',
+        time: '10:00 am - 1:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'rose.jpg',
+        modalDescription: ' The velvet petals of these marvelous flowers have never left artists indifferent. Get a glimpse of the majesty of the queen of flowers depicting a bouquet of scarlet roses on the canvas. ',
+        modalIncludes: null,
+        modalDiscount: null,
+    },
+    {
+        id: 14,
+        eventName: 'ACRYLIC PAINTING COURSE TEXTURES AROUND US',
+        startDate: 'February 23 -',
+        date: '2025-03-23',
+        time: '10:00 am - 01:00 pm',
+        day: "Sundays, ",
+        price: 300,
+        description: 'All painting supplies provided + snacks and drinks',
+        img: '2025.jpg',
+        modalDescription: ' Do you remember when we were little, we were incredibly curious to touch everything? The artist is like a baby eager to explore the character of each surface he depicts.' +
+            '<div class="modal-body-description-bold">\n' +
+            '                                In the course of acrylic painting “Textures around us” during five sessions we will study the peculiarities of surfaces of different materials and substances and methods of their conveyance:\n' +
+            '                            </div>\n' +
+            '                            - fabric <br>\n' +
+            '                            - metal <br>\n' +
+            '                            - glass <br>\n' +
+            '                            - clouds <br>\n' +
+            '                            - water <br>',
+        modalIncludes: null,
+        modalDiscount: null,
     },
 ];
 
-export const infinity event = [
+export const infinityEvent = [
     {
         id: 1,
         eventName: 'REGULAR ART CLASSES FOR ADULTS',
         time: '3:00 pm - 6:00 pm',
         date: '%',
-        day: 'Saturday',
+        day: 'Saturdays',
         price: 45,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All supplies provided',
         img: 'ph11.jpeg',
-        modalDescription: 'We practice a variety of techniques, materials and subjects in our regular adult classes. Join our friendly creative team if you feel it's time to unleash the artist within you. ',
-        modalIncludes: null
+        modalDescription: "We practice a variety of techniques, materials and subjects in our regular adult classes. Join our friendly creative team if you feel it's time to unleash the artist within you. ",
+        modalIncludes: null,
+        modalDiscount: "for one class ( there is a discount if you book 4 classes )"
     },
 ]
