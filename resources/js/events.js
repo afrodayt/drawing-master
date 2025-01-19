@@ -196,19 +196,19 @@ export const events = [
     },
 ];
 
-export const infinityEvent = [
+export const regularartclasses = [
     {
         id: 1,
         eventName: 'REGULAR ART CLASSES FOR ADULTS',
         time: '3:00 pm - 6:00 pm',
         date: '%',
-        day: 'Saturday',
+        day: 'Saturdays',
         price: 45,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All supplies provided',
-        img: 'events-bird.png',
-        modalDescription: null,
+        img: 'ph11.jpeg',
+        modalDescription: 'We practice a variety of techniques, materials and subjects in our regular adult classes. Join our friendly creative team if you feel it's time to unleash the artist within you. ',
         modalIncludes: null
     },
 ]
