@@ -253,7 +253,7 @@ export const infinityEvent = [
         time: '3:00 pm - 6:00 pm',
         date: '%',
         day: 'Saturday',
-        price: 45,
+        price: 50,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All supplies provided',
