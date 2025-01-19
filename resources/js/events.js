@@ -196,7 +196,7 @@ export const events = [
     },
 ];
 
-export const infinityivent = [
+export const infinityevent = [
     {
         id: 1,
         eventName: 'REGULAR ART CLASSES FOR ADULTS',
