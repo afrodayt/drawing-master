@@ -196,13 +196,13 @@ export const events = [
     },
 ];
 
-export const regularartclasses = [
+export const infinityivent = [
     {
         id: 1,
         eventName: 'REGULAR ART CLASSES FOR ADULTS',
         time: '3:00 pm - 6:00 pm',
         date: '%',
-        day: 'Saturdays',
+        day: 'Saturday',
         price: 45,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
