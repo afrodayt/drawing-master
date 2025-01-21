@@ -128,7 +128,7 @@ export const events = [
     },
     {
         id: 8,
-        eventName: 'LIGHTHOUSE texture paste class',
+        eventName: 'LIGHTHOUSE TEXTURE PASTE CLASS',
         startDate: null,
         date: '2025-02-07',
         time: '06:00 pm - 09:00 pm',
