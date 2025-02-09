@@ -262,8 +262,9 @@ export const events = [
         time: '10:00 am - 01:00 pm',
         day: "Sundays, ",
         price: 300,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
-        img: '2025.jpg',
+        img: 'nature.jpg',
         modalDescription: 'Turn nature into art with this acrylic painting course!Take your skills to the next level and discover the beauty of nature through acrylic painting.' +
             '<div class="modal-body-description-bold">\n' +
             '                                In the course of acrylic painting “Textures around us” during five sessions we will study techniques to create natural textures, from the softness of clouds to the roughness of a rocky mountain:\n' +
