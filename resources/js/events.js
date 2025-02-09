@@ -232,7 +232,7 @@ export const events = [
         price: 300,
         description: 'All painting supplies provided + snacks and drinks',
         img: '2025.jpg',
-        modalDescription: ' Do you remember when we were little, we were incredibly curious to touch everything? The artist is like a baby eager to explore the character of each surface he depicts.' +
+        modalDescription: 'Turn nature into art with this acrylic painting course!Take your skills to the next level and discover the beauty of nature through acrylic painting.' +
             '<div class="modal-body-description-bold">\n' +
             '                                In the course of acrylic painting “Textures around us” during five sessions we will study the peculiarities of surfaces of different materials and substances and methods of their conveyance:\n' +
             '                            </div>\n' +
