@@ -234,13 +234,11 @@ export const events = [
         img: '2025.jpg',
         modalDescription: 'Turn nature into art with this acrylic painting course!Take your skills to the next level and discover the beauty of nature through acrylic painting.' +
             '<div class="modal-body-description-bold">\n' +
-            '                                In the course of acrylic painting “Textures around us” during five sessions we will study the peculiarities of surfaces of different materials and substances and methods of their conveyance:\n' +
+            '                                In the course of acrylic painting “Textures around us” during five sessions we will study techniques to create natural textures, from the softness of clouds to the roughness of a rocky mountain:\n' +
             '                            </div>\n' +
-            '                            - fabric <br>\n' +
-            '                            - metal <br>\n' +
-            '                            - glass <br>\n' +
-            '                            - clouds <br>\n' +
-            '                            - water <br>',
+            '                            - How to convey the depth and texture of water, clouds, stone, wheat field, fire <br>\n' +
+            '                            - Special methods of working with acrylics <br>\n' +
+            '                            - Painting using a variety of tools to create realistic natural images <br>\n',
         modalIncludes: null,
         modalDiscount: null,
     },
