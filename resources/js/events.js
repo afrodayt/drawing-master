@@ -322,6 +322,28 @@ export const events = [
         modalDescription: 'Experience the atmosphere of your hometown and create a unique image of it with acrylic paint. In this class you will learn how to capture the unique spirit of Calgary: its architecture, landscapes and distinctive details. Express your love of the city on canvas.',
         modalIncludes: null,
         modalDiscount: null,
+    },
+    {
+        id: 20,
+        eventName: 'SPRING ART CAMP FOR CHILDREN',
+        startDate: 'March 24 -',
+        date: '2025-03-28',
+        time: '9:00 am - 3:30 pm',
+        day: "Monday-Friday, ",
+        price: 500,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'We supply everything your child needs to create their masterpieces + snacks and drinks',
+        img: 'kids.jpg',
+        modalDescription: 'Do you want your child to discover their creative abilities, try new techniques and make unique artworks? Then our art camp is what you need!' +
+            '<div class="modal-body-description-bold">\n' +
+            '                                During 5 days from 9:00 to 3:30 children will be engaged in:\n' +
+            '                            </div>\n' +
+            '                            - painting <br>\n' +
+            '                            - drawing <br>\n' +
+            '                            - creating crafts <br>\n' +
+            '                            - learning different artistic techniques under the guidance of an experienced teacher <br>\n',
+        modalIncludes: null,
+        modalDiscount: null,
     }
 ];
 
