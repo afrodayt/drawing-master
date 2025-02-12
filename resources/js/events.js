@@ -258,6 +258,22 @@ export const events = [
             '                            - Painting using a variety of tools to create realistic natural images <br>\n',
         modalIncludes: null,
         modalDiscount: null,
+    },
+    {
+        id: 16,
+        eventName: 'WATERCOLOR WORKSHOP “TULIPS”',
+        startDate: null,
+        date: '2025-03-07',
+        time: '6:00 pm - 9:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'tulips.jpg',
+        modalDescription: 'You will learn techniques to bring out the beauty of delicate tulips on paper. Our workshop is suitable for everyone!Join us, discover watercolor and take home a unique masterpiece!',
+        modalIncludes: null,
+        modalDiscount: null,
     }
 ];
 
