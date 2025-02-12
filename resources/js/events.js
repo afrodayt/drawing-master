@@ -245,7 +245,7 @@ export const events = [
         date: '2025-03-23',
         time: '10:00 am - 01:00 pm',
         day: "Sundays, ",
-        price: 300,
+        price: 325,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
         img: 'nature.jpg',
