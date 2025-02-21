@@ -113,8 +113,8 @@ export const events = [
     {
         id: 7,
         eventName: 'ACRYLIC PAINTING COURSE TEXTURES AROUND US',
-        startDate: 'February 23 -',
-        date: '2025-03-23',
+        startDate: 'MARCH 15 -',
+        date: '2025-04-12',
         time: '10:00 am - 01:00 pm',
         day: "Sundays, ",
         price: 325,
