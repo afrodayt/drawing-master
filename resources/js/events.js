@@ -113,7 +113,7 @@ export const events = [
     {
         id: 7,
         eventName: 'ACRYLIC PAINTING COURSE TEXTURES AROUND US',
-        startDate: 'MARCH 15 -',
+        startDate: 'March 15 -',
         date: '2025-04-12',
         time: '10:00 am - 01:00 pm',
         day: "Sundays, ",
