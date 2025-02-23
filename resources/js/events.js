@@ -217,6 +217,22 @@ export const events = [
         modalIncludes: null,
         modalDiscount: null,
     }
+    {
+        id: 13,
+        eventName: 'APPROACHING SPRING',
+        startDate: null,
+        date: '2025-03-02',
+        time: '10:00 am - 1:00 pm',
+        day: null,
+        price: 75,
+        selected: false,
+        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        description: 'All painting supplies provided + snacks and drinks',
+        img: 'march.jpg',
+        modalDescription: 'Spend an unforgettable creative morning in the first days of spring with your close friend in our studio. Capture this beautiful spring mood on canvas with paints and texture paste.',
+        modalIncludes: null,
+        modalDiscount: null,
+    }
 ];
 
 export const infinityEvent = [
