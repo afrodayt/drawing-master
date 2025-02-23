@@ -216,7 +216,7 @@ export const events = [
             '                            - learning different artistic techniques under the guidance of an experienced teacher <br>\n',
         modalIncludes: null,
         modalDiscount: null,
-    }
+    },
     {
         id: 13,
         eventName: 'APPROACHING SPRING',
