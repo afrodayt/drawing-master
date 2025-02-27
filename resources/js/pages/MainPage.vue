@@ -386,8 +386,8 @@ export default {
         },
         expiredEvent(date) {
             const eventDate = moment(date, "YYYY-MM-DD");
-            const tomorrow = moment().add(1, "days");
-            return !tomorrow.isAfter(eventDate);
+            const today = moment().startOf("day");
+            return !eventDate.isBefore(today);
         },
         openEventModal(id, type) {
             this.$refs.productModal.openModal(id, type);
@@ -400,7 +400,6 @@ export default {
         const eventsContainer = document.getElementById("events");
         const infinityEventsContainer = document.getElementById("infinityEvents");
         const options = {
-
             slidesPerPage: 2,
             center: false,
             Autoplay: {
