@@ -17,53 +17,6 @@ export const events = [
     },
     {
         id: 2,
-        eventName: 'BASIC ACRYLIC COURSE FOR BEGINNERS',
-        startDate: 'February 10 -',
-        date: '2025-03-10',
-        time: '6:00 pm - 9:00 pm',
-        day: "Mondays",
-        price: 300,
-        selected: false,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'All painting supplies provided + snacks and drinks',
-        img: 'events-painting.png',
-        modalDescription: '<div class="modal-body-description-bold mt-0">\n' +
-            '                                On the course of 5 classes you will learn:\n' +
-            '                            </div>\n' +
-            '                            - Introduction to the course: discussing the course materials, their characteristics, and possibilities <br>\n' +
-            '                            - The concept of tone in painting <br>\n' +
-            '                            - Painting with stains <br>\n' +
-            '                            - Transmitting the materiality of objects <br>\n' +
-            '                            - Multidimensional landscape <br>',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 3,
-        eventName: 'BASIC ACRYLIC COURSE FOR BEGINNERS',
-        startDate: 'February 08 -',
-        date: '2025-03-08',
-        time: '10:00 am - 01:00 pm',
-        day: "Saturdays",
-        price: 300,
-        selected: false,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'All painting supplies provided + snacks and drinks',
-        img: 'events-painting.png',
-        modalDescription: 'Basic course on working with acrylic paints, where you will learn about the features of this amazing material and what creative opportunities it opens up.' +
-            '<div class="modal-body-description-bold">\n' +
-            '                                The 5-session course will take you through:\n' +
-            '                            </div>\n' +
-            '                            - Introduction to the course: discussing the course materials, their characteristics, and possibilities <br>\n' +
-            '                            - The concept of tone in painting <br>\n' +
-            '                            - Painting with stains <br>\n' +
-            '                            - Transmitting the materiality of objects <br>\n' +
-            '                            - Multidimensional landscape <br>',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 4,
         eventName: 'INTERIOR PAINTING ACRYLIC CLASS',
         startDate: null,
         date: '2025-02-28',
@@ -79,7 +32,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 5,
+        id: 3,
         eventName: 'APPROACHING SPRING',
         startDate: null,
         date: '2025-03-02',
@@ -95,7 +48,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 6,
+        id: 4,
         eventName: 'FABULOUS SUNSET ACRYLIC CLASS',
         startDate: null,
         date: '2025-03-09',
@@ -111,7 +64,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 7,
+        id: 5,
         eventName: 'ACRYLIC PAINTING COURSE TEXTURES AROUND US',
         startDate: 'March 15 -',
         date: '2025-04-12',
@@ -132,7 +85,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 8,
+        id: 6,
         eventName: 'WATERCOLOR WORKSHOP “TULIPS”',
         startDate: null,
         date: '2025-03-07',
@@ -148,7 +101,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 9,
+        id: 7,
         eventName: 'ACRYLIC PAINTING “PATH TO ETERNITY”',
         startDate: null,
         date: '2025-03-14',
@@ -164,7 +117,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 10,
+        id: 8,
         eventName: 'TEXTURED ACRYLIC  PAINTING “FREEDOM”',
         startDate: null,
         date: '2025-03-16',
@@ -180,7 +133,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 11,
+        id: 9,
         eventName: 'ACRYLIC WORKSHOP “TOUCH THE SKY”',
         startDate: null,
         date: '2025-03-21',
@@ -196,7 +149,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 12,
+        id: 10,
         eventName: 'MORAINE LAKE ACRYLIC PAINTING',
         startDate: null,
         date: '2025-03-23',
@@ -212,7 +165,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 13,
+        id: 11,
         eventName: 'CALGARY ACRYLIC PAINTING WORKSHOP',
         startDate: null,
         date: '2025-03-28',
@@ -228,7 +181,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 14,
+        id: 12,
         eventName: 'MORAINE LAKE ACRYLIC PAINTING',
         startDate: null,
         date: '2025-03-30',
@@ -244,7 +197,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 15,
+        id: 13,
         eventName: 'SPRING ART CAMP FOR CHILDREN',
         startDate: 'March 24 -',
         date: '2025-03-28',
