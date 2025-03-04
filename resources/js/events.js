@@ -182,7 +182,7 @@ export const events = [
     },
     {
         id: 12,
-        eventName: 'MORAINE LAKE ACRYLIC PAINTING',
+        eventName: 'CHERRY BLOSSOM ACRYLIC PAINTING',
         startDate: null,
         date: '2025-03-30',
         time: '10:00 am - 1:00 pm',
