@@ -239,7 +239,7 @@ export const events = [
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'All painting supplies provided + snacks and drinks',
-        img: 'c.jpg',
+        img: '',
         modalDescription: 'Spend an unforgettable creative evening with your close friend in our studio. Capture this beautiful flower mood on canvas with paints and texture paste.',
         modalIncludes: null,
         modalDiscount: null,
