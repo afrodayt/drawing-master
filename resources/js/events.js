@@ -168,7 +168,7 @@ export const events = [
         id: 11,
         eventName: 'DOWNTOWN TEXTURE CLASS',
         startDate: null,
-        date: '2025-04-20',
+        date: '2025-04-19',
         time: '10:00 am - 1:00 pm',
         day: null,
         price: 70,
