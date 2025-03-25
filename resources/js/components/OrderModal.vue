@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="modal-title fs-5 text-center text-lg-start" id="staticBackdropLabel">
-                            <span v-if="type==='event'">Sign up for the master class</span>
+                            <span v-if="type==='event'">Sign up for the art class</span>
                             <span v-else>Sign up for the regular classes</span>
                         </div>
                         <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
