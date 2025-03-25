@@ -70,22 +70,6 @@ export const events = [
     },
     {
         id: 5,
-        eventName: 'CHERRY BLOSSOM ACRYLIC PAINTING',
-        startDate: null,
-        date: '2025-03-30',
-        time: '10:00 am - 1:00 pm',
-        day: null,
-        price: 75,
-        selected: false,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: '2.JPG',
-        modalDescription: 'Can not wait for the long-awaited warmth and blooms ? Create the atmosphere of nature`s magical awakening right in the studio!',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 6,
         eventName: 'FRAGILITY OF BEING ACRYLIC LANDSCAPE',
         startDate: null,
         date: '2025-04-04',
@@ -101,7 +85,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 7,
+        id: 6,
         eventName: 'FLAMINGO ACRYLIC PAINTING CLASS',
         startDate: null,
         date: '2025-04-06',
@@ -117,7 +101,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 8,
+        id: 7,
         eventName: 'SCARLET PETALS TEXTURE PAINTING CLASS',
         startDate: null,
         date: '2025-04-11',
@@ -133,7 +117,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 9,
+        id: 8,
         eventName: 'IN A DREAM ACRYLIC LANDSCAPE',
         startDate: null,
         date: '2025-04-13',
@@ -149,7 +133,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 10,
+        id: 9,
         eventName: 'GLASS OF RED, PLEASE',
         startDate: null,
         date: '2025-04-18',
@@ -165,7 +149,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 11,
+        id: 10,
         eventName: 'DOWNTOWN TEXTURE CLASS',
         startDate: null,
         date: '2025-04-19',
@@ -181,7 +165,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 12,
+        id: 11,
         eventName: '“PURE GOLD” ACRYLIC PAINTING',
         startDate: null,
         date: '2025-04-25',
@@ -197,7 +181,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 13,
+        id: 12,
         eventName: 'WALKING THROUGH LAVENDER FIELDS',
         startDate: null,
         date: '2025-04-27',
