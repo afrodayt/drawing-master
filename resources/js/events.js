@@ -30,7 +30,7 @@ export const events = [
         price: 70,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'There are no more slots available for this date',
         img: 'first.jpg',
         modalDescription: 'Having mastered the basic techniques and methods of painting with acrylic, convey all the amazing beauty of the local nature in a cozy studio under the guidance of a competent instructor.',
         modalIncludes: null,
