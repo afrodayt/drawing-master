@@ -78,7 +78,7 @@ export const events = [
         price: 70,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'There are no more slots available for this date',
         img: 'dream.PNG',
         modalDescription: 'Learn a painting technique in which the first colored layer of a painting shines through the top layers of paint, which gives the painting a certain tone and mood.',
         modalIncludes: null,
