@@ -75,7 +75,7 @@ export const events = [
         date: '2025-04-13',
         time: '10:00 am - 1:00 pm',
         day: null,
-        price: 70,
+        price: --,
         selected: false,
         location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
         description: 'There are no more slots available for this date',
