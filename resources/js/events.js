@@ -1,22 +1,18 @@
 export const events = [
     {
         id: 1,
-        eventName: 'ACRYLIC PAINTING COURSE TEXTURES AROUND US',
-        startDate: 'March 26 -',
-        date: '2025-04-23',
+        eventName: 'ACRYLIC PAINTING COURSE "REALISTIC FLOWERS"',
+        startDate: 'April 30 -',
+        date: '2025-05-28',
         time: '06:00 pm - 09:00 pm',
         day: "Wednesdays, ",
-        price: 325,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        price: 325 ,
+        location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'nature.jpg',
-        modalDescription: 'Turn nature into art with this acrylic painting course!Take your skills to the next level and discover the beauty of nature through acrylic painting.' +
+        img: '',
+        modalDescription: 'Discover the magic of floral painting in our beginner-friendly acrylic course.' +
             '<div class="modal-body-description-bold">\n' +
-            '                                In the course of acrylic painting “Textures around us” during five sessions we will study techniques to create natural textures, from the softness of clouds to the roughness of a rocky mountain:\n' +
-            '                            </div>\n' +
-            '                            - How to convey the depth and texture of water, clouds, stone, wheat field, fire <br>\n' +
-            '                            - Special methods of working with acrylics <br>\n' +
-            '                            - Painting using a variety of tools to create realistic natural images <br>\n',
+            '                                Step by step, you’ll learn how to create soft petals, rich colors, and lifelike depth — even if you’ve never held a brush before. No experience needed — just curiosity and creativity. Let’s bring flowers to life on canvas.\n' ,
         modalIncludes: null,
         modalDiscount: null,
     },
