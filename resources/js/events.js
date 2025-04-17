@@ -226,7 +226,7 @@ export const events = [
     },
     {
         id: 17,
-        eventName: 'INSTRUCTIONAL PAINTING ON POTTERY',
+        eventName: 'PAINTING ON POTTERY',
         startDate: null,
         date: '2025-05-29',
         time: '6:00 pm - 8:00 pm',
@@ -235,8 +235,8 @@ export const events = [
         selected: false,
         location: 'Crock a Doodle Calgary SW studio, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'IMG_6647.PNG',
-        modalDescription: 'We will be painting landscapes of Moraine Lake on a plate, enjoy creative environment, drink tea and have fun! An art instructor will provide you with step-by-step instructions and professional advises to ensure your plate design is a unique one-of-a-kind masterpiece. Once pieces are painted, they must be left in the studio for drying, glazing and kiln firing. They will be ready for a pick up within the week. After kiln plates are food safe and can be used in your household life or as a decor piece!.',
+        img: 'IMG_6648.PNG',
+        modalDescription: 'Paint landscapes of Moraine Lake on a 8″ D plate, enjoy creative environment, drink tea and have fun! An art instructor will provide you with step-by-step instructions and professional advises to ensure your plate design is a unique one-of-a-kind masterpiece. Once pieces are painted, they must be left in the studio for drying, glazing and kiln firing. They will be ready for a pick up within the week. After kiln plates are food safe and can be used in your household life or as a decor piece!.',
         modalIncludes: null,
         modalDiscount: null,
     }
