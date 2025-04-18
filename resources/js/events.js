@@ -50,7 +50,7 @@ export const events = [
     },
     {
         id: 4,
-        eventName: 'WHITE LOTUS',
+        eventName: 'WHITE LOTUS TEXTURE PAINTING',
         startDate: null,
         date: '2025-05-09',
         time: '6:00 pm - 9:00 pm',
@@ -178,7 +178,7 @@ export const events = [
     },
      {
         id: 14,
-        eventName: 'PROTEA FLOWER',
+        eventName: 'PROTEA FLOWER INTERIOR PAINTING',
         startDate: null,
         date: '2025-05-25',
         time: '10:00 am - 1:00 pm',
