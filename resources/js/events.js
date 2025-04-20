@@ -9,7 +9,7 @@ export const events = [
         price: 340 ,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: '',
+        img: 'flower.jpg',
         modalDescription: 'Discover the magic of floral painting in our beginner-friendly acrylic course.' +
             '<div class="modal-body-description-bold">\n' +
             '                                Step by step, you’ll learn how to create soft petals, rich colors, and lifelike depth — even if you’ve never held a brush before. No experience needed — just curiosity and creativity. Let’s bring flowers to life on canvas.\n' ,
