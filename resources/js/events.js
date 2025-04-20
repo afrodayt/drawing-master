@@ -2,8 +2,8 @@ export const events = [
     {
         id: 1,
         eventName: 'ACRYLIC PAINTING COURSE "REALISTIC FLOWERS" (5 sessions)',
-        startDate: 'April 30 -',
-        date: '2025-05-28',
+        startDate: 'May 7 -',
+        date: '2025-06-04',
         time: '06:00 pm - 09:00 pm',
         day: "Wednesdays, ",
         price: 340 ,
