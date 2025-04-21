@@ -6,7 +6,7 @@ export const events = [
         date: '2025-06-04',
         time: '06:00 pm - 09:00 pm',
         day: "Wednesdays, ",
-        price: 325,
+        price: 341.25,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
         img: 'flower.jpg',
