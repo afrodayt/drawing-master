@@ -34,22 +34,6 @@ export const events = [
     },
     {
         id: 3,
-        eventName: 'BORN TO BE FREE',
-        startDate: null,
-        date: '2025-05-04',
-        time: '10:00 am - 1:00 pm',
-        day: null,
-        price: 73.5,
-        selected: false,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'm2.PNG',
-        modalDescription: 'A stunning subject  to decorate your interior. The grace of this animal has never left anyone indifferent before.',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 4,
         eventName: 'WHITE LOTUS TEXTURE PAINTING',
         startDate: null,
         date: '2025-05-09',
@@ -65,7 +49,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 5,
+        id: 4,
         eventName: 'THREE SISTERS LANDSCAPE',
         startDate: null,
         date: '2025-05-11',
@@ -81,7 +65,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 6,
+        id: 5,
         eventName: 'LILAC BLOSSOM',
         startDate: null,
         date: '2025-05-16',
@@ -97,7 +81,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 7,
+        id: 6,
         eventName: 'BEFORE THE STORM',
         startDate: null,
         date: '2025-05-23',
@@ -113,7 +97,7 @@ export const events = [
         modalDiscount: null,
     },
      {
-        id: 8,
+        id: 7,
         eventName: 'PROTEA FLOWER INTERIOR PAINTING',
         startDate: null,
         date: '2025-05-25',
@@ -129,7 +113,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 9,
+        id: 8,
         eventName: 'SPIRIT ISLAND',
         startDate: null,
         date: '2025-05-30',
@@ -145,7 +129,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 10,
+        id: 9,
         eventName: 'VAN GOGH-INSPIRED',
         startDate: null,
         date: '2025-06-06',
@@ -161,7 +145,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 11,
+        id: 10,
         eventName: 'PAINTING ON POTTERY',
         startDate: null,
         date: '2025-05-29',
