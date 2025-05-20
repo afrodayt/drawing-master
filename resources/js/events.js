@@ -165,18 +165,18 @@ export const events = [
 export const infinityEvent = [
     {
         id: 1,
-        eventName: 'REGULAR ART CLASSES FOR ADULTS',
-        time: '3:00 pm - 6:00 pm',
+        eventName: 'PRIVATE ART CLASSES FOR ADULTS',
+        time: '3:00 pm - 5:00 pm',
         date: '%',
-        day: 'Saturday',
-        price: 50,
+        day: ,
+        price: 150,
         selected: false,
-        location: 'IN ART Studio, 1324 11 Ave SW, #202, Calgary',
+        location: '1324 11 Ave SW, #202, Calgary',
         description: 'All supplies provided',
         img: 'ph11.jpeg',
-        modalDescription: "We practice a variety of techniques, materials and subjects in our regular adult classes. Join our friendly creative team if you feel it's time to unleash the artist within you. ",
+        modalDescription: "Master visual arts through personalized lessons designed to your interests and skill level. Explore painting, drawing, and composition at your own pace in a relaxed and supportive environment. ",
         modalIncludes: null,
-        modalDiscount: "for one class ( there is a discount if you book 4 classes )"
+        modalDiscount: "for one class"
     },
     {
         id: 2,
