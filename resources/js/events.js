@@ -255,7 +255,7 @@ export const events = [
         modalDescription: 'Create a peaceful seascape featuring a boat, soft waves, and the warm glow of sunset.',
         modalIncludes: null,
         modalDiscount: null,
-    }
+    },
 ];
 
 export const infinityEvent = [
