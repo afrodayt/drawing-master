@@ -178,7 +178,7 @@ export const events = [
     },
     {
         id: 12,
-        eventName: 'WATERCOLOR CLASS “PET PORTRAIT”,
+        eventName: 'WATERCOLOR CLASS “PET PORTRAIT”',
         startDate: null,
         date: '2025-06-13',
         time: '6:00 pm - 9:00 pm',
@@ -194,7 +194,7 @@ export const events = [
     },
      {
         id: 13,
-        eventName: 'DOWNTOWN ACRYLIC CLASS”,
+        eventName: 'DOWNTOWN ACRYLIC CLASS”',
         startDate: null,
         date: '2025-06-18',
         time: '6:00 pm - 9:00 pm',
