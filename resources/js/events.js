@@ -173,7 +173,7 @@ export const infinityEvent = [
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'All supplies provided',
-        img: 'ph11.jpeg',
+        img: 'photo.jpg',
         modalDescription: "Master visual arts through personalized lessons designed to your interests and skill level. Explore painting, drawing, and composition at your own pace in a relaxed and supportive environment. ",
         modalIncludes: null,
         modalDiscount: "for one class"
