@@ -168,7 +168,7 @@ export const infinityEvent = [
         eventName: 'PRIVATE ART CLASSES FOR ADULTS',
         time: '3:00 pm - 5:00 pm',
         date: '%',
-        day: ,
+        day: 'Monday - Saturday',
         price: 150,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
