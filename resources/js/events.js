@@ -256,6 +256,23 @@ export const events = [
         modalIncludes: null,
         modalDiscount: null,
     },
+    {
+        id: 17,
+        eventName: 'ACRYLIC PAINTING COURSE "REALISTIC FLOWERS" (5 sessions)',
+        startDate: 'June 5 -',
+        date: '2025-07-03',
+        time: '03:00 pm - 06:00 pm',
+        day: "Thursdays, ",
+        price: 341.25,
+        location: '1324 11 Ave SW, #202, Calgary',
+        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        img: 'flower.jpg',
+        modalDescription: 'Discover the magic of floral painting in our beginner-friendly acrylic course.' +
+            '<div class="modal-body-description-bold">\n' +
+            '                                Step by step, you’ll learn how to create soft petals, rich colors, and lifelike depth — even if you’ve never held a brush before. No experience needed — just curiosity and creativity. Let’s bring flowers to life on canvas.\n' ,
+        modalIncludes: null,
+        modalDiscount: null,
+    },
 ];
 
 export const infinityEvent = [
