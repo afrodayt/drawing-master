@@ -27,5 +27,10 @@ export default defineConfig({
             'img': path.resolve(__dirname, 'public/assets/img'),
         },
     },
+     css: {
+        postcss: {
+          config: './postcss.config.mjs'
+        }
+    }
 });
 

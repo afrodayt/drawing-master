@@ -54,6 +54,7 @@ return [
     | your application so that it is used when running Artisan tasks.
     |
     */
+    'frontend_url' => env('WEBSITE_URL'),
 
     'url' => env('APP_URL', 'http://localhost'),
 
@@ -184,5 +185,4 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
-
 ];

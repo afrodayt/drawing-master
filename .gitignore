@@ -17,3 +17,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/.vs
+stripe-cli-linux-x86_64.tar.gz
+stripe-cli.tar.gz
