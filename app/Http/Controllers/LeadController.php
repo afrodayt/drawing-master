@@ -1,35 +1,64 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\Lead;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
 
 class LeadController extends Controller
 {
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
-            'email' => 'required|string|max:255',
-            'message' => 'required|string|max:1000',
+            'name'                    => 'required|string|max:255',
+            'phone'                   => 'required|string|max:15',
+            'email'                   => 'required|string|max:255',
+            'message'                 => 'required|string|max:1000',
+            'selectedEvent'           => 'sometimes|array',
+            'selectedEvent.eventName' => 'sometimes|required_with:selectedEvent|string',
+            'selectedEvent.date'      => 'sometimes|required_with:selectedEvent|string',
+            'selectedEvent.time'      => 'sometimes|required_with:selectedEvent|string',
+            'selectedEvent.price'     => 'sometimes|required_with:selectedEvent|numeric',
+            'selectedEvent.location'  => 'sometimes|required_with:selectedEvent|string',
+            'security.nonce'          => 'required|string|min:32|max:64', // Добавляем валидацию
         ]);
 
-        // Получаем объект selectedEvent напрямую без валидации
         $selectedEvent = $request->input('selectedEvent');
 
-        // Отправка сообщения в Telegram
-        $this->sendMessageToTelegram($validated, $selectedEvent);
+        $leadData = [
+            'name'           => $validated['name'],
+            'phone'          => $validated['phone'],
+            'email'          => $validated['email'],
+            'message'        => $validated['message'],
+            'payment_status' => 'pending',
+            'security_nonce' => $validated['security']['nonce'], // Сохраняем nonce
+        ];
 
-        return response()->json(['message' => 'Lead created successfully'], 201);
+        if ($selectedEvent) {
+            $leadData = array_merge($leadData, [
+                'event_id'       => $selectedEvent['id'] ?? null,
+                'event_name'     => $selectedEvent['eventName'] ?? null,
+                'event_date'     => $selectedEvent['date'] === '%' ? 'Every' : ($selectedEvent['date'] ?? null),
+                'event_time'     => $selectedEvent['time'] ?? null,
+                'event_price'    => $selectedEvent['price'] ?? null,
+                'event_location' => $selectedEvent['location'] ?? null,
+            ]);
+        }
+
+        $lead = Lead::create($leadData);
+
+        return response()->json([
+            'message' => 'Lead created successfully',
+            'leadId'  => $lead->id,
+        ], 201);
     }
-
+}
+/*
+    {
     private function sendMessageToTelegram($data, $selectedEvent)
     {
         $client = new Client();
-        $token = env('TELEGRAM_BOT_TOKEN'); // Получаем токен из .env
-        $chatId = env('TELEGRAM_CHAT_ID'); // Получаем chat_id из .env
+        $token = env('TELEGRAM_BOT_TOKEN');
+        $chatId = env('TELEGRAM_CHAT_ID');
 
         $message = "New order:\n";
         $message .= "Name: {$data['name']}\n";
@@ -55,4 +84,5 @@ class LeadController extends Controller
 
         return $response;
     }
-}
+    */
+// }

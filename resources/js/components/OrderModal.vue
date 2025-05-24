@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="modal-title fs-5 text-center text-lg-start" id="staticBackdropLabel">
-                            <span v-if="type==='event'">Sign up for the art class</span>
+                            <span v-if="type === 'event'">Sign up for the art class</span>
                             <span v-else>Sign up for the regular classes</span>
                         </div>
                         <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
@@ -15,7 +15,7 @@
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon-date.svg" alt="date">
-                            Date: {{ getFormatedDate(selectedEvent.date) }} {{selectedEvent.day}}
+                            Date: {{ getFormatedDate(selectedEvent.date) }} {{ selectedEvent.day }}
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon_time.svg" alt="time">
@@ -27,7 +27,8 @@
                         </div>
                         <div class="modal-body-title">What's Included:</div>
                         <div class="modal-body-description">
-                            All painting supplies provided <span v-if="type==='event'">+ snacks and drinks</span><span v-else></span> for absolute relaxation and immersion in
+                            All painting supplies provided <span v-if="type === 'event'">+ snacks and drinks</span><span
+                                v-else></span> for absolute relaxation and immersion in
                             the friendly atmosphere of creativity
                         </div>
                         <div class="modal-body-description gap-2 d-flex align-items-center">
@@ -59,9 +60,11 @@
                             <label for="message" class="modal-body-label">
                                 Add Your Message<span class="required">*</span>
                             </label>
-                            <textarea id="message" v-model="message" class="modal-body-input modal-body-input-text" required></textarea>
+                            <textarea id="message" v-model="message" class="modal-body-input modal-body-input-text"
+                                required></textarea>
                             <div class="d-flex justify-content-center">
-                                <button type="submit" :disabled="isButtonDisabled && loading" class="modal-body-button">Send</button>
+                                <button type="submit" :disabled="isButtonDisabled && loading"
+                                    class="modal-body-button">Proceed to check out</button>
                             </div>
                         </form>
                     </div>
@@ -73,10 +76,17 @@
 </template>
 
 <script>
-
 import { EventBus } from '@/eventBus';
-import {events, infinityEvent} from "@/events.js";
+import { events, infinityEvent } from "@/events.js";
 import moment from "moment/moment.js";
+import { loadStripe } from '@stripe/stripe-js';
+
+// Константы для безопасности
+const STRIPE_PK = 'pk_test_51R8BnjHFbZBBzIhnmled958eFHg2qBs6EI64NSihBOk7HfAfbpnCJPYAiOHzy1XhddLWIPEUWGeEeOGA0AKBVvoF00jzLFDOWc';
+const API_ENDPOINTS = {
+    CHECKOUT: '/api/create-checkout-session'
+};
+const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.content;
 
 export default {
     name: 'OrderModal',
@@ -92,86 +102,159 @@ export default {
             loading: false,
             selectedEvent: {},
             type: "",
+            stripe: null,
+            paymentCompleted: false,
+            securityNonce: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+            timestamp: Date.now()
         }
     },
-
     computed: {
         isButtonDisabled() {
-            return this.name.trim() === '' || this.email.trim() === '' || this.message.trim() === '';
+            return this.name.trim() === '' ||
+                this.email.trim() === '' ||
+                !this.validateEmail(this.email) ||
+                this.message.trim() === '';
         },
     },
-
     methods: {
+        validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        },
+        sanitizeInput(text) {
+            return text.replace(/<[^>]*>?/gm, '');
+        },
         getFormatedDate(date) {
-            if (date === "%") {
-                return "Every"
-            }
+            if (date === "%") return "Every";
             return moment(date).format("MMMM D");
         },
         openModal(id, type) {
             this.type = type;
-            if (type === "event") {
-                this.selectedEvent = this.events.find((event) => event.id === id);
-            } else {
-                this.selectedEvent = this.infinityEvent.find((event) => event.id === id);
-            }
+            this.selectedEvent = type === "event"
+                ? this.events.find(event => event.id === id)
+                : this.infinityEvent.find(event => event.id === id);
             document.body.style.overflow = 'hidden';
             this.isVisible = true;
         },
         closeModal() {
-            this.isVisible = false;
-            document.body.style.overflow = '';
-            this.resetForm();
+            if (this.paymentCompleted) {
+                window.location.href = '/thank-you';
+            } else {
+                this.isVisible = false;
+                document.body.style.overflow = '';
+                this.resetForm();
+            }
         },
         resetForm() {
             this.name = '';
             this.phone = '';
             this.email = '';
             this.message = '';
+            this.paymentCompleted = false;
         },
-
         async submitOrder() {
+            if (this.isButtonDisabled) return;
+
             this.loading = true;
 
-            const leadData = {
-                name: this.name,
-                phone: this.phone,
-                email: this.email,
-                message: this.message,
-                selectedEvent: this.selectedEvent,
+            try {
+
+                const sessionResponse = await this.createPaymentSession();
+
+                // Дополнительная проверка перед редиректом
+                if (!this.stripe || !sessionResponse?.sessionId) {
+                    throw new Error('Payment system error');
+                }
+
+                const result = await this.stripe.redirectToCheckout({
+                    sessionId: sessionResponse.sessionId
+                });
+
+                if (result.error) {
+                    throw new Error(result.error.message);
+                }
+
+            } catch (error) {
+                console.error('Payment error:', error);
+                EventBus.$emit('show-notification', {
+                    type: 'error',
+                    message: error.message.replace(/<\/?[^>]+(>|$)/g, "")
+                });
+            } finally {
+                this.loading = false;
+            }
+        },
+        async createPaymentSession() {
+            const payload = {
+                price: this.selectedEvent.price,
+                eventId: this.selectedEvent.id,
+                eventName: this.sanitizeInput(this.selectedEvent.eventName),
+                eventDate: this.selectedEvent.date,
+                eventTime: this.selectedEvent.time,
+                eventLocation: this.sanitizeInput(this.selectedEvent.location),
+                name: this.sanitizeInput(this.name),
+                email: this.sanitizeInput(this.email),
+                phone: this.sanitizeInput(this.phone),
+                message: this.sanitizeInput(this.message),
+                securityNonce: this.securityNonce,
+                timestamp: this.timestamp
             };
 
-            await fetch('/api/leads', {
+            const response = await fetch(API_ENDPOINTS.CHECKOUT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': CSRF_TOKEN,
+                    'X-Request-Nonce': this.securityNonce
                 },
-                body: JSON.stringify(leadData),
-            })
-                .then(response => {
-                    if (response.ok) {
-                        window.location.href = '/thank-you';
-                    } else {
-                        console.error('Ошибка при отправке данных:', response.statusText);
-                    }
-                })
-                .catch(error => {
-                    console.error('Ошибка:', error);
-                });
+                body: JSON.stringify(payload),
+                credentials: 'same-origin'
+            });
 
-            this.loading = false;
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Payment session error');
+            }
+
+            return await response.json();
         }
     },
-    mounted() {
-        EventBus.$on('openOrderModal', (id) => {
-            this.openModal(id); // Открываем модальное окно с переданным id
-        });
+    async mounted() {
+        try {
+            // Ленивая загрузка Stripe
+            this.stripe = await loadStripe(STRIPE_PK, {
+                betas: ['checkout_beta_4'],
+                locale: 'en'
+            });
+
+            EventBus.$on('openOrderModal', (id, type) => {
+                this.openModal(id, type);
+            });
+
+            // Безопасная обработка URL параметров
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('session_id')) {
+                this.paymentCompleted = true;
+                this.closeModal();
+
+                // Очистка URL без перезагрузки
+                const cleanUrl = window.location.origin + window.location.pathname;
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
+        } catch (error) {
+            console.error('Stripe initialization error:', error);
+            EventBus.$emit('show-notification', {
+                type: 'error',
+                message: 'Payment system is currently unavailable'
+            });
+        }
     },
     beforeDestroy() {
-        EventBus.$off('openOrderModal'); // Отписываемся от событий, чтобы избежать утечек памяти
-    },
+        EventBus.$off('openOrderModal');
+    }
 };
 </script>
+
 
 <style scoped lang="less">
 ::v-deep .modal-body-description-bold {
@@ -187,9 +270,11 @@ export default {
     &-dialog {
         max-width: 800px;
     }
+
     &-header {
         border: none;
     }
+
     &-header {
         position: relative;
         display: flex;
@@ -200,11 +285,13 @@ export default {
             padding: 60px 0 0 0;
         }
     }
+
     .btn-close {
         position: absolute;
         right: 27px;
         top: 27px;
     }
+
     &-title {
         font-family: Cormorant Garamond, serif;
         font-size: 42px !important;
@@ -217,6 +304,7 @@ export default {
             margin-bottom: 20px;
         }
     }
+
     &-body {
         padding: 0 40px 50px 40px;
 
@@ -236,7 +324,9 @@ export default {
                 margin-bottom: 10px;
             }
         }
-        &-description, &-information {
+
+        &-description,
+        &-information {
             font-family: Montserrat, serif;
             font-size: 15px;
             font-weight: 400;
@@ -248,6 +338,7 @@ export default {
                 margin-bottom: 8px;
             }
         }
+
         &-description {
             margin-bottom: 10px;
 
@@ -255,6 +346,7 @@ export default {
                 margin-bottom: 20px;
             }
         }
+
         &-label {
             font-family: Montserrat, serif;
             font-size: 14px;
@@ -262,6 +354,7 @@ export default {
             line-height: 17px;
             margin-bottom: 10px;
         }
+
         &-input {
             font-family: Montserrat, serif;
             border: 1px solid rgb(185, 185, 185);
@@ -269,6 +362,7 @@ export default {
             height: 50px;
             margin-bottom: 20px;
             padding: 0 20px;
+
             &-text {
                 font-family: Montserrat, serif;
                 padding: 3px 20px;
@@ -278,6 +372,7 @@ export default {
                 margin-bottom: 30px;
             }
         }
+
         &-button {
             font-family: Montserrat, serif;
             border-radius: 80px;
@@ -288,14 +383,15 @@ export default {
             font-size: 22px;
             font-weight: 500;
             line-height: 120%;
+
             &:disabled {
                 opacity: 50%;
             }
         }
+
         form {
             margin-top: 40px;
         }
     }
 }
-
 </style>

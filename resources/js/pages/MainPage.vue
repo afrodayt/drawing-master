@@ -81,7 +81,7 @@
                         <div class="f-carousel__track">
                             <div class="f-carousel__slide" v-for="event in events" v-if="expiredEvent(event.date)">
                                 <div class="events-block ">
-                                    <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img">
+                                    <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img" loading="lazy">
                                     <div class="events-block-container d-flex flex-column justify-content-between">
                                         <div class="events-block-container-content">
                                             <div class="events-block-title">{{event.eventName}}</div>
@@ -172,6 +172,7 @@
                                     :src="img"
                                     :alt="'students-paintings'+index"
                                     class="adaptive-img"
+                                    loading="lazy"
                                 />
                             </a>
                         </div>
@@ -191,6 +192,7 @@
                                     :src="img"
                                     :alt="'my-paintings'+index"
                                     class="adaptive-img"
+                                    loading="lazy"
                                 />
                             </a>
                         </div>
@@ -227,7 +229,7 @@
                     </div>
                     <div class="col-12 col-lg-6">
                         <img src="assets/img/photo-about-the-author.png" alt="photo-about-the-author"
-                             class="adaptive-img">
+                             class="adaptive-img" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -248,7 +250,7 @@
             <div class="message mb-200" id="contact">
                 <div class="row flex-column-reverse flex-lg-row justify-content-between">
                     <div class="col-12 col-lg-6">
-                        <img src="assets/img/paint-photo.png" alt="paint-photo" class="adaptive-img">
+                        <img src="assets/img/paint-photo.webp" alt="paint-photo" class="adaptive-img" loading="lazy">
                     </div>
                     <div class="col-12 col-lg-5 mb-5 mb-lg-0">
                         <div class="main-title text-center text-lg-start">Let’s get in touch</div>
@@ -356,16 +358,16 @@ export default {
             },
             images: {
                 student: [
-                    "assets/img/gallery/student_artwork/IMG_1819.jpg",
-                    "assets/img/gallery/student_artwork/IMG_1014.jpg",
-                    "assets/img/gallery/student_artwork/IMG_0552.JPG",
-                    "assets/img/gallery/student_artwork/IMG_3963.jpg",
+                    "assets/img/gallery/student_artwork/IMG_1819.webp",
+                    "assets/img/gallery/student_artwork/IMG_1014.webp",
+                    "assets/img/gallery/student_artwork/IMG_0552.webp",
+                    "assets/img/gallery/student_artwork/IMG_3963.webp",
                 ],
                 my : [
-                    "assets/img/gallery/my_artwork/IMG_1469.JPG",
-                    "assets/img/gallery/my_artwork/IMG_7640.jpg",
-                    "assets/img/gallery/my_artwork/IMG_5363.jpg",
-                    "assets/img/gallery/my_artwork/IMG_3931.jpg",
+                    "assets/img/gallery/my_artwork/IMG_1469.webp",
+                    "assets/img/gallery/my_artwork/IMG_7640.webp",
+                    "assets/img/gallery/my_artwork/IMG_5363.webp",
+                    "assets/img/gallery/my_artwork/IMG_3931.webp",
                 ]
             }
         };
@@ -494,11 +496,11 @@ export default {
 
 
     .banner {
-        background: url("assets/img/bg-main-banner.png") center bottom no-repeat;
+        background: url("assets/img/bg-main-banner.webp") center bottom no-repeat;
         background-size: cover;
         height: 700px;
         @media (max-width: 991px) {
-            background: url("assets/img/bg-mobile-banner.png") center bottom no-repeat;
+            background: url("assets/img/bg-mobile-banner.webp") center bottom no-repeat;
             background-size: cover;
             height: 520px;
         }
