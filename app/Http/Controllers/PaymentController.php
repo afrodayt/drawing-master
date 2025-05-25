@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use GuzzleHttp\Client;
 use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -32,7 +33,7 @@ class PaymentController extends Controller
                 'email'          => 'required|email',
                 'phone'          => 'required|string',
                 'message'        => 'nullable|string',
-                'security_nonce' => 'nullable|string', 
+                'security_nonce' => 'nullable|string',
             ]);
 
             $stripeSecret = config('services.stripe.secret');
@@ -117,6 +118,8 @@ class PaymentController extends Controller
                 'stripe_session_id' => $session->id,
             ]);
 
+            $this->sendTelegramMessage($lead, $session, 'pending');
+
             Log::info('Stripe session created successfully', [
                 'session_id' => $session->id,
                 'lead_id'    => $lead->id,
@@ -170,6 +173,44 @@ class PaymentController extends Controller
         }
 
         return implode(' | ', $description);
+    }
+
+    protected function sendTelegramMessage(Lead $lead, $session, string $paymentStatus = 'pending')
+    {
+        $client = new Client();
+        $token  = env('TELEGRAM_BOT_TOKEN');
+        $chatId = env('TELEGRAM_CHAT_ID');
+
+        $message = "🧾 *New Order #{$lead->id}*\n\n";
+        $message .= "*Client:* {$lead->name}\n";
+        $message .= "*Email:* {$lead->email}\n";
+        $message .= "*Phone:* {$lead->phone}\n\n";
+        $message .= "*Event:* {$lead->event_name}\n";
+        $message .= "*Date:* {$lead->event_date}\n";
+        $message .= "*Time:* {$lead->event_time}\n";
+        $message .= "*Location:* {$lead->event_location}\n";
+        $message .= "*Amount:* " . number_format($lead->event_price, 2) . " CAD\n\n";
+        $message .= "*Payment status:* " . ucfirst($paymentStatus) . "\n\n";
+        $message .= "*Message:*\n{$lead->message}\n\n";
+
+        try {
+            $client->post("https://api.telegram.org/bot{$token}/sendMessage", [
+                'form_params' => [
+                    'chat_id'    => $chatId,
+                    'text'       => $message,
+                    'parse_mode' => 'Markdown',
+                ],
+            ]);
+
+            Log::info('Telegram message sent for order', [
+                'lead_id' => $lead->id,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Failed to send Telegram message', [
+                'lead_id' => $lead->id,
+                'error'   => $e->getMessage(),
+            ]);
+        }
     }
 
 }

@@ -1,27 +1,26 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Stripe\Webhook;
-use GuzzleHttp\Client;
 
 class StripeWebhookController extends Controller
 {
     public function handle(Request $request)
     {
         $endpointSecret = config('services.stripe.webhook_secret');
-        $payload = $request->getContent();
-        $sigHeader = $request->header('Stripe-Signature');
+        $payload        = $request->getContent();
+        $sigHeader      = $request->header('Stripe-Signature');
 
         try {
             $event = Webhook::constructEvent($payload, $sigHeader, $endpointSecret);
         } catch (\Exception $e) {
             Log::error('Stripe webhook signature verification failed', [
-                'error' => $e->getMessage(),
-                'payload' => $payload
+                'error'   => $e->getMessage(),
+                'payload' => $payload,
             ]);
             return response('Webhook Error: ' . $e->getMessage(), 400);
         }
@@ -31,72 +30,76 @@ class StripeWebhookController extends Controller
 
             $lead = null;
 
-            if (!empty($session->metadata->lead_id)) {
+            if (! empty($session->metadata->lead_id)) {
                 $lead = Lead::find($session->metadata->lead_id);
             }
 
-            if (!$lead && !empty($session->metadata->security_nonce)) {
+            if (! $lead && ! empty($session->metadata->security_nonce)) {
                 $lead = Lead::where('security_nonce', $session->metadata->security_nonce)->first();
             }
 
-            if (!$lead) {
+            if (! $lead) {
                 Log::error('Lead not found for Stripe session', [
                     'session_id' => $session->id,
-                    'metadata' => $session->metadata
+                    'metadata'   => $session->metadata,
                 ]);
                 return response('Lead not found', 404);
             }
 
             $lead->update([
-                'payment_status' => 'paid',
-                'event_price' => $session->amount_total / 100,
+                'payment_status'        => 'paid',
+                'event_price'           => $session->amount_total / 100,
+                'stripe_session_id'    => $session->id,
                 'stripe_payment_intent' => $session->payment_intent,
             ]);
 
-            $this->sendTelegramMessage($lead, $session);
+            $this->sendTelegramMessage($lead, $session, 'paid');
         }
 
         return response('Webhook handled', 200);
     }
 
-    protected function sendTelegramMessage(Lead $lead, $session)
+    protected function sendTelegramMessage(Lead $lead, $session, string $paymentStatus = 'pending')
     {
         $client = new Client();
-        $token = env('TELEGRAM_BOT_TOKEN');
+        $token  = env('TELEGRAM_BOT_TOKEN');
         $chatId = env('TELEGRAM_CHAT_ID');
 
-        $message = "🧾 *Новый заказ #{$lead->id}*\n\n";
-        $message .= "*Клиент:* {$lead->name}\n";
+        $message = "🧾 *New Order #{$lead->id}*\n\n";
+        $message .= "*Client:* {$lead->name}\n";
         $message .= "*Email:* {$lead->email}\n";
-        $message .= "*Телефон:* {$lead->phone}\n\n";
-        $message .= "*Мероприятие:* {$lead->event_name}\n";
-        $message .= "*Дата:* {$lead->event_date}\n";
-        $message .= "*Время:* {$lead->event_time}\n";
-        $message .= "*Место:* {$lead->event_location}\n";
-        $message .= "*Сумма:* " . number_format($lead->event_price, 2) . " CAD\n\n";
-        $message .= "*Сообщение:*\n{$lead->message}\n\n";
-        $message .= "*ID платежа:* `{$session->payment_intent}`";
+        $message .= "*Phone:* {$lead->phone}\n\n";
+        $message .= "*Event:* {$lead->event_name}\n";
+        $message .= "*Date:* {$lead->event_date}\n";
+        $message .= "*Time:* {$lead->event_time}\n";
+        $message .= "*Location:* {$lead->event_location}\n";
+        $message .= "*Amount:* " . number_format($lead->event_price, 2) . " CAD\n\n";
+        $message .= "*Payment status:* " . ucfirst($paymentStatus) . "\n\n";
+        $message .= "*Message:*\n{$lead->message}\n\n";
+        $message .= "*Payment ID:* `{$session->payment_intent}`";
 
         try {
             $client->post("https://api.telegram.org/bot{$token}/sendMessage", [
                 'form_params' => [
-                    'chat_id' => $chatId,
-                    'text' => $message,
+                    'chat_id'    => $chatId,
+                    'text'       => $message,
                     'parse_mode' => 'Markdown',
                 ],
             ]);
 
             Log::info('Telegram message sent for order', [
-                'lead_id' => $lead->id
+                'lead_id' => $lead->id,
+                'payment_status' => $paymentStatus,
             ]);
         } catch (\Exception $e) {
             Log::error('Failed to send Telegram message', [
                 'lead_id' => $lead->id,
-                'error' => $e->getMessage()
+                'error'   => $e->getMessage(),
             ]);
         }
     }
 }
+
 
 
     // protected function sendPlainTextEmail(Lead $lead, $session)

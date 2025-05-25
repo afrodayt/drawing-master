@@ -18,6 +18,9 @@ class Lead extends Model
         'event_price',
         'event_location',
         'payment_status',
-        'security_nonce'
+        'security_nonce',
+        'stripe_session_id',
+        'stripe_payment_intent'
     ];
 }
+
