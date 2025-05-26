@@ -273,6 +273,23 @@ export const events = [
         modalIncludes: null,
         modalDiscount: null,
     },
+    {
+        id: 18,
+        eventName: 'ACRYLIC PAINTING COURSE "TEXTURES AROUND US" (5 sessions)',
+        startDate: 'June 14 -',
+        date: '2025-07-12',
+        time: '03:00 pm - 06:00 pm',
+        day: "Saturdays, ",
+        price: 341.25,
+        location: '1324 11 Ave SW, #202, Calgary',
+        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        img: '',
+        modalDescription: 'Learn techniques to create natural textures, from the softness of clouds to the roughness of a rocky mountain.' +
+            '<div class="modal-body-description-bold">\n' +
+            '                                In this course you will learn:how to convey the depth and texture of water, clouds, mountains, and various trees; special techniques of working with acrylic paints; painting using various tools to create realistic natural images.\n' ,
+        modalIncludes: null,
+        modalDiscount: null,
+    },
 ];
 
 export const infinityEvent = [
