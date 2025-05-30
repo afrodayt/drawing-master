@@ -283,7 +283,7 @@ export const events = [
         price: 341.25,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'Acrylic painting course.jpg',
+        img: '',
         modalDescription: 'Learn techniques to create natural textures, from the softness of clouds to the roughness of a rocky mountain.' +
             '<div class="modal-body-description-bold">\n' +
             '                                In this course you will learn:how to convey the depth and texture of water, clouds, mountains, and various trees; special techniques of working with acrylic paints; painting using various tools to create realistic natural images.\n' ,
