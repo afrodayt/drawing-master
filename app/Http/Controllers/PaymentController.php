@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers;
-use GuzzleHttp\Client;
+
 use App\Models\Lead;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Stripe\Checkout\Session;
@@ -63,19 +64,16 @@ class PaymentController extends Controller
                 'security_nonce' => $validated['security_nonce'], // Добавляем в метаданные
             ];
 
-            // Замена % на Every для даты события
             if ($metadata['eventDate'] === '%') {
                 $metadata['eventDate'] = 'Every';
             }
 
-            // Санитизация метаданных
             $metadata = array_map(function ($value) {
                 return is_string($value) ? strip_tags($value) : $value;
             }, $metadata);
 
             Log::debug('Creating Stripe session with metadata:', $metadata);
 
-            // Создаем запись в leads перед сессией Stripe
             $lead = Lead::create([
                 'name'           => $validated['name'],
                 'email'          => $validated['email'],
@@ -109,16 +107,23 @@ class PaymentController extends Controller
                 'cancel_url'           => $frontendUrl . '/?canceled=true',
                 'customer_email'       => $validated['email'],
                 'metadata'             => array_merge($metadata, [
-                    'lead_id' => $lead->id, // Добавляем ID лида в метаданные Stripe
+                    'lead_id' => $lead->id,
                 ]),
             ]);
 
-            // Обновляем lead с session_id
             $lead->update([
                 'stripe_session_id' => $session->id,
             ]);
 
-            $this->sendTelegramMessage($lead, $session, 'pending');
+            if ($request->input('subscribe')) {
+                // Subscription::updateOrCreate(
+                //     ['email' => $validated['email']],
+                //     ['name' => $validated['name'], 'subscribed' => true]
+                // );
+                $this->sendToGoogleSheet($lead);
+            }
+
+            // $this->sendTelegramMessage($lead, $session, 'pending');
 
             Log::info('Stripe session created successfully', [
                 'session_id' => $session->id,
@@ -209,6 +214,57 @@ class PaymentController extends Controller
             Log::error('Failed to send Telegram message', [
                 'lead_id' => $lead->id,
                 'error'   => $e->getMessage(),
+            ]);
+        }
+    }
+
+    private function sendToGoogleSheet(Lead $lead)
+    {
+        $client = new \Google_Client();
+        $client->setApplicationName('Art Shuhai Google Sheets');
+        $client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
+        $client->setAuthConfig(storage_path('app/google/credentials.json'));
+        $client->setAccessType('offline');
+
+        $service = new \Google_Service_Sheets($client);
+
+        $spreadsheetId = env('GOOGLE_SHEET_ID');
+        $range = 'C2:C'; // Range where emails are stored
+
+        try {
+            // Get existing emails from the sheet
+            $existing = $service->spreadsheets_values->get($spreadsheetId, $range);
+            $emails   = collect($existing->getValues())->flatten()->toArray();
+
+            // Skip if email already exists
+            if (in_array($lead->email, $emails)) {
+                \Log::info('Google Sheet: email already exists, skipping.', ['email' => $lead->email]);
+                return;
+            }
+
+            // Prepare values to insert
+            $values = [
+                [
+                    now()->toDateTimeString(),
+                    $lead->name,
+                    $lead->email,
+                ],
+            ];
+
+            $body = new \Google_Service_Sheets_ValueRange([
+                'values' => $values,
+            ]);
+
+            $params = ['valueInputOption' => 'USER_ENTERED'];
+
+            // Append the new row
+            $service->spreadsheets_values->append($spreadsheetId, 'A1', $body, $params);
+
+            \Log::info('Google Sheet: data successfully added.', ['lead_id' => $lead->id]);
+        } catch (\Exception $e) {
+            \Log::error('Google Sheet: failed to add data', [
+                'error'   => $e->getMessage(),
+                'lead_id' => $lead->id,
             ]);
         }
     }
