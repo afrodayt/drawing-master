@@ -88,7 +88,7 @@ import moment from "moment/moment.js";
 import { loadStripe } from '@stripe/stripe-js';
 
 // Константы для безопасности
-const STRIPE_PK = 'pk_test_51R8BnjHFbZBBzIhnmled958eFHg2qBs6EI64NSihBOk7HfAfbpnCJPYAiOHzy1XhddLWIPEUWGeEeOGA0AKBVvoF00jzLFDOWc';
+const STRIPE_PK = 'pk_live_51R8BnjHFbZBBzIhnPo2Qvr4XZbDlvFZPpcLCSEpybRIuJb3ZF9HBDm3cSGoqF4kbqWfjgiw3yQYKcXqo5jcgdAax00YHBr5HdI';
 const API_ENDPOINTS = {
     CHECKOUT: '/api/create-checkout-session'
 };
