@@ -62,6 +62,12 @@
                             </label>
                             <textarea id="message" v-model="message" class="modal-body-input modal-body-input-text"
                                 required></textarea>
+                            <div class="form-check custom-check">
+                                <input class="form-check-input" type="checkbox" id="subscribe" v-model="subscribe">
+                                <label class="form-check-label" for="subscribe">
+                                    Subscribe to updates and new events
+                                </label>
+                            </div>
                             <div class="d-flex justify-content-center">
                                 <button type="submit" :disabled="isButtonDisabled && loading"
                                     class="modal-body-button">Proceed to check out</button>
@@ -82,7 +88,7 @@ import moment from "moment/moment.js";
 import { loadStripe } from '@stripe/stripe-js';
 
 // Константы для безопасности
-const STRIPE_PK = 'pk_live_51R8BnjHFbZBBzIhnPo2Qvr4XZbDlvFZPpcLCSEpybRIuJb3ZF9HBDm3cSGoqF4kbqWfjgiw3yQYKcXqo5jcgdAax00YHBr5HdI';
+const STRIPE_PK = 'pk_test_51R8BnjHFbZBBzIhnmled958eFHg2qBs6EI64NSihBOk7HfAfbpnCJPYAiOHzy1XhddLWIPEUWGeEeOGA0AKBVvoF00jzLFDOWc';
 const API_ENDPOINTS = {
     CHECKOUT: '/api/create-checkout-session'
 };
@@ -96,6 +102,7 @@ export default {
             phone: '',
             email: '',
             message: '',
+            subscribe: false,
             isVisible: false,
             events: events,
             infinityEvent: infinityEvent,
@@ -196,6 +203,7 @@ export default {
                 email: this.sanitizeInput(this.email),
                 phone: this.sanitizeInput(this.phone),
                 message: this.sanitizeInput(this.message),
+                subscribe: this.subscribe,
                 securityNonce: this.securityNonce,
                 timestamp: this.timestamp
             };
@@ -369,7 +377,6 @@ export default {
                 height: 100px;
                 border-radius: 35px;
                 resize: none;
-                margin-bottom: 30px;
             }
         }
 
@@ -393,5 +400,29 @@ export default {
             margin-top: 40px;
         }
     }
+
+    ::v-deep .form-check {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ::v-deep .form-check-input {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        border: 1px solid #999;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+    }
+
+    ::v-deep .form-check-label {
+        font-family: Montserrat, sans-serif;
+        font-size: 16px;
+    }
+
 }
 </style>
