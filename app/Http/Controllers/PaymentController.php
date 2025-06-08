@@ -157,6 +157,9 @@ class PaymentController extends Controller
         }
     }
 
+/**
+ * Формирует описание события для Stripe
+ */
     private function buildEventDescription(array $data): string
     {
         $description = [];
@@ -217,34 +220,29 @@ class PaymentController extends Controller
 
     private function sendToGoogleSheet(Lead $lead)
     {
-        $credentialsJson = env('GOOGLE_CREDENTIALS_JSON');
-
-        $credentialsPath = base_path('data/credentials.json');
-
-        if (! file_exists($credentialsPath)) {
-            $this->writeGoogleCredentialsJson();
-        }
-
         $client = new \Google_Client();
         $client->setApplicationName('Art Shuhai Google Sheets');
         $client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
-        $client->setAuthConfig($credentialsPath);
+        $client->setAuthConfig(storage_path('app/google/credentials.json'));
         $client->setAccessType('offline');
 
         $service = new \Google_Service_Sheets($client);
 
         $spreadsheetId = env('GOOGLE_SHEET_ID');
-        $range         = 'C2:C';
+        $range = 'C2:C'; // Range where emails are stored
 
         try {
+            // Get existing emails from the sheet
             $existing = $service->spreadsheets_values->get($spreadsheetId, $range);
             $emails   = collect($existing->getValues())->flatten()->toArray();
 
+            // Skip if email already exists
             if (in_array($lead->email, $emails)) {
                 \Log::info('Google Sheet: email already exists, skipping.', ['email' => $lead->email]);
                 return;
             }
 
+            // Prepare values to insert
             $values = [
                 [
                     now()->toDateTimeString(),
@@ -269,27 +267,6 @@ class PaymentController extends Controller
                 'lead_id' => $lead->id,
             ]);
         }
-    }
-
-    private function writeGoogleCredentialsJson()
-    {
-        $credentials = [
-            "type"                        => env('GOOGLE_TYPE'),
-            "project_id"                  => env('GOOGLE_PROJECT_ID'),
-            "private_key_id"              => env('GOOGLE_PRIVATE_KEY_ID'),
-            "private_key"                 => str_replace('\\n', "\n", env('GOOGLE_PRIVATE_KEY')), // заменяем \n на реальные переводы строк
-            "client_email"                => env('GOOGLE_CLIENT_EMAIL'),
-            "client_id"                   => env('GOOGLE_CLIENT_ID'),
-            "auth_uri"                    => env('GOOGLE_AUTH_URI'),
-            "token_uri"                   => env('GOOGLE_TOKEN_URI'),
-            "auth_provider_x509_cert_url" => env('GOOGLE_AUTH_PROVIDER_CERT_URL'),
-            "client_x509_cert_url"        => env('GOOGLE_CLIENT_CERT_URL'),
-            "universe_domain"             => env('GOOGLE_UNIVERSE_DOMAIN'),
-        ];
-
-        $path = base_path('data/credentials.json');
-        file_put_contents($path, json_encode($credentials, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-
     }
 
 }
