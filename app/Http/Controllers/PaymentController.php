@@ -219,7 +219,7 @@ class PaymentController extends Controller
     {
         $credentialsJson = env('GOOGLE_CREDENTIALS_JSON');
 
-        $credentialsPath = storage_path('app/google/credentials.json');
+        $credentialsPath = base_path('data/credentials.json');
 
         if (! file_exists($credentialsPath)) {
             $this->writeGoogleCredentialsJson();
@@ -287,8 +287,9 @@ class PaymentController extends Controller
             "universe_domain"             => env('GOOGLE_UNIVERSE_DOMAIN'),
         ];
 
-        $path = storage_path('app/google/credentials.json');
+        $path = base_path('data/credentials.json');
         file_put_contents($path, json_encode($credentials, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
     }
 
 }
