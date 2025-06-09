@@ -264,7 +264,7 @@ export const events = [
         date: '2025-07-12',
         time: '03:00 pm - 06:00 pm',
         day: "Saturdays, ",
-        price: 341.25,
+        price: 315,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
         img: 'Acrylic painting course.jpg',
