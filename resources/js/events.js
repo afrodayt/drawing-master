@@ -1,23 +1,6 @@
 export const events = [
     {
         id: 1,
-        eventName: 'ACRYLIC PAINTING COURSE "REALISTIC FLOWERS" (5 sessions)',
-        startDate: 'June 19 -',
-        date: '2025-07-17',
-        time: '06:00 pm - 09:00 pm',
-        day: "Wednesdays, ",
-        price: 315,
-        location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'flower.webp',
-        modalDescription: 'Discover the magic of floral painting in our beginner-friendly acrylic course.' +
-            '<div class="modal-body-description-bold">\n' +
-            '                                Step by step, you’ll learn how to create soft petals, rich colors, and lifelike depth — even if you’ve never held a brush before. No experience needed — just curiosity and creativity. Let’s bring flowers to life on canvas.\n' ,
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 2,
         eventName: 'WILD WEST IN WATERCOLOR',
         startDate: null,
         date: '2025-07-02',
@@ -33,7 +16,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 3,
+        id: 2,
         eventName: 'COWGIRL IN BLOOM ACRYLIC CLASS',
         startDate: null,
         date: '2025-07-06',
@@ -49,7 +32,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 4,
+        id: 3,
         eventName: '"EIFFEL VIEW" ACRYLIC PAINTING CLASS',
         startDate: null,
         date: '2025-07-09',
@@ -65,7 +48,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 5,
+        id: 4,
         eventName: 'SICILIAN LIGHT WATERCOLOR CLASS',
         startDate: null,
         date: '2025-07-11',
@@ -81,7 +64,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 6,
+        id: 5,
         eventName: 'ROAD TRIP VIBES ACRYLIC CLASS',
         startDate: null,
         date: '2025-07-16',
@@ -97,7 +80,7 @@ export const events = [
         modalDiscount: null,
     },
      {
-        id: 7,
+        id: 6,
         eventName: 'HUMMINGBIRD WATERCOLOR CLASS',
         startDate: null,
         date: '2025-07-18',
@@ -113,7 +96,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 8,
+        id: 7,
         eventName: 'JUICY SUMMER ACRYLIC CLASS',
         startDate: null,
         date: '2025-07-23',
@@ -129,7 +112,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 9,
+        id: 8,
         eventName: 'POSTCARD FROM EUROPE',
         startDate: null,
         date: '2025-07-25',
@@ -145,7 +128,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 10,
+        id: 9,
         eventName: 'RUSTIC GRACE',
         startDate: null,
         date: '2025-07-30',
@@ -161,23 +144,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 11,
-        eventName: '“IRISES” TEXTURE PASTE CLASS',
-        startDate: null,
-        date: '2025-06-11',
-        time: '6:00 pm - 9:00 pm',
-        day: null,
-        price: 73.5,
-        selected: false,
-        location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'irises.webp',
-        modalDescription: 'Learn the basics of textured painting, how to use a palette knife, and how to create expressive floral shapes',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-     {
-        id: 12,
+        id: 10,
         eventName: 'DOWNTOWN ACRYLIC CLASS”',
         startDate: null,
         date: '2025-06-18',
@@ -193,7 +160,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 13,
+        id: 11,
         eventName: 'SILENT FAREWELL LANDSCAPE',
         startDate: null,
         date: '2025-06-20',
@@ -209,7 +176,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 14,
+        id: 12,
         eventName: 'PEONIES IN BLOOM PAINTING',
         startDate: null,
         date: '2025-06-25',
@@ -225,7 +192,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 15,
+        id: 13,
         eventName: 'KISS OF THE TIDE SEASCAPE',
         startDate: null,
         date: '2025-06-27',
@@ -241,7 +208,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 16,
+        id: 14,
         eventName: 'ACRYLIC PAINTING COURSE "REALISTIC FLOWERS" (5 sessions)',
         startDate: 'July 31 -',
         date: '2025-08-28',
@@ -258,7 +225,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 17,
+        id: 15,
         eventName: 'ACRYLIC PAINTING COURSE "TEXTURES AROUND US" (5 sessions)',
         startDate: 'June 14 -',
         date: '2025-07-12',
