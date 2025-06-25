@@ -20,7 +20,8 @@ class Lead extends Model
         'payment_status',
         'security_nonce',
         'stripe_session_id',
-        'stripe_payment_intent'
+        'stripe_payment_intent',
+        'telegram_sent',
     ];
 }
 
