@@ -35,7 +35,10 @@ class StripeWebhookController extends Controller
             }
 
             if (! $lead && ! empty($session->metadata->security_nonce)) {
-                $lead = Lead::where('security_nonce', $session->metadata->security_nonce)->first();
+                $lead = Lead::where('security_nonce', $session->metadata->security_nonce)
+                    ->orderBy('id', 'desc')
+                    ->first();
+
             }
 
             if (! $lead) {
@@ -49,7 +52,7 @@ class StripeWebhookController extends Controller
             $lead->update([
                 'payment_status'        => 'paid',
                 'event_price'           => $session->amount_total / 100,
-                'stripe_session_id'    => $session->id,
+                'stripe_session_id'     => $session->id,
                 'stripe_payment_intent' => $session->payment_intent,
             ]);
 
@@ -88,7 +91,7 @@ class StripeWebhookController extends Controller
             ]);
 
             Log::info('Telegram message sent for order', [
-                'lead_id' => $lead->id,
+                'lead_id'        => $lead->id,
                 'payment_status' => $paymentStatus,
             ]);
         } catch (\Exception $e) {
@@ -100,40 +103,36 @@ class StripeWebhookController extends Controller
     }
 }
 
+// protected function sendPlainTextEmail(Lead $lead, $session)
+// {
+//     $emailText = "Новый заказ #{$lead->id}\n\n";
+//     $emailText .= "Клиент: {$lead->name}\n";
+//     $emailText .= "Email: {$lead->email}\n";
+//     $emailText .= "Телефон: {$lead->phone}\n\n";
 
+//     $emailText .= "Мероприятие: {$lead->event_name}\n";
+//     $emailText .= "Дата: {$lead->event_date}\n";
+//     $emailText .= "Время: {$lead->event_time}\n";
+//     $emailText .= "Место: {$lead->event_location}\n";
+//     $emailText .= "Сумма: " . number_format($lead->event_price, 2) . " CAD\n\n";
 
-    // protected function sendPlainTextEmail(Lead $lead, $session)
-    // {
-    //     $emailText = "Новый заказ #{$lead->id}\n\n";
-    //     $emailText .= "Клиент: {$lead->name}\n";
-    //     $emailText .= "Email: {$lead->email}\n";
-    //     $emailText .= "Телефон: {$lead->phone}\n\n";
-        
-    //     $emailText .= "Мероприятие: {$lead->event_name}\n";
-    //     $emailText .= "Дата: {$lead->event_date}\n";
-    //     $emailText .= "Время: {$lead->event_time}\n";
-    //     $emailText .= "Место: {$lead->event_location}\n";
-    //     $emailText .= "Сумма: " . number_format($lead->event_price, 2) . " CAD\n\n";
-        
-    //     $emailText .= "Сообщение:\n{$lead->message}\n\n";
-    //     $emailText .= "ID платежа: {$session->payment_intent}\n";
+//     $emailText .= "Сообщение:\n{$lead->message}\n\n";
+//     $emailText .= "ID платежа: {$session->payment_intent}\n";
 
-    //     try {
-    //         Mail::raw($emailText, function ($message) use ($lead) {
-    //             $message->to(config('mail.from.address'))
-    //                     ->subject("Новый заказ #{$lead->id}");
-    //         });
+//     try {
+//         Mail::raw($emailText, function ($message) use ($lead) {
+//             $message->to(config('mail.from.address'))
+//                     ->subject("Новый заказ #{$lead->id}");
+//         });
 
-    //         Log::info('Order confirmation email sent', [
-    //             'lead_id' => $lead->id,
-    //             'email' => $lead->email
-    //         ]);
-    //     } catch (\Exception $e) {
-    //         Log::error('Failed to send order confirmation email', [
-    //             'lead_id' => $lead->id,
-    //             'error' => $e->getMessage()
-    //         ]);
-    //     }
-    // }
-
-
+//         Log::info('Order confirmation email sent', [
+//             'lead_id' => $lead->id,
+//             'email' => $lead->email
+//         ]);
+//     } catch (\Exception $e) {
+//         Log::error('Failed to send order confirmation email', [
+//             'lead_id' => $lead->id,
+//             'error' => $e->getMessage()
+//         ]);
+//     }
+// }
