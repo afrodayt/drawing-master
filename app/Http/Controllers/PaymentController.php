@@ -27,11 +27,7 @@ class PaymentController extends Controller
                 'price'          => 'required|numeric',
                 'eventId'        => 'required|integer',
                 'eventName'      => 'required|string',
-                'eventDate'      => ['required', function ($attribute, $value, $fail) {
-                    if ($value !== '%' && ! strtotime($value)) {
-                        $fail('The ' . $attribute . ' field must be a valid date or "%".');
-                    }
-                }],
+                'eventDate'      => 'required|string',
                 'eventTime'      => 'required|string',
                 'eventLocation'  => 'required|string',
                 'name'           => 'required|string',
@@ -68,10 +64,6 @@ class PaymentController extends Controller
                 'security_nonce' => $validated['security_nonce'],
             ];
 
-            if ($metadata['eventDate'] === '%') {
-                $metadata['eventDate'] = 'Every';
-            }
-
             $metadata = array_map(function ($value) {
                 return is_string($value) ? strip_tags($value) : $value;
             }, $metadata);
@@ -79,10 +71,7 @@ class PaymentController extends Controller
             Log::debug('Creating Stripe session with metadata:', $metadata);
 
             $lead = Lead::where('security_nonce', $validated['security_nonce'])
-                ->orWhere(function ($query) use ($validated) {
-                    $query->where('email', $validated['email'])
-                        ->where('event_id', $validated['eventId']);
-                })
+                ->where('event_id', $validated['eventId'])
                 ->latest()
                 ->first();
 
@@ -191,7 +180,7 @@ class PaymentController extends Controller
         $description = [];
 
         if (! empty($data['eventDate'])) {
-            $date          = $data['eventDate'] === '%' ? 'Every' : $data['eventDate'];
+            $date = $data['eventDate'];
             $description[] = "Date: " . $date;
         }
 

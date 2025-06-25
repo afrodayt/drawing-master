@@ -15,7 +15,7 @@
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon-date.svg" alt="date">
-                            Date: {{ getFormatedDate(selectedEvent.date) }} {{ selectedEvent.day }}
+                            Date: {{ getFormattedEventDateForPayload(selectedEvent.date, selectedEvent.day) }}
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon_time.svg" alt="time">
@@ -88,7 +88,7 @@ import moment from "moment/moment.js";
 import { loadStripe } from '@stripe/stripe-js';
 
 // Константы для безопасности
-const STRIPE_PK = 'pk_live_51R8BnjHFbZBBzIhnPo2Qvr4XZbDlvFZPpcLCSEpybRIuJb3ZF9HBDm3cSGoqF4kbqWfjgiw3yQYKcXqo5jcgdAax00YHBr5HdI';
+const STRIPE_PK = 'pk_test_51R8BnjHFbZBBzIhnmled958eFHg2qBs6EI64NSihBOk7HfAfbpnCJPYAiOHzy1XhddLWIPEUWGeEeOGA0AKBVvoF00jzLFDOWc';
 const API_ENDPOINTS = {
     CHECKOUT: '/api/create-checkout-session'
 };
@@ -131,9 +131,13 @@ export default {
         sanitizeInput(text) {
             return text.replace(/<[^>]*>?/gm, '');
         },
-        getFormatedDate(date) {
-            if (date === "%") return "Every";
-            return moment(date).format("MMMM D");
+        getFormattedEventDateForPayload(date, day) {
+            if (date === '%') {
+                const cleanDay = day ? day.replace(/,\s*$/, '') : '';
+                return cleanDay ? `Every ${cleanDay}` : 'Every day';
+            }
+            const cleanDay = day ? day.replace(/,\s*$/, '') : '';
+            return cleanDay ? `${moment(date).format("MMMM D")} (${cleanDay})` : moment(date).format("MMMM D");
         },
         openModal(id, type) {
             this.type = type;
@@ -196,7 +200,7 @@ export default {
                 price: this.selectedEvent.price,
                 eventId: this.selectedEvent.id,
                 eventName: this.sanitizeInput(this.selectedEvent.eventName),
-                eventDate: this.selectedEvent.date,
+                eventDate: this.getFormattedEventDateForPayload(this.selectedEvent.date, this.selectedEvent.day),
                 eventTime: this.selectedEvent.time,
                 eventLocation: this.sanitizeInput(this.selectedEvent.location),
                 name: this.sanitizeInput(this.name),
