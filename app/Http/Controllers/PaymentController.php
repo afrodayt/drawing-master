@@ -103,17 +103,17 @@ class PaymentController extends Controller
                 ]);
             }
 
-            if ($lead->stripe_session_id) {
-                return response()->json([
-                    'sessionId'   => $lead->stripe_session_id,
-                    'checkoutUrl' => "https://checkout.stripe.com/pay/{$lead->stripe_session_id}",
-                    'leadId'      => $lead->id,
-                    'debug'       => [
-                        'mode'     => 'reused',
-                        'metadata' => $metadata,
-                    ],
-                ]);
-            }
+            // if ($lead->stripe_session_id) {
+            //     return response()->json([
+            //         'sessionId'   => $lead->stripe_session_id,
+            //         'checkoutUrl' => "https://checkout.stripe.com/pay/{$lead->stripe_session_id}",
+            //         'leadId'      => $lead->id,
+            //         'debug'       => [
+            //             'mode'     => 'reused',
+            //             'metadata' => $metadata,
+            //         ],
+            //     ]);
+            // }
 
             $session = Session::create([
                 'payment_method_types' => ['card'],
