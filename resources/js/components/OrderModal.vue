@@ -15,7 +15,7 @@
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon-date.svg" alt="date">
-                            Date: {{ getFormatedDate(selectedEvent.date) }} {{ selectedEvent.day }}
+                            Date: {{ getFormattedEventDateForPayload(selectedEvent.date, selectedEvent.day) }}
                         </div>
                         <div class="modal-body-information d-flex align-items-center gap-2">
                             <img src="assets/img/icon_time.svg" alt="time">
@@ -131,9 +131,13 @@ export default {
         sanitizeInput(text) {
             return text.replace(/<[^>]*>?/gm, '');
         },
-        getFormatedDate(date) {
-            if (date === "%") return "Every";
-            return moment(date).format("MMMM D");
+        getFormattedEventDateForPayload(date, day) {
+            if (date === '%') {
+                const cleanDay = day ? day.replace(/,\s*$/, '') : '';
+                return cleanDay ? `Every ${cleanDay}` : 'Every day';
+            }
+            const cleanDay = day ? day.replace(/,\s*$/, '') : '';
+            return cleanDay ? `${moment(date).format("MMMM D")} (${cleanDay})` : moment(date).format("MMMM D");
         },
         openModal(id, type) {
             this.type = type;
@@ -196,7 +200,7 @@ export default {
                 price: this.selectedEvent.price,
                 eventId: this.selectedEvent.id,
                 eventName: this.sanitizeInput(this.selectedEvent.eventName),
-                eventDate: this.selectedEvent.date,
+                eventDate: this.getFormattedEventDateForPayload(this.selectedEvent.date, this.selectedEvent.day),
                 eventTime: this.selectedEvent.time,
                 eventLocation: this.sanitizeInput(this.selectedEvent.location),
                 name: this.sanitizeInput(this.name),
