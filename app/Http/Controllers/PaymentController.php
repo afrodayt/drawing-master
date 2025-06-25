@@ -27,7 +27,11 @@ class PaymentController extends Controller
                 'price'          => 'required|numeric',
                 'eventId'        => 'required|integer',
                 'eventName'      => 'required|string',
-                'eventDate'      => 'required|date',
+                'eventDate'      => ['required', function ($attribute, $value, $fail) {
+                    if ($value !== '%' && ! strtotime($value)) {
+                        $fail('The ' . $attribute . ' field must be a valid date or "%".');
+                    }
+                }],
                 'eventTime'      => 'required|string',
                 'eventLocation'  => 'required|string',
                 'name'           => 'required|string',
@@ -61,7 +65,7 @@ class PaymentController extends Controller
                 'eventDate'      => $validated['eventDate'],
                 'eventTime'      => $validated['eventTime'],
                 'eventLocation'  => $validated['eventLocation'],
-                'security_nonce' => $validated['security_nonce'], // Добавляем в метаданные
+                'security_nonce' => $validated['security_nonce'],
             ];
 
             if ($metadata['eventDate'] === '%') {
@@ -74,20 +78,42 @@ class PaymentController extends Controller
 
             Log::debug('Creating Stripe session with metadata:', $metadata);
 
-            $lead = Lead::create([
-                'name'           => $validated['name'],
-                'email'          => $validated['email'],
-                'phone'          => $validated['phone'] ?? null,
-                'message'        => $validated['message'] ?? null,
-                'event_id'       => $validated['eventId'],
-                'event_name'     => $validated['eventName'],
-                'event_date'     => $validated['eventDate'],
-                'event_time'     => $validated['eventTime'],
-                'event_location' => $validated['eventLocation'],
-                'event_price'    => $validated['price'],
-                'payment_status' => 'pending',
-                'security_nonce' => $validated['security_nonce'],
-            ]);
+            $lead = Lead::where('security_nonce', $validated['security_nonce'])
+                ->orWhere(function ($query) use ($validated) {
+                    $query->where('email', $validated['email'])
+                        ->where('event_id', $validated['eventId']);
+                })
+                ->latest()
+                ->first();
+
+            if (! $lead) {
+                $lead = Lead::create([
+                    'name'           => $validated['name'],
+                    'email'          => $validated['email'],
+                    'phone'          => $validated['phone'] ?? null,
+                    'message'        => $validated['message'] ?? null,
+                    'event_id'       => $validated['eventId'],
+                    'event_name'     => $validated['eventName'],
+                    'event_date'     => $validated['eventDate'],
+                    'event_time'     => $validated['eventTime'],
+                    'event_location' => $validated['eventLocation'],
+                    'event_price'    => $validated['price'],
+                    'payment_status' => 'pending',
+                    'security_nonce' => $validated['security_nonce'],
+                ]);
+            }
+
+            if ($lead->stripe_session_id) {
+                return response()->json([
+                    'sessionId'   => $lead->stripe_session_id,
+                    'checkoutUrl' => "https://checkout.stripe.com/pay/{$lead->stripe_session_id}",
+                    'leadId'      => $lead->id,
+                    'debug'       => [
+                        'mode'     => 'reused',
+                        'metadata' => $metadata,
+                    ],
+                ]);
+            }
 
             $session = Session::create([
                 'payment_method_types' => ['card'],
@@ -182,6 +208,11 @@ class PaymentController extends Controller
 
     protected function sendTelegramMessage(Lead $lead, $session, string $paymentStatus = 'pending')
     {
+        if ($lead->telegram_sent) {
+            Log::info('Telegram already sent, skipping.', ['lead_id' => $lead->id]);
+            return;
+        }
+
         $client = new Client();
         $token  = env('TELEGRAM_BOT_TOKEN');
         $chatId = env('TELEGRAM_CHAT_ID');
@@ -206,6 +237,7 @@ class PaymentController extends Controller
                     'parse_mode' => 'Markdown',
                 ],
             ]);
+            $lead->update(['telegram_sent' => true]);
 
             Log::info('Telegram message sent for order', [
                 'lead_id' => $lead->id,
@@ -229,7 +261,7 @@ class PaymentController extends Controller
         $service = new \Google_Service_Sheets($client);
 
         $spreadsheetId = env('GOOGLE_SHEET_ID');
-        $range = 'C2:C'; // Range where emails are stored
+        $range         = 'C2:C'; // Range where emails are stored
 
         try {
             // Get existing emails from the sheet
