@@ -3,7 +3,7 @@ export const events = [
         id: 1,
         eventName: 'TROPICAL VIBE ACRYLIC CLASS',
         startDate: null,
-        date: '2025-07-02',
+        date: '2025-08-01',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 73.5,
