@@ -230,7 +230,7 @@ export const infinityEvent = [
     {
         id: 2,
         eventName: 'PRIVATE ART CLASSESES',
-        time: '1 hour',
+        time: '-',
         date: '%',
         day: 'Monday - Friday',
         price: 75,
@@ -240,6 +240,6 @@ export const infinityEvent = [
         img: 'adults.JPG',
         modalDescription: "Creativity, dreams, inspiration - the world of art awaits you! We practice a variety of techniques, materials and subjects in our classes. ",
         modalIncludes: null,
-        modalDiscount: "for one class"
+        modalDiscount: "for 1 hour"
     },
 ]
