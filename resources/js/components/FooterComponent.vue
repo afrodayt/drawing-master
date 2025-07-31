@@ -25,7 +25,7 @@
                     Follow us on social media
                 </div>
                 <div>
-                    <a href="https://www.instagram.com/art_shuhai/" target="_blank">
+                    <a href="https://www.instagram.com/shuhai_art_studio/" target="_blank">
                         <img src="assets/img/icon-instagram.svg" alt="logo-instagram">
                     </a>
                     <a href="https://www.facebook.com/people/ART-Shuhai/61562003400987/" target="_blank">
