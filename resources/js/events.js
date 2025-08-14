@@ -129,7 +129,7 @@ export const events = [
     },
     {
         id: 9,
-        eventName: 'BY THE ROCKY SHORES WATERCOLOR CLASS',
+        eventName: 'GOLD IN BLOOM',
         startDate: null,
         date: '2025-09-10',
         time: '6:00 pm - 9:00 pm',
@@ -138,8 +138,8 @@ export const events = [
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'rocks.PNG',
-        modalDescription: 'Focus on capturing the textures of rocks and water, where you’ll explore techniques to convey the rugged beauty of rocky shores and the fluid movement of waves through washes, dry brush, and subtle color blending.',
+        img: 'field.jpg',
+        modalDescription: 'An acrylic painting class where you’ll depict peaceful fields dotted with golden hay bales, using warm tones and textured brushstrokes.',
         modalIncludes: null,
         modalDiscount: null,
     {
@@ -160,7 +160,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 10,
+        id: 11,
         eventName: 'ACRYLIC PAINTING COURSE "TEXTURES AROUND US" (5 sessions)',
         startDate: 'June 14 -',
         date: '2025-07-12',
