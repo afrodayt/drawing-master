@@ -1,7 +1,7 @@
 export const events = [
     {
         id: 1,
-        eventName: '“ALREADY MEMORIES ACRYLIC CLASS',
+        eventName: '"ALREADY MEMORIES" ACRYLIC CLASS',
         startDate: null,
         date: '2025-09-03',
         time: '6:00 pm - 9:00 pm',
@@ -194,7 +194,7 @@ export const events = [
     },
     {
         id: 13,
-        eventName: 'WARM HOPES',
+        eventName: 'WARM HOPES WATERCOLOR WORKSHOP',
         startDate: null,
         date: '2025-09-26',
         time: '6:00 pm - 9:00 pm',
