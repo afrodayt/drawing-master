@@ -131,7 +131,7 @@ export const events = [
         id: 9,
         eventName: 'GOLD IN BLOOM',
         startDate: null,
-        date: '2025-09-10',
+        date: '2025-09-12',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
