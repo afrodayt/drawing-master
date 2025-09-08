@@ -1,6 +1,6 @@
 export const events = [
     {
-        id: 1,
+       id: 1,
         eventName: 'THROUGH THE MIST',
         startDate: null,
         date: '2025-09-28',
@@ -17,22 +17,6 @@ export const events = [
     },
     {
         id: 2,
-        eventName: 'LAKE LOUISE  ACRYLIC CLASS',
-        startDate: null,
-        date: '2025-08-23',
-        time: '3:00 pm - 6:00 pm',
-        day: null,
-        price: 73.5,
-        selected: false,
-        location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'louise.PNG',
-        modalDescription: 'Explore the beauty of our region through painting. Learn how to capture skies, mountains, lake, perspective, and color blending techniques.',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 3,
         eventName: 'ALMOST AUTUMN ACRYLIC LANDSCAPE',
         startDate: null,
         date: '2025-08-27',
@@ -48,7 +32,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 4,
+        id: 3,
         eventName: 'WHEN THE SKY CRIES ACRYLIC CLASS',
         startDate: null,
         date: '2025-08-29',
@@ -64,7 +48,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 5,
+        id: 4,
         eventName: 'SUN-LOVING ACRYLIC CLASS',
         startDate: null,
         date: '2025-09-05',
@@ -80,7 +64,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 6,
+        id: 5,
         eventName: 'BY THE ROCKY SHORES WATERCOLOR CLASS',
         startDate: null,
         date: '2025-09-10',
@@ -96,7 +80,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 7,
+        id: 6,
         eventName: 'GOLD IN BLOOM',
         startDate: null,
         date: '2025-09-12',
@@ -112,7 +96,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 8,
+        id: 7,
         eventName: 'ONE SKY FOR TWO ACRYLIC WORKSHOP',
         startDate: null,
         date: '2025-09-17',
@@ -128,7 +112,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 9,
+        id:8,
         eventName: 'COLORED BY AUTUMN ACRYLIC LANDSCAPE',
         startDate: null,
         date: '2025-09-19',
@@ -144,7 +128,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 10,
+        id: 9,
         eventName: 'WARM HOPES WATERCOLOR WORKSHOP',
         startDate: null,
         date: '2025-09-26',
@@ -160,7 +144,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 11,
+        id: 10,
         eventName: 'ACRYLIC PAINTING COURSE "REALISTIC FLOWERS" (5 sessions)',
         startDate: 'September 11 -',
         date: '2025-10-09',
@@ -177,7 +161,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 12,
+        id: 11,
         eventName: 'ACRYLIC PAINTING COURSE "TEXTURES AROUND US" (5 sessions)',
         startDate: 'June 14 -',
         date: '2025-07-12',
