@@ -142,7 +142,6 @@ export const events = [
         modalDescription: 'Paint rolling hills and distant mountains wrapped in the warm embrace of fall, using rich golden, amber, and crimson tones to bring the season’s colors to life on canvas.',
         modalIncludes: null,
         modalDiscount: null,
-        
     },
     {
         id: 10,
