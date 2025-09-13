@@ -137,7 +137,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'No seats available',
         img: 'air.PNG',
         modalDescription: 'Paint rolling hills and distant mountains wrapped in the warm embrace of fall, using rich golden, amber, and crimson tones to bring the season’s colors to life on canvas.',
         modalIncludes: null,
