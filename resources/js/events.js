@@ -154,7 +154,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'No seats available',
         img: 'woods.PNG',
         modalDescription: 'Immerse yourself in the calm mystery of nature as we capture a mist-covered forest. This workshop will guide you through layering soft washes, building depth, and portraying the delicate interplay between towering evergreens and drifting fog.',
         modalIncludes: null,
