@@ -115,7 +115,7 @@ export const events = [
         id: 8,
         eventName: 'ONE SKY FOR TWO ACRYLIC WORKSHOP',
         startDate: null,
-        date: '2025-09-26',
+        date: '2025-09-17',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
