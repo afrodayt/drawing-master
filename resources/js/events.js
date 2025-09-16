@@ -121,7 +121,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'No seats available',
         img: 'tent.PNG',
         modalDescription: 'You’ll paint a starlit mountain night with a glowing campfire and tent, using rich acrylic colors to convey the magic of sharing one sky and one moment together.',
         modalIncludes: null,
