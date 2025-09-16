@@ -129,22 +129,6 @@ export const events = [
     },
     {
         id: 9,
-        eventName: 'ONE SKY FOR TWO ACRYLIC WORKSHOP',
-        startDate: null,
-        date: '2025-09-17',
-        time: '6:00 pm - 9:00 pm',
-        day: null,
-        price: 78,
-        selected: false,
-        location: '1324 11 Ave SW, #202, Calgary',
-        description: 'One seat is available',
-        img: 'tent.PNG',
-        modalDescription: 'You’ll paint a starlit mountain night with a glowing campfire and tent, using rich acrylic colors to convey the magic of sharing one sky and one moment together.',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 10,
         eventName: 'COLORED BY AUTUMN ACRYLIC LANDSCAPE',
         startDate: null,
         date: '2025-09-19',
@@ -158,10 +142,9 @@ export const events = [
         modalDescription: 'Paint rolling hills and distant mountains wrapped in the warm embrace of fall, using rich golden, amber, and crimson tones to bring the season’s colors to life on canvas.',
         modalIncludes: null,
         modalDiscount: null,
-
     },
     {
-        id: 11,
+        id: 10,
         eventName: 'WALERCOLOR ATHABASCA FALLS',
         startDate: null,
         date: '2025-10-29',
@@ -177,7 +160,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 12,
+        id: 11,
         eventName: 'WARM HOPES WATERCOLOR WORKSHOP',
         startDate: null,
         date: '2025-09-26',
