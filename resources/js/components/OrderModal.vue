@@ -68,9 +68,30 @@
                                     Subscribe to updates and new events
                                 </label>
                             </div>
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center flex-column align-items-center mt-4">
                                 <button type="submit" :disabled="isButtonDisabled && loading"
                                     class="modal-body-button">Proceed to check out</button>
+                                <div class="cancellation-wrapper mt-3">
+                                    <button type="button" class="cancellation-btn">Cancellation Policy</button>
+                                    <div class="cancellation-tooltip">
+                                        <p>
+                                            At Shuhai Art Studio, we strive to create a welcoming and well-prepared
+                                            experience for every participant.
+                                            To ensure fairness and to cover the costs involved in preparing for each
+                                            class, we kindly ask you to review our cancellation terms:
+                                        </p>
+                                        <ul>
+                                            <li>Cancellations 2 or more days before the workshop – a refund will be
+                                                issued minus 20% to cover materials and administrative expenses.</li>
+                                            <li>Cancellations within 24 hours of the workshop – 50% of the fee will be
+                                                withheld, as supplies and studio preparation have already been arranged.
+                                            </li>
+                                            <li>Same-day cancellations or no-shows – the payment is non-refundable, as
+                                                your reserved spot and materials cannot be reassigned.</li>
+                                        </ul>
+                                        <p class="mb-0">We appreciate your understanding and continued support of our studio.</p>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -87,7 +108,6 @@ import { events, infinityEvent } from "@/events.js";
 import moment from "moment/moment.js";
 import { loadStripe } from '@stripe/stripe-js';
 
-// Константы для безопасности
 const STRIPE_PK = 'pk_live_51R8BnjHFbZBBzIhnPo2Qvr4XZbDlvFZPpcLCSEpybRIuJb3ZF9HBDm3cSGoqF4kbqWfjgiw3yQYKcXqo5jcgdAax00YHBr5HdI';
 const API_ENDPOINTS = {
     CHECKOUT: '/api/create-checkout-session'
@@ -172,7 +192,6 @@ export default {
 
                 const sessionResponse = await this.createPaymentSession();
 
-                // Дополнительная проверка перед редиректом
                 if (!this.stripe || !sessionResponse?.sessionId) {
                     throw new Error('Payment system error');
                 }
@@ -233,7 +252,6 @@ export default {
     },
     async mounted() {
         try {
-            // Ленивая загрузка Stripe
             this.stripe = await loadStripe(STRIPE_PK, {
                 betas: ['checkout_beta_4'],
                 locale: 'en'
@@ -243,13 +261,11 @@ export default {
                 this.openModal(id, type);
             });
 
-            // Безопасная обработка URL параметров
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('session_id')) {
                 this.paymentCompleted = true;
                 this.closeModal();
 
-                // Очистка URL без перезагрузки
                 const cleanUrl = window.location.origin + window.location.pathname;
                 window.history.replaceState({}, document.title, cleanUrl);
             }
@@ -428,5 +444,51 @@ export default {
         font-size: 16px;
     }
 
+}
+
+.cancellation-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.cancellation-btn {
+    font-family: Montserrat, serif;
+    font-size: 14px;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0;
+}
+
+.cancellation-btn:hover {
+    text-decoration: underline;
+}
+
+.cancellation-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 288px;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.cancellation-wrapper:hover .cancellation-tooltip {
+    display: block;
 }
 </style>
