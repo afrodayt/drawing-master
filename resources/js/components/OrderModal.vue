@@ -83,13 +83,15 @@
                                         <ul>
                                             <li>Cancellations 2 or more days before the workshop – a refund will be
                                                 issued minus 20% to cover materials and administrative expenses.</li>
-                                            <li>Cancellations within 24 hours of the workshop – 50% of the fee will be
-                                                withheld, as supplies and studio preparation have already been arranged.
+                                            <li>For cancellations made 24 hours before the start of the workshop, 50% of
+                                                the payment will be retained, as materials and studio preparation have
+                                                already been arranged.
                                             </li>
                                             <li>Same-day cancellations or no-shows – the payment is non-refundable, as
                                                 your reserved spot and materials cannot be reassigned.</li>
                                         </ul>
-                                        <p class="mb-0">We appreciate your understanding and continued support of our studio.</p>
+                                        <p class="mb-0">We appreciate your understanding and continued support of our
+                                            studio.</p>
                                     </div>
                                 </div>
                             </div>
