@@ -191,6 +191,7 @@ export const events = [
         modalIncludes: null,
         modalDiscount: null,
     },
+    {
         id: 13,
         eventName: 'ACRYLIC PAINTING COURSE "REALISTIC FLOWERS" (5 sessions)',
         startDate: 'September 11 -',
