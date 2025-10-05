@@ -25,7 +25,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'NO MORE SPOTS AVALUABLE',
         img: 'CLOSER.PNG',
         modalDescription: 'Capture with textured brushstrokes on canvas the full beauty of the local nature in its most stunning state.',
         modalIncludes: null,
