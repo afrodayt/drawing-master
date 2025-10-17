@@ -89,7 +89,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'NO MORE SPOTS AVAILABLE',
         img: 'CALGARY.PNG',
         modalDescription: 'Discover the power of abstract palette knife painting in this workshop, where we capture Calgary’s skyline in bold textures and glowing contrasts.',
         modalIncludes: null,
