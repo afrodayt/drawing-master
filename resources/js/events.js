@@ -122,7 +122,7 @@ export const events = [
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'IMG_9179.HEIC',
+        img: 'IMG_9179.jpg',
         modalDescription: 'Create your own Christmas magic! In this cozy art session, you’ll paint a beautiful holiday wreath using acrylics.',
         modalIncludes: null,
         modalDiscount: null,
