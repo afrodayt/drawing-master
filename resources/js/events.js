@@ -89,7 +89,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'NO MORE SPOTS AVAILABLE',
+        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
         img: 'IMG_9175.PNG',
         modalDescription: 'In this acrylic workshop, you’ll create a shining star ornament with rich impasto strokes, learning how to capture light and reflection on festive colors.',
         modalIncludes: null,
