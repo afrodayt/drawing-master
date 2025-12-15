@@ -89,7 +89,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'NO MORE SPOTS AVAILABLE',
         img: 'IMG_9399.JPG',
         modalDescription: 'Join our Christmas Ornament Painting Workshop and design your own festive ornaments — perfect for your Christmas tree or as handmade gifts filled with warmth and love.',
         modalIncludes: null,
