@@ -201,7 +201,7 @@ export const infinityEvent = [
         time: '3:00 pm - 6:00 pm',
         date: '%',
         day: 'Saturday',
-        price: 180,
+        price: 231,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'All supplies provided',
