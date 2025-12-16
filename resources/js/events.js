@@ -176,6 +176,22 @@ export const events = [
         modalIncludes: null,
         modalDiscount: null,
     },
+     {
+        id: 12,
+        eventName: 'WINTER CHARM ACRYLIC WORKSHOP',
+        startDate: null,
+        date: '2025-12-17',
+        time: '6:00 pm - 9:00 pm',
+        day: null,
+        price: 78,
+        selected: false,
+        location: '1324 11 Ave SW, #202, Calgary',
+        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        img: 'WC.PNG',
+        modalDescription: 'Discover the beauty of winter through expressive acrylic painting. We’ll explore color, texture, and reflection to create a vibrant winter landscape.',
+        modalIncludes: null,
+        modalDiscount: null,
+    },
 ];
 
 export const infinityEvent = [
