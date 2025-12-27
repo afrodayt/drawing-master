@@ -57,7 +57,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'SOLD OUT',
         img: 'QM.PNG',
         modalDescription: 'A peaceful acrylic painting class focused on expressive texture and mood, where you’ll learn to convey quiet emotion and atmosphere through layered brushstrokes and subtle color relationships.',
         modalIncludes: null,
