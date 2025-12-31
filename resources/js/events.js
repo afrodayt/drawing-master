@@ -288,7 +288,7 @@ export const events = [
         modalIncludes: null,
         modalDiscount: null,
     },
-     {
+    {
         id: 12,
         eventName: 'WINTER CHARM ACRYLIC WORKSHOP',
         startDate: null,
