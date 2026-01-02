@@ -239,39 +239,6 @@ export const events = [
         modalIncludes: null,
         modalDiscount: null,
     },
-    {
-        id: 16,
-        eventName: 'AWAITING SPRING ACRYLIC CLASS',
-        startDate: null,
-        date: '2025-02-27',
-        time: '6:00 pm - 9:00 pm',
-        day: null,
-        price: 78,
-        selected: false,
-        location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'IMG_1694.PNG',
-        modalDescription: 'A guided acrylic class exploring loose brushwork, soft backgrounds, and vibrant floral accents.',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 10,
-        eventName: 'ACRYLIC PAINTING COURSE "REALISTIC FLOWERS" (5 sessions)',
-        startDate: 'November 03 -',
-        date: '2025-11-03',
-        time: '05:00 pm - 08:00 pm',
-        day: "Mondays, ",
-        price: 315,
-        location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'IMG_8470.JPG',
-        modalDescription: 'Discover the magic of floral painting in our beginner-friendly acrylic course.' +
-            '<div class="modal-body-description-bold">\n' +
-            '                                Step by step, you’ll learn how to create soft petals, rich colors, and lifelike depth — even if you’ve never held a brush before. No experience needed — just curiosity and creativity. Let’s bring flowers to life on canvas.\n' ,
-        modalIncludes: null,
-        modalDiscount: null,
-    },
 ];
 
 export const infinityEvent = [
