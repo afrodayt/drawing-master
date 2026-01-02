@@ -241,7 +241,7 @@ export const events = [
     },
     {
         id: 16,
-        eventName: 'AWAITING SPRING ACRYLIC CLASS'',
+        eventName: 'AWAITING SPRING ACRYLIC CLASS',
         startDate: null,
         date: '2026-02-27',
         time: '6:00 pm - 9:00 pm',
