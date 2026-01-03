@@ -115,7 +115,7 @@ export const events = [
         id: 8,
         eventName: 'YOUR PET ACRYLIC PORTRAIT',
         startDate: null,
-        date: '2026-01-30',
+        date: '2025-01-30',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
