@@ -105,7 +105,7 @@ export const events = [
         price: 78,
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        description: 'NO MORE SPOTS AVAILABLE',
         img: 'FS.PNG',
         modalDescription: 'A poetic watercolor class focused on capturing the contrast of crisp winter air and warm sunlight through transparent layers, soft transitions, and expressive reflections.',
         modalIncludes: null,
