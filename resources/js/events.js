@@ -259,7 +259,7 @@ export const infinityEvent = [
     },
     {
         id: 2,
-        eventName: 'PRIVATE ART CLASSESES',
+        eventName: 'PRIVATE ART CLASSES',
         time: '-',
         date: '%',
         day: 'Monday - Friday',
