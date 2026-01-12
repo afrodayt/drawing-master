@@ -81,22 +81,6 @@ export const events = [
     },
     {
         id: 6,
-        eventName: 'ACRYLIC PEYTO LAKE LANDSCAPE',
-        startDate: null,
-        date: '2026-01-23',
-        time: '6:00 pm - 9:00 pm',
-        day: null,
-        price: 78,
-        selected: false,
-        location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'PL.PNG',
-        modalDescription: 'Learn to capture the dramatic winter atmosphere of Peyto Lake through expressive acrylic layering and textured brushwork.',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 7,
         eventName: 'FROST AND SUN IN WATERCOLOR',
         startDate: null,
         date: '2026-01-28',
@@ -112,10 +96,10 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 8,
-        eventName: 'YOUR PET ACRYLIC PORTRAIT',
+        id: 7,
+        eventName: 'YOUR PET ADDITIONAL ACRYLIC CLASS',
         startDate: null,
-        date: '2025-01-30',
+        date: '2026-01-23',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
@@ -128,7 +112,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 9,
+        id: 8,
         eventName: 'CITRUS THERAPY ACRYLIC CLASS',
         startDate: null,
         date: '2026-02-04',
@@ -144,7 +128,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 10,
+        id: 9,
         eventName: 'INTO THE ROCKIES ACRYLIC CLASS',
         startDate: null,
         date: '2026-02-06',
@@ -160,7 +144,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 11,
+        id: 10,
         eventName: '“WINTER ON FIRE” ACRYLIC CLASS',
         startDate: null,
         date: '2026-02-11',
@@ -176,7 +160,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 12,
+        id: 11,
         eventName: '“BEYOND TODAY” ACRYLIC CLASS',
         startDate: null,
         date: '2026-02-13',
@@ -192,7 +176,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 13,
+        id: 12,
         eventName: 'SILENT LIGHT ACRYLIC CLASS',
         startDate: null,
         date: '2026-02-18',
@@ -208,7 +192,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 14,
+        id: 13,
         eventName: 'FEBRUARY WATERCOLOR CLASS',
         startDate: null,
         date: '2026-02-20',
@@ -224,7 +208,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 15,
+        id: 14,
         eventName: 'ECHOES OF FLAME ACRYLIC CLASS',
         startDate: null,
         date: '2026-02-25',
@@ -240,7 +224,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 16,
+        id: 15,
         eventName: 'AWAITING SPRING ACRYLIC CLASS',
         startDate: null,
         date: '2026-02-27',
