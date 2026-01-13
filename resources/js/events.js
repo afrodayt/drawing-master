@@ -99,7 +99,7 @@ export const events = [
         id: 7,
         eventName: 'YOUR PET ADDITIONAL ACRYLIC CLASS',
         startDate: null,
-        date: '2026-01-23',
+        date: '2025-01-23',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
