@@ -35,7 +35,7 @@ export const events = [
         id: 3,
         eventName: 'CITRUS THERAPY ACRYLIC CLASS',
         startDate: null,
-        date: '2026-02-04',
+        date: '2025-02-04',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
