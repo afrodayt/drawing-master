@@ -81,7 +81,7 @@ export const events = [
     },
     {
         id: 6,
-        eventName: 'ICONIC LOVE STORIES ON CANVAS',
+        eventName: 'ICONIC LOVE STORIES ON CANVAS: PAINTING FOR TWO',
         startDate: null,
         date: '2026-02-13',
         time: '6:00 pm - 9:00 pm',
@@ -91,7 +91,7 @@ export const events = [
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided',
         img: 'IMG_2999.PNG',
-        modalDescription: 'A cozy couples painting experience known as Love Stories on Canvas, where two people create a shared romantic diptych side by side, turning brushstrokes into a story they paint together.',
+        modalDescription: 'A cozy couples painting experience known as Love stories on canvas, where two people create a shared romantic diptych side by side, turning brushstrokes into a story they paint together.',
         modalIncludes: null,
         modalDiscount: null,
     },
