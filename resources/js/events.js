@@ -190,6 +190,6 @@ export const infinityEvent = [
         img: 'adults.JPG',
         modalDescription: "Creativity, dreams, inspiration - the world of art awaits you! We practice a variety of techniques, materials and subjects in our classes. ",
         modalIncludes: null,
-        modalDiscount: "for 1 hour"
+        modalDiscount: "for 1,5 hour"
     },
 ]
