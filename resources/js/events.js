@@ -223,6 +223,22 @@ export const events = [
         modalIncludes: null,
         modalDiscount: null,
     },
+    {
+        id: 14,
+        eventName: 'ABC OF PAINTING: COURSE FOR BEGINNERS (5 SESSIONS)',
+        startDate: 'March 02 -',
+        date: '2026-03-30',
+        time: '6:00 pm - 9:00 pm',
+        day: "Mondays",
+        price: 315,
+        selected: false,
+        location: '1324 11 Ave SW, #202, Calgary',
+        description: 'Beginner-friendly. All supplies provided + snacks and beverages',
+        img: 'IMG_3284.jpg',
+        modalDescription: 'ABC of Painting is a beginner-friendly acrylic painting course focused on essential skills: color theory, acrylic techniques, and principles of depicting form and space. The course provides a solid foundation for confident and expressive painting.',
+        modalIncludes: null,
+        modalDiscount: null,
+    },
 ];
 
 export const infinityEvent = [
