@@ -43,7 +43,7 @@ export const events = [
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided',
         img: 'bear.PNG',
-        modalDescription: 'A gentle acrylic painting workshop centered on the feeling of safety and love between a mother and her cub, using bold texture and simple forms.,
+        modalDescription: 'A gentle acrylic painting workshop centered on the feeling of safety and love between a mother and her cub, using bold texture and simple forms.',
         modalIncludes: null,
         modalDiscount: null,
     },
