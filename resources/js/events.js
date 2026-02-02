@@ -234,7 +234,7 @@ export const events = [
         selected: false,
         location: '1324 11 Ave SW, #202, Calgary',
         description: 'Beginner-friendly. All supplies provided + snacks and beverages',
-        img: 'IMG_3284.jpg',
+        img: 'IMG_3339.PNG',
         modalDescription: 'ABC of Painting is a beginner-friendly acrylic painting course focused on essential skills: color theory, acrylic techniques, and principles of depicting form and space. The course provides a solid foundation for confident and expressive painting.',
         modalIncludes: null,
         modalDiscount: null,
