@@ -179,7 +179,7 @@ export const events = [
         id: 12,
         eventName: 'FEBRUARY WATERCOLOR CLASS',
         startDate: null,
-        date: '2026-02-20',
+        date: '2025-02-20',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
