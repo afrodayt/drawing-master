@@ -19,7 +19,7 @@ export const events = [
         id: 2,
         eventName: '“WITH LOVE” ACRYLIC CLASS',
         startDate: null,
-        date: '2026-03-06',
+        date: '2025-03-06',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
