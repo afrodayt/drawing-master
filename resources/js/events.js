@@ -224,7 +224,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 14,
+        id: 15,
         eventName: 'ABC OF PAINTING: COURSE FOR BEGINNERS (5 SESSIONS)',
         startDate: 'March 02 -',
         date: '2026-03-30',
