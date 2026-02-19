@@ -195,7 +195,7 @@ export const events = [
         id: 13,
         eventName: 'ECHOES OF FLAME ACRYLIC CLASS',
         startDate: null,
-        date: '2026-02-25',
+        date: '2025-02-25',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
