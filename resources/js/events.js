@@ -192,7 +192,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 12,
+        id: 13,
         eventName: 'IRISES IN WATERCOLOR',
         startDate: null,
         date: '2026-04-22',
@@ -208,7 +208,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 13,
+        id: 14,
         eventName: 'WHISRER OF THE RIVER IN ACRYLIC',
         startDate: null,
         date: '2026-04-24',
@@ -224,7 +224,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 14,
+        id: 15,
         eventName: 'BLOSSOM GARDEN ACRYLIC CLASS',
         startDate: null,
         date: '2026-04-29',
@@ -238,6 +238,7 @@ export const events = [
         modalDescription: 'Paint a blooming spring garden filled with delicate blossoms, vibrant colors, and lively textures.',
         modalIncludes: null,
         modalDiscount: null,
+     },
 ];
 
 export const infinityEvent = [
