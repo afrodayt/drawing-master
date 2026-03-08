@@ -19,7 +19,7 @@ export const events = [
         id: 2,
         eventName: 'A TOUCH OF BLUE ACRYLIC CLASS',
         startDate: null,
-        date: '2026-03-20',
+        date: '2025-03-20',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
