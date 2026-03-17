@@ -1,22 +1,6 @@
 export const events = [
     {
         id: 1,
-        eventName: 'SILENT FLOW ACRYLIC CLASS',
-        startDate: null,
-        date: '2026-03-13',
-        time: '6:00 pm - 9:00 pm',
-        day: null,
-        price: 78,
-        selected: false,
-        location: '1324 11 Ave SW, #202, Calgary',
-        description: 'Beginner-friendly. All supplies provided',
-        img: 'spr.PNG',
-        modalDescription: 'A peaceful acrylic painting class capturing the gentle movement of a winter river through snow-covered landscapes. Some images used in our announcements are digital visual references created to illustrate the theme of the class. Final artworks created during the workshop may vary and will reflect each participant’s personal interpretation.',
-        modalIncludes: null,
-        modalDiscount: null,
-    },
-    {
-        id: 2,
         eventName: 'A TOUCH OF BLUE ACRYLIC CLASS',
         startDate: null,
         date: '2025-03-20',
@@ -32,7 +16,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 3,
+        id: 2,
         eventName: 'SIGNS OF SPRING IN WATERCOLOR',
         startDate: null,
         date: '2026-03-25',
@@ -48,7 +32,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 4,
+        id: 3,
         eventName: 'LACE OF THE FOREST IN ACRYLIC',
         startDate: null,
         date: '2026-03-27',
@@ -64,7 +48,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 5,
+        id: 4,
         eventName: 'LAST SNOW ACRYLIC CLASS',
         startDate: null,
         date: '2026-04-1',
@@ -80,7 +64,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 6,
+        id: 5,
         eventName: 'VELVET SWEETNESS ACRYLIC CLASS',
         startDate: null,
         date: '2026-04-8',
@@ -96,7 +80,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 7,
+        id: 6,
         eventName: 'TENDER SPRING ACRYLIC CLASS',
         startDate: null,
         date: '2026-04-10',
@@ -112,7 +96,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 8,
+        id: 7,
         eventName: 'TEXTURED PEONY  ART CLASS',
         startDate: null,
         date: '2026-04-15',
@@ -128,7 +112,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 9,
+        id: 8,
         eventName: 'DIAMONDS ON A WATER ACRYLIC CLASS',
         startDate: null,
         date: '2026-04-17',
@@ -144,7 +128,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 10,
+        id: 9,
         eventName: 'IRISES IN WATERCOLOR',
         startDate: null,
         date: '2026-04-22',
@@ -160,7 +144,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 11,
+        id: 10,
         eventName: 'WHISRER OF THE RIVER IN ACRYLIC',
         startDate: null,
         date: '2026-04-24',
@@ -176,7 +160,7 @@ export const events = [
         modalDiscount: null,
     },
     {
-        id: 12,
+        id: 11,
         eventName: 'BLOSSOM GARDEN ACRYLIC CLASS',
         startDate: null,
         date: '2026-04-29',
