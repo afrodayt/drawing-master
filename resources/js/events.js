@@ -83,7 +83,7 @@ export const events = [
         id: 6,
         eventName: 'DIAMONDS ON A WATER ACRYLIC CLASS',
         startDate: null,
-        date: '2026-04-17',
+        date: '2025-04-17',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
