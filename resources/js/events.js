@@ -67,7 +67,7 @@ export const events = [
         id: 5,
         eventName: 'TEXTURED PEONY  ART CLASS',
         startDate: null,
-        date: '2026-04-15',
+        date: '2025-04-15',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
