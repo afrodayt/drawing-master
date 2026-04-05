@@ -147,7 +147,7 @@ export const events = [
         id: 10,
         eventName: 'VELVET SWEETNESS ACRYLIC CLASS',
         startDate: null,
-        date: '2026-04-8',
+        date: '2026-04-08',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 78,
