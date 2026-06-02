@@ -42,6 +42,23 @@ class AdminCmsController extends Controller
         return response()->json(['authed' => $request->session()->get('cms_admin') === true]);
     }
 
+    public function diag(Request $request)
+    {
+        // Unauthenticated diagnostic: surfaces effective session config so we can confirm
+        // env/config caching is not masking the actual driver. Reveals no secrets.
+        return response()->json([
+            'session_driver_config' => config('session.driver'),
+            'session_driver_env'    => env('SESSION_DRIVER'),
+            'session_lifetime'      => config('session.lifetime'),
+            'app_env'               => config('app.env'),
+            'app_debug'             => (bool) config('app.debug'),
+            'config_cached'         => file_exists(base_path('bootstrap/cache/config.php')),
+            'session_id'            => $request->session()->getId(),
+            'cms_admin_in_session'  => $request->session()->get('cms_admin') === true,
+            'request_cookies'       => array_keys($request->cookies->all()),
+        ]);
+    }
+
     public function load(Request $request)
     {
         if (!$request->session()->get('cms_admin')) {
