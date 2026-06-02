@@ -18,7 +18,9 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'file'),
+    // Hardcoded to 'database' to bypass any cached config that previously baked 'file' in.
+    // MySQL is provisioned in the Railway project; sessions table is created by the new migration.
+    'driver' => 'database',
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +33,7 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 120),
+    'lifetime' => env('SESSION_LIFETIME', 10080),
 
     'expire_on_close' => false,
 
