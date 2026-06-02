@@ -147,7 +147,7 @@ export const events = [
         id: 10,
         eventName: 'WATERCOLOR GARDEN HOLLYHOCK',
         startDate: null,
-        date: '2026-06-10',
+        date: '2025-06-10',
         time: '6:00 pm - 9:00 pm',
         day: null,
         price: 84,
