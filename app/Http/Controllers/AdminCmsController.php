@@ -82,7 +82,7 @@ class AdminCmsController extends Controller
                 ->timeout(30)
                 ->connectTimeout(10)
                 ->get($this->ghUrl('/contents/' . self::CONTENT_PATH), ['ref' => self::REPO_BRANCH]);
-            if (!$resp->ok()) {
+            if (!$resp->successful()) {
                 $detail = $resp->json('message') ?: (substr((string) $resp->body(), 0, 200) ?: 'no body');
                 return response()->json(['error' => 'GitHub ' . $resp->status() . ': ' . $detail], 502);
             }
@@ -125,7 +125,7 @@ class AdminCmsController extends Controller
                     'sha' => $sha,
                     'branch' => self::REPO_BRANCH,
                 ]);
-            if (!$resp->ok()) {
+            if (!$resp->successful()) {
                 $detail = $resp->json('message') ?: (substr((string) $resp->body(), 0, 200) ?: 'no body');
                 return response()->json(['error' => 'GitHub ' . $resp->status() . ': ' . $detail], 502);
             }
@@ -188,7 +188,7 @@ class AdminCmsController extends Controller
                     'content' => $b64,
                     'branch' => self::REPO_BRANCH,
                 ]);
-            if ($resp->ok()) {
+            if ($resp->successful()) {
                 return response()->json(['ok' => true, 'url' => $url]);
             }
             $detail = $resp->json('message') ?: (substr((string) $resp->body(), 0, 200) ?: 'no body');
