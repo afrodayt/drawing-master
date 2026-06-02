@@ -71,9 +71,12 @@ class AdminCmsController extends Controller
         try {
             $resp = Http::withToken($token)
                 ->withHeaders(['Accept' => 'application/vnd.github+json', 'X-GitHub-Api-Version' => '2022-11-28'])
+                ->timeout(30)
+                ->connectTimeout(10)
                 ->get($this->ghUrl('/contents/' . self::CONTENT_PATH), ['ref' => self::REPO_BRANCH]);
             if (!$resp->ok()) {
-                return response()->json(['error' => 'GitHub: ' . $resp->json('message', 'unknown')], 502);
+                $detail = $resp->json('message') ?: (substr((string) $resp->body(), 0, 200) ?: 'no body');
+                return response()->json(['error' => 'GitHub ' . $resp->status() . ': ' . $detail], 502);
             }
             $data = $resp->json();
             $content = base64_decode(str_replace("\n", '', $data['content']));
@@ -106,6 +109,8 @@ class AdminCmsController extends Controller
             $payload = json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n";
             $resp = Http::withToken($token)
                 ->withHeaders(['Accept' => 'application/vnd.github+json', 'X-GitHub-Api-Version' => '2022-11-28'])
+                ->timeout(60)
+                ->connectTimeout(10)
                 ->put($this->ghUrl('/contents/' . self::CONTENT_PATH), [
                     'message' => 'Admin: content update (' . now()->format('Y-m-d H:i') . ')',
                     'content' => base64_encode($payload),
@@ -113,7 +118,8 @@ class AdminCmsController extends Controller
                     'branch' => self::REPO_BRANCH,
                 ]);
             if (!$resp->ok()) {
-                return response()->json(['error' => 'GitHub: ' . $resp->json('message', 'unknown')], 502);
+                $detail = $resp->json('message') ?: (substr((string) $resp->body(), 0, 200) ?: 'no body');
+                return response()->json(['error' => 'GitHub ' . $resp->status() . ': ' . $detail], 502);
             }
             return response()->json(['ok' => true, 'sha' => $resp->json('content.sha')]);
         } catch (\Throwable $e) {
@@ -145,22 +151,47 @@ class AdminCmsController extends Controller
         $safeName = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . strtolower($file->getClientOriginalExtension() ?: 'jpg');
         $path = self::IMAGE_DIR . '/' . time() . '-' . $safeName;
         $b64 = base64_encode(file_get_contents($file->getRealPath()));
+        $url = '/' . substr($path, strlen('public/'));
+        $ghHeaders = ['Accept' => 'application/vnd.github+json', 'X-GitHub-Api-Version' => '2022-11-28'];
         try {
             $resp = Http::withToken($token)
-                ->withHeaders(['Accept' => 'application/vnd.github+json', 'X-GitHub-Api-Version' => '2022-11-28'])
+                ->withHeaders($ghHeaders)
+                ->timeout(90)
+                ->connectTimeout(10)
                 ->put($this->ghUrl('/contents/' . $path), [
                     'message' => 'Admin: upload ' . $safeName,
                     'content' => $b64,
                     'branch' => self::REPO_BRANCH,
                 ]);
-            if (!$resp->ok()) {
-                return response()->json(['error' => 'GitHub: ' . $resp->json('message', 'unknown')], 502);
+            if ($resp->ok()) {
+                return response()->json(['ok' => true, 'url' => $url]);
             }
-            $url = '/' . substr($path, strlen('public/'));
-            return response()->json(['ok' => true, 'url' => $url]);
+            $detail = $resp->json('message') ?: (substr((string) $resp->body(), 0, 200) ?: 'no body');
+            return response()->json([
+                'error' => 'GitHub ' . $resp->status() . ': ' . $detail,
+            ], 502);
         } catch (\Throwable $e) {
-            Log::error('AdminCms upload failed', ['err' => $e->getMessage()]);
-            return response()->json(['error' => 'Upload failed: ' . $e->getMessage()], 500);
+            // Timeouts under PUT-large-base64 are not rare; GitHub may have completed
+            // the write before our client gave up. Verify by GETing the path back.
+            Log::warning('AdminCms upload threw — verifying via GET', [
+                'err'  => $e->getMessage(),
+                'path' => $path,
+            ]);
+            try {
+                $verify = Http::withToken($token)
+                    ->withHeaders($ghHeaders)
+                    ->timeout(15)
+                    ->get($this->ghUrl('/contents/' . $path), ['ref' => self::REPO_BRANCH]);
+                if ($verify->ok()) {
+                    Log::info('AdminCms upload verified after timeout', ['path' => $path]);
+                    return response()->json(['ok' => true, 'url' => $url, 'recovered' => true]);
+                }
+            } catch (\Throwable $verifyErr) {
+                Log::error('AdminCms upload verify also failed', ['err' => $verifyErr->getMessage()]);
+            }
+            return response()->json([
+                'error' => 'Upload failed: ' . substr($e->getMessage(), 0, 200),
+            ], 500);
         }
     }
 
