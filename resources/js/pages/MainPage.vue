@@ -61,8 +61,10 @@
                                                 {{event.location}}
                                             </div>
                                             <div class="events-block-description">{{event.description}}</div>
+                                            <div v-if="isSoldOut(event.id)" class="events-block-soldout-badge">SOLD OUT</div>
                                         </div>
-                                        <button class="main-button" @click="openEventModal(event.id, 'event')">Sign up</button>
+                                        <button v-if="!isSoldOut(event.id)" class="main-button" @click="openEventModal(event.id, 'event')">Sign up</button>
+                                        <button v-else class="main-button events-block-waitlist-button" @click="openWaitlistModal(event)">Join waitlist</button>
                                     </div>
                                 </div>
                             </div>
@@ -231,6 +233,7 @@
             </div>
         </div>
         <OrderModal ref="productModal"/>
+        <WaitlistModal ref="waitlistModal"/>
     </main>
 </template>
 
@@ -242,6 +245,7 @@ import {Carousel} from "@fancyapps/ui/dist/carousel/carousel.esm.js";
 import {Autoplay} from "@fancyapps/ui/dist/carousel/carousel.autoplay.esm.js";
 import {EventBus} from "@/eventBus.js";
 import OrderModal from "@/components/OrderModal.vue";
+import WaitlistModal from "@/components/WaitlistModal.vue";
 
 import Fancybox from "@/components/FancyBox.vue";
 import ContactFormComponent from "@/components/ContactFormComponent.vue";
@@ -253,12 +257,15 @@ export default {
         Fancybox,
         HeaderComponent,
         OrderModal,
+        WaitlistModal,
     },
     data() {
         return {
             events: events,
             infinityEvent: infinityEvent,
             studentWorks: true,
+            availability: {},   // { [eventId]: paidCount }
+            maxAttendees: 12,
             form: {
                 name: "",
                 email: "",
@@ -336,6 +343,23 @@ export default {
         openEventModal(id, type) {
             this.$refs.productModal.openModal(id, type);
         },
+        openWaitlistModal(event) {
+            this.$refs.waitlistModal.openModal(event);
+        },
+        isSoldOut(eventId) {
+            const count = this.availability[eventId] || 0;
+            return count >= this.maxAttendees;
+        },
+        fetchAvailability() {
+            fetch('/api/availability', { headers: { 'Accept': 'application/json' } })
+                .then(r => (r.ok ? r.json() : null))
+                .then(data => {
+                    if (!data) return;
+                    if (typeof data.max === 'number') this.maxAttendees = data.max;
+                    if (data.paid && typeof data.paid === 'object') this.availability = data.paid;
+                })
+                .catch(() => {});
+        },
         sendContactForm() {
 
         }
@@ -369,6 +393,8 @@ export default {
             })
             .catch(() => {})
             .finally(() => this.$nextTick(initCarousels));
+
+        this.fetchAvailability();
     }
 };
 </script>
@@ -598,6 +624,23 @@ export default {
                 .main-button {
                     width: unset;
                 }
+            }
+            &-soldout-badge {
+                display: inline-block;
+                padding: 6px 14px;
+                margin-top: 12px;
+                font-family: Montserrat, sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                color: #fff;
+                background: #c0392b;
+                border-radius: 20px;
+                text-transform: uppercase;
+            }
+            &-waitlist-button {
+                background: #2d2d2d !important;
+                border-color: #2d2d2d !important;
             }
             &-title {
                 font-family: Cormorant Garamond, serif;

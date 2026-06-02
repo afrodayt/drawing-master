@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Controllers\WaitlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,7 @@ Route::post('/contact', [ContactController::class, 'store']);
 Route::post('/create-checkout-session', [PaymentController::class, 'createCheckoutSession'])->middleware(['throttle:10,1']); 
 
 Route::post('/webhook/stripe', [StripeWebhookController::class, 'handle']);
+
+Route::get('/availability', [WaitlistController::class, 'availability']);
+Route::post('/waitlist/join', [WaitlistController::class, 'join'])->middleware(['throttle:5,1']);
 
