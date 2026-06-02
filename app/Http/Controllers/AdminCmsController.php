@@ -44,8 +44,9 @@ class AdminCmsController extends Controller
 
     public function diag(Request $request)
     {
-        // Unauthenticated diagnostic: surfaces effective session config so we can confirm
-        // env/config caching is not masking the actual driver. Reveals no secrets.
+        // Unauthenticated diagnostic: surfaces effective session config + PHP upload
+        // limits so we can confirm env/config caching is not masking the real values.
+        // Reveals no secrets.
         return response()->json([
             'session_driver_config' => config('session.driver'),
             'session_driver_env'    => env('SESSION_DRIVER'),
@@ -56,6 +57,13 @@ class AdminCmsController extends Controller
             'session_id'            => $request->session()->getId(),
             'cms_admin_in_session'  => $request->session()->get('cms_admin') === true,
             'request_cookies'       => array_keys($request->cookies->all()),
+            'php_ini' => [
+                'upload_max_filesize' => ini_get('upload_max_filesize'),
+                'post_max_size'       => ini_get('post_max_size'),
+                'memory_limit'        => ini_get('memory_limit'),
+                'max_execution_time'  => ini_get('max_execution_time'),
+                'loaded_ini'          => php_ini_loaded_file() ?: '(none)',
+            ],
         ]);
     }
 
@@ -139,6 +147,23 @@ class AdminCmsController extends Controller
         }
         $file = $request->file('image');
         if (!$file || !$file->isValid()) {
+            // Distinguish "user sent nothing" from "PHP rejected the upload before
+            // we got a chance to see it" (post_max_size exceeded → $_POST/$_FILES emptied,
+            // upload_max_filesize exceeded → file is set but invalid with UPLOAD_ERR_INI_SIZE).
+            $contentLength = (int) ($_SERVER['CONTENT_LENGTH'] ?? 0);
+            $postMax       = $this->iniBytes(ini_get('post_max_size'));
+            $uploadMax     = $this->iniBytes(ini_get('upload_max_filesize'));
+            if ($postMax > 0 && $contentLength > $postMax) {
+                return response()->json([
+                    'error' => 'Image too large for the server (post body ' . round($contentLength / 1024 / 1024, 1)
+                        . ' MB > post_max_size ' . ini_get('post_max_size') . '). Resize and retry.',
+                ], 413);
+            }
+            if ($file && $file->getError() === UPLOAD_ERR_INI_SIZE) {
+                return response()->json([
+                    'error' => 'Image larger than upload_max_filesize (' . ini_get('upload_max_filesize') . '). Resize and retry.',
+                ], 413);
+            }
             return response()->json(['error' => 'No file uploaded'], 400);
         }
         if ($file->getSize() > 8 * 1024 * 1024) {
@@ -198,5 +223,21 @@ class AdminCmsController extends Controller
     private function ghUrl(string $tail): string
     {
         return 'https://api.github.com/repos/' . self::REPO_OWNER . '/' . self::REPO_NAME . $tail;
+    }
+
+    private function iniBytes(string $val): int
+    {
+        $val = trim($val);
+        if ($val === '') {
+            return 0;
+        }
+        $last = strtolower(substr($val, -1));
+        $num  = (int) $val;
+        return match ($last) {
+            'g'     => $num * 1024 * 1024 * 1024,
+            'm'     => $num * 1024 * 1024,
+            'k'     => $num * 1024,
+            default => $num,
+        };
     }
 }
