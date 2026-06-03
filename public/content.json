@@ -58,7 +58,8 @@
             "img": "j4.PNG",
             "modalDescription": "A gentle introduction to painting a natural scene with expressive floral accents. Some images used in our announcements are digital visual references created to illustrate the theme of the class. Final artworks created during the workshop may vary and will reflect each participant’s personal interpretation.",
             "modalIncludes": null,
-            "modalDiscount": null
+            "modalDiscount": null,
+            "bookedOffline": 8
         },
         {
             "id": 5,
@@ -270,5 +271,5 @@
         "footerEmail": "a.art.shuhai@gmail.com",
         "footerAddress": "1324 11 Ave, SW, #202, Calgary"
     },
-    "updatedAt": "2026-06-03T01:05:31+00:00"
+    "updatedAt": "2026-06-03T01:08:52+00:00"
 }
