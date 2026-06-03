@@ -44,7 +44,7 @@
                         <div class="f-carousel__track">
                             <div class="f-carousel__slide" v-for="event in events" v-if="expiredEvent(event.date)">
                                 <div class="events-block ">
-                                    <img :src="'assets/img/'+ event.img" alt="event.img" class="events-block-img" loading="lazy">
+                                    <img :src="imgSrc(event.img)" alt="event.img" class="events-block-img" loading="lazy">
                                     <div class="events-block-container d-flex flex-column justify-content-between">
                                         <div class="events-block-container-content">
                                             <div class="events-block-title">{{event.eventName}}</div>
@@ -62,8 +62,12 @@
                                             </div>
                                             <div class="events-block-description">{{event.description}}</div>
                                             <div v-if="isSoldOut(event.id)" class="events-block-soldout-badge">SOLD OUT</div>
+                                            <div v-else class="events-block-spots-badge"
+                                                 :class="{ 'events-block-spots-badge--low': spotsLeft(event.id) <= 3 }">
+                                                {{ spotsLeft(event.id) }} {{ spotsLeft(event.id) === 1 ? 'spot' : 'spots' }} left
+                                            </div>
                                         </div>
-                                        <button v-if="!isSoldOut(event.id)" class="main-button" @click="openEventModal(event.id, 'event')">Sign up</button>
+                                        <button v-if="!isSoldOut(event.id)" class="main-button" @click="openEventModal(event, 'event')">Sign up</button>
                                         <button v-else class="main-button events-block-waitlist-button" @click="openWaitlistModal(event)">Join waitlist</button>
                                     </div>
                                 </div>
@@ -79,7 +83,7 @@
                         <div class="f-carousel__track">
                             <div class="f-carousel__slide" v-for="infinityEvent in infinityEvent">
                                 <div class="events-block ">
-                                    <img :src="'assets/img/'+ infinityEvent.img" alt="event.img" class="events-block-img">
+                                    <img :src="imgSrc(infinityEvent.img)" alt="event.img" class="events-block-img">
                                     <div class="events-block-container d-flex flex-column justify-content-between">
                                         <div class="events-block-container-content">
                                             <div class="events-block-title">{{infinityEvent.eventName}}</div>
@@ -97,7 +101,7 @@
                                             </div>
                                             <div class="events-block-description">{{infinityEvent.description}}</div>
                                         </div>
-                                        <button class="main-button" @click="openEventModal(infinityEvent.id, 'infinityEvent')">Sign up</button>
+                                        <button class="main-button" @click="openEventModal(infinityEvent, 'infinityEvent')">Sign up</button>
                                     </div>
                                 </div>
                             </div>
@@ -340,8 +344,8 @@ export default {
             const today = moment().startOf("day");
             return !eventDate.isBefore(today);
         },
-        openEventModal(id, type) {
-            this.$refs.productModal.openModal(id, type);
+        openEventModal(eventObj, type) {
+            this.$refs.productModal.openModal(eventObj, type);
         },
         openWaitlistModal(event) {
             this.$refs.waitlistModal.openModal(event);
@@ -349,6 +353,17 @@ export default {
         isSoldOut(eventId) {
             const count = this.availability[eventId] || 0;
             return count >= this.maxAttendees;
+        },
+        spotsLeft(eventId) {
+            const count = this.availability[eventId] || 0;
+            return Math.max(0, this.maxAttendees - count);
+        },
+        imgSrc(img) {
+            // Mirror of admin's imgUrl(): handle three storage formats that CMS may produce.
+            if (!img) return '';
+            if (/^https?:\/\//.test(img)) return img;
+            if (img.startsWith('assets/')) return '/' + img;
+            return 'assets/img/' + img;
         },
         fetchAvailability() {
             fetch('/api/availability', { headers: { 'Accept': 'application/json' } })
@@ -637,6 +652,24 @@ export default {
                 background: #c0392b;
                 border-radius: 20px;
                 text-transform: uppercase;
+            }
+            &-spots-badge {
+                display: inline-block;
+                padding: 6px 14px;
+                margin-top: 12px;
+                font-family: Montserrat, sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                color: #2d2d2d;
+                background: #f1f1f1;
+                border-radius: 20px;
+                text-transform: uppercase;
+
+                &--low {
+                    color: #fff;
+                    background: #e67e22;
+                }
             }
             &-waitlist-button {
                 background: #2d2d2d !important;
