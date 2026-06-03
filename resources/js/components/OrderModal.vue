@@ -172,11 +172,15 @@ export default {
             const cleanDay = day ? day.replace(/,\s*$/, '') : '';
             return cleanDay ? `${moment(date).format("MMMM D")} (${cleanDay})` : moment(date).format("MMMM D");
         },
-        openModal(id, type) {
+        openModal(eventOrId, type) {
             this.type = type;
-            this.selectedEvent = type === "event"
-                ? this.events.find(event => event.id === id)
-                : this.infinityEvent.find(event => event.id === id);
+            // Backwards-compat: caller may still pass an id from older code paths.
+            if (typeof eventOrId === 'object' && eventOrId !== null) {
+                this.selectedEvent = eventOrId;
+            } else {
+                const list = type === 'event' ? this.events : this.infinityEvent;
+                this.selectedEvent = list.find(e => e.id === eventOrId) || {};
+            }
             document.body.style.overflow = 'hidden';
             this.isVisible = true;
         },
