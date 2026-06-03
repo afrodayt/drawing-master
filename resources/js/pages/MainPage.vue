@@ -62,8 +62,9 @@
                                             </div>
                                             <div class="events-block-description">{{event.description}}</div>
                                             <div v-if="isSoldOut(event.id)" class="events-block-soldout-badge">SOLD OUT</div>
-                                            <div v-else-if="showUrgency(event.id)" class="events-block-urgency-badge">
-                                                Only {{ spotsLeft(event.id) }} {{ spotsLeft(event.id) === 1 ? 'spot' : 'spots' }} left
+                                            <div v-else class="events-block-spots-badge"
+                                                 :class="{ 'events-block-spots-badge--low': spotsLeft(event.id) <= 3 }">
+                                                {{ spotsLeft(event.id) }} {{ spotsLeft(event.id) === 1 ? 'spot' : 'spots' }} left
                                             </div>
                                         </div>
                                         <button v-if="!isSoldOut(event.id)" class="main-button" @click="openEventModal(event.id, 'event')">Sign up</button>
@@ -357,10 +358,6 @@ export default {
             const count = this.availability[eventId] || 0;
             return Math.max(0, this.maxAttendees - count);
         },
-        showUrgency(eventId) {
-            const left = this.spotsLeft(eventId);
-            return left > 0 && left <= 3;
-        },
         fetchAvailability() {
             fetch('/api/availability', { headers: { 'Accept': 'application/json' } })
                 .then(r => (r.ok ? r.json() : null))
@@ -649,7 +646,7 @@ export default {
                 border-radius: 20px;
                 text-transform: uppercase;
             }
-            &-urgency-badge {
+            &-spots-badge {
                 display: inline-block;
                 padding: 6px 14px;
                 margin-top: 12px;
@@ -657,10 +654,15 @@ export default {
                 font-size: 12px;
                 font-weight: 700;
                 letter-spacing: 0.08em;
-                color: #fff;
-                background: #e67e22;
+                color: #2d2d2d;
+                background: #f1f1f1;
                 border-radius: 20px;
                 text-transform: uppercase;
+
+                &--low {
+                    color: #fff;
+                    background: #e67e22;
+                }
             }
             &-waitlist-button {
                 background: #2d2d2d !important;
