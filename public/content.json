@@ -179,6 +179,22 @@
             "modalDescription": "Learn how to paint expressive, realistic flowers in acrylics through a modern step-by-step approach designed for beginners and intermediate artists alike. Throughout this 5-week course, you’ll explore color mixing, light and shadow, soft petal transitions, texture, and depth while creating beautiful floral paintings on canvas. No previous experience needed — just a love for creativity and flowers.",
             "modalIncludes": null,
             "modalDiscount": null
+        },
+        {
+            "id": 13,
+            "eventName": "NEW TEST EVENT",
+            "startDate": null,
+            "date": "2026-07-01",
+            "time": "6:00 pm - 9:00 pm",
+            "day": null,
+            "price": 0,
+            "location": "1324 11 Ave SW, #202, Calgary",
+            "description": "Beginner-friendly. All supplies provided",
+            "img": "assets/img/uploaded/1780448377-img-8515.png",
+            "modalDescription": "TEst Full description",
+            "modalIncludes": null,
+            "modalDiscount": null,
+            "bookedOffline": 7
         }
     ],
     "regularClasses": [
@@ -270,5 +286,5 @@
         "footerEmail": "a.art.shuhai@gmail.com",
         "footerAddress": "1324 11 Ave, SW, #202, Calgary"
     },
-    "updatedAt": "2026-06-03T00:45:26+00:00"
+    "updatedAt": "2026-06-03T01:00:03+00:00"
 }
