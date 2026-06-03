@@ -228,7 +228,7 @@
                   Upload new image
                 </label>
                 <input v-model="ev.img" @input="markDirty" placeholder="filename.png or full URL">
-                <div class="url" v-if="ev.img">{{ imgUrl(ev.img) }}</div>
+                <div class="url" v-if="ev.img">{{ canonicalImgUrl(ev.img) }}</div>
                 <div class="hint">Use a filename if the image lives in <code>public/assets/img/</code>, or a full URL.</div>
               </div>
             </div>
@@ -620,13 +620,18 @@ createApp({
     function addFaq() { content.value.siteText.faq.push({ question: '', answer: '' }); markDirty(); }
     function removeFaq(i) { content.value.siteText.faq.splice(i, 1); markDirty(); }
 
+    function canonicalImgUrl(img) {
+      if (!img) return '';
+      if (/^https?:\/\//.test(img)) return img;
+      if (img.startsWith('assets/')) return `/${img}`;
+      return `/assets/img/${img}`;
+    }
+
     function imgUrl(img) {
       if (!img) return '';
       // Prefer the in-memory data URL while the autodeploy is still in flight.
       if (pendingPreviews[img]) return pendingPreviews[img];
-      if (/^https?:\/\//.test(img)) return img;
-      if (img.startsWith('assets/')) return `/${img}`;
-      return `/assets/img/${img}`;
+      return canonicalImgUrl(img);
     }
 
     function readAsDataUrl(file) {
@@ -651,7 +656,7 @@ createApp({
       tab, tabTitle, openMap, toggleOpen,
       currentList, addItem, removeItem, moveUp, moveDown,
       markDirty, statusText, statusClass,
-      handleUpload, handleGalleryUpload, removeGalleryImg, imgUrl,
+      handleUpload, handleGalleryUpload, removeGalleryImg, imgUrl, canonicalImgUrl,
       whyLeftItemsText, whyRightItemsText, aboutParagraphsText,
       addFaq, removeFaq,
       toast,
