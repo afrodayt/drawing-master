@@ -407,6 +407,10 @@ createApp({
     const toast = ref(null);
     const tab = ref('events');
     const openMap = reactive({});
+    // After a fresh upload the file is committed to GitHub but not yet served by Railway
+    // (autodeploy takes a few minutes). Keep a local data-URL preview keyed by the canonical
+    // path so the card thumbnail shows the new image immediately instead of a broken icon.
+    const pendingPreviews = reactive({});
 
     const showToast = (msg, type = 'info', ms = 3000) => {
       toast.value = { msg, type };
@@ -540,9 +544,14 @@ createApp({
       const file = event.target.files[0];
       if (!file) return;
       showToast('Uploading image…', 'info', 10000);
+      // Read the file as a data URL up-front so we can show the new thumbnail the moment
+      // the upload returns, even before Railway's autodeploy starts serving the path.
+      const dataUrlPromise = readAsDataUrl(file).catch(() => null);
       try {
         const url = await uploadImage(file);
         target[key] = url;
+        const dataUrl = await dataUrlPromise;
+        if (dataUrl) pendingPreviews[url] = dataUrl;
         markDirty();
         showToast('Image uploaded. Click Save to publish.', 'success');
       } catch (e) {
@@ -556,9 +565,12 @@ createApp({
       const file = event.target.files[0];
       if (!file) return;
       showToast('Uploading image…', 'info', 10000);
+      const dataUrlPromise = readAsDataUrl(file).catch(() => null);
       try {
         const url = await uploadImage(file);
         content.value.gallery[which].push(url);
+        const dataUrl = await dataUrlPromise;
+        if (dataUrl) pendingPreviews[url] = dataUrl;
         markDirty();
         showToast('Image added. Click Save to publish.', 'success');
       } catch (e) {
@@ -610,9 +622,20 @@ createApp({
 
     function imgUrl(img) {
       if (!img) return '';
+      // Prefer the in-memory data URL while the autodeploy is still in flight.
+      if (pendingPreviews[img]) return pendingPreviews[img];
       if (/^https?:\/\//.test(img)) return img;
       if (img.startsWith('assets/')) return `/${img}`;
       return `/assets/img/${img}`;
+    }
+
+    function readAsDataUrl(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error || new Error('Could not read file'));
+        reader.readAsDataURL(file);
+      });
     }
 
     // warn on unload if dirty

@@ -12,6 +12,7 @@ import MainPage from '@/pages/MainPage.vue';
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import OrderModal from "@/components/OrderModal.vue";
+import WaitlistModal from "@/components/WaitlistModal.vue";
 
 
 
@@ -21,6 +22,7 @@ new Vue({
         MainPage,
         HeaderComponent,
         FooterComponent,
-        OrderModal
+        OrderModal,
+        WaitlistModal
     },
 });

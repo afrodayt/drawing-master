@@ -35,4 +35,6 @@ return [
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
     ],
 
+    'event_max_attendees' => (int) env('EVENT_MAX_ATTENDEES', 12),
+
 ];
