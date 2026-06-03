@@ -45,6 +45,11 @@
                             <div class="f-carousel__slide" v-for="event in events" v-if="expiredEvent(event.date)">
                                 <div class="events-block ">
                                     <img :src="imgSrc(event.img)" alt="event.img" class="events-block-img" loading="lazy">
+                                    <div v-if="isSoldOut(event.id)" class="events-block-corner-badge events-block-corner-badge--soldout">SOLD OUT</div>
+                                    <div v-else class="events-block-corner-badge"
+                                         :class="{ 'events-block-corner-badge--low': spotsLeft(event.id) <= 3 }">
+                                        {{ spotsLeft(event.id) }} {{ spotsLeft(event.id) === 1 ? 'spot' : 'spots' }} left
+                                    </div>
                                     <div class="events-block-container d-flex flex-column justify-content-between">
                                         <div class="events-block-container-content">
                                             <div class="events-block-title">{{event.eventName}}</div>
@@ -61,11 +66,6 @@
                                                 {{event.location}}
                                             </div>
                                             <div class="events-block-description">{{event.description}}</div>
-                                            <div v-if="isSoldOut(event.id)" class="events-block-soldout-badge">SOLD OUT</div>
-                                            <div v-else class="events-block-spots-badge"
-                                                 :class="{ 'events-block-spots-badge--low': spotsLeft(event.id) <= 3 }">
-                                                {{ spotsLeft(event.id) }} {{ spotsLeft(event.id) === 1 ? 'spot' : 'spots' }} left
-                                            </div>
                                         </div>
                                         <button v-if="!isSoldOut(event.id)" class="main-button" @click="openEventModal(event, 'event')">Sign up</button>
                                         <button v-else class="main-button events-block-waitlist-button" @click="openWaitlistModal(event)">Join waitlist</button>
@@ -606,6 +606,7 @@ export default {
             border-radius: 50px;
             box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
             background: rgb(255, 255, 255);
+            position: relative;
 
             @media (max-width: 991px) {
                 border-radius: 40px;
@@ -617,6 +618,32 @@ export default {
                 height: 400px;
                 width: 100%;
                 border-radius: 50px 50px 0 0;
+            }
+
+            &-corner-badge {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                padding: 8px 16px;
+                font-family: Montserrat, sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                color: #2d2d2d;
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 999px;
+                text-transform: uppercase;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                z-index: 2;
+
+                &--low {
+                    color: #fff;
+                    background: #e67e22;
+                }
+                &--soldout {
+                    color: #fff;
+                    background: #c0392b;
+                }
             }
 
             &-container {
