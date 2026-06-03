@@ -216,6 +216,16 @@
               <input v-model="ev.modalDiscount" @input="markDirty" placeholder="e.g. for four classes">
             </div>
           </div>
+          <div class="grid-2">
+            <div class="field">
+              <label>Max attendees (leave empty for default 12)</label>
+              <input type="number" min="1" v-model.number="ev.maxAttendees" @input="markDirty" placeholder="12">
+            </div>
+            <div class="field">
+              <label>Booked offline (cash / Etransfer / phone)</label>
+              <input type="number" min="0" v-model.number="ev.bookedOffline" @input="markDirty" placeholder="0">
+            </div>
+          </div>
           <div class="field">
             <label>Card image</label>
             <div class="imgpicker">

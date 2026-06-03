@@ -350,13 +350,28 @@ export default {
         openWaitlistModal(event) {
             this.$refs.waitlistModal.openModal(event);
         },
+        eventCap(event) {
+            // Per-event override beats the global default. Default to globalMax otherwise.
+            const v = Number(event && event.maxAttendees);
+            return Number.isFinite(v) && v > 0 ? v : this.maxAttendees;
+        },
+        eventOfflineBooked(event) {
+            const v = Number(event && event.bookedOffline);
+            return Number.isFinite(v) && v > 0 ? v : 0;
+        },
+        bookedTotal(event) {
+            const paid = this.availability[event.id] || 0;
+            return paid + this.eventOfflineBooked(event);
+        },
         isSoldOut(eventId) {
-            const count = this.availability[eventId] || 0;
-            return count >= this.maxAttendees;
+            const event = (this.events || []).find(e => e.id === eventId);
+            if (!event) return false;
+            return this.bookedTotal(event) >= this.eventCap(event);
         },
         spotsLeft(eventId) {
-            const count = this.availability[eventId] || 0;
-            return Math.max(0, this.maxAttendees - count);
+            const event = (this.events || []).find(e => e.id === eventId);
+            if (!event) return this.maxAttendees;
+            return Math.max(0, this.eventCap(event) - this.bookedTotal(event));
         },
         imgSrc(img) {
             // Mirror of admin's imgUrl(): handle three storage formats that CMS may produce.
