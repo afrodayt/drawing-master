@@ -290,14 +290,14 @@
         "student": [
             "assets/img/gallery/student_artwork/IMG_1819.webp",
             "assets/img/gallery/student_artwork/IMG_1014.webp",
-            "assets/img/gallery/student_artwork/IMG_0552.webp",
-            "assets/img/gallery/student_artwork/IMG_3963.webp"
+            "assets/img/uploaded/1780463176-img-8397.jpg",
+            "assets/img/uploaded/1780463527-img-5949.jpg"
         ],
         "my": [
-            "assets/img/gallery/my_artwork/IMG_1469.webp",
             "assets/img/gallery/my_artwork/IMG_7640.webp",
             "assets/img/gallery/my_artwork/IMG_5363.webp",
-            "assets/img/gallery/my_artwork/IMG_3931.webp"
+            "assets/img/gallery/my_artwork/IMG_3931.webp",
+            "assets/img/uploaded/1780463686-img-5036.jpg"
         ]
     },
     "siteText": {
@@ -345,5 +345,5 @@
         "footerEmail": "a.art.shuhai@gmail.com",
         "footerAddress": "1324 11 Ave, SW, #202, Calgary"
     },
-    "updatedAt": "2026-06-03T04:41:56+00:00"
+    "updatedAt": "2026-06-03T05:14:52+00:00"
 }
