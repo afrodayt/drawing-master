@@ -62,6 +62,9 @@
                                             </div>
                                             <div class="events-block-description">{{event.description}}</div>
                                             <div v-if="isSoldOut(event.id)" class="events-block-soldout-badge">SOLD OUT</div>
+                                            <div v-else-if="showUrgency(event.id)" class="events-block-urgency-badge">
+                                                Only {{ spotsLeft(event.id) }} {{ spotsLeft(event.id) === 1 ? 'spot' : 'spots' }} left
+                                            </div>
                                         </div>
                                         <button v-if="!isSoldOut(event.id)" class="main-button" @click="openEventModal(event.id, 'event')">Sign up</button>
                                         <button v-else class="main-button events-block-waitlist-button" @click="openWaitlistModal(event)">Join waitlist</button>
@@ -350,6 +353,14 @@ export default {
             const count = this.availability[eventId] || 0;
             return count >= this.maxAttendees;
         },
+        spotsLeft(eventId) {
+            const count = this.availability[eventId] || 0;
+            return Math.max(0, this.maxAttendees - count);
+        },
+        showUrgency(eventId) {
+            const left = this.spotsLeft(eventId);
+            return left > 0 && left <= 3;
+        },
         fetchAvailability() {
             fetch('/api/availability', { headers: { 'Accept': 'application/json' } })
                 .then(r => (r.ok ? r.json() : null))
@@ -635,6 +646,19 @@ export default {
                 letter-spacing: 0.12em;
                 color: #fff;
                 background: #c0392b;
+                border-radius: 20px;
+                text-transform: uppercase;
+            }
+            &-urgency-badge {
+                display: inline-block;
+                padding: 6px 14px;
+                margin-top: 12px;
+                font-family: Montserrat, sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                color: #fff;
+                background: #e67e22;
                 border-radius: 20px;
                 text-transform: uppercase;
             }
