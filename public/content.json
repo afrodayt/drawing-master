@@ -184,13 +184,13 @@
             "id": 13,
             "eventName": "NEW TEST EVENT",
             "startDate": null,
-            "date": "2026-01-01",
+            "date": "2026-07-01",
             "time": "6:00 pm - 9:00 pm",
             "day": null,
             "price": 0,
             "location": "1324 11 Ave SW, #202, Calgary",
             "description": "Beginner-friendly. All supplies provided",
-            "img": "assets/img/uploaded/1780444752-01-root.png",
+            "img": "assets/img/uploaded/1780445288-img-8517.png",
             "modalDescription": null,
             "modalIncludes": null,
             "modalDiscount": null
@@ -285,5 +285,5 @@
         "footerEmail": "a.art.shuhai@gmail.com",
         "footerAddress": "1324 11 Ave, SW, #202, Calgary"
     },
-    "updatedAt": "2026-06-02T23:59:33+00:00"
+    "updatedAt": "2026-06-03T00:08:42+00:00"
 }
